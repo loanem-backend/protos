@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package services.auth.v1;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/loanem-backend/protos/pb/services/auth/v1;authv1";
+
+service AssistantService {
+    rpc CreateAssistant(CreateAssistantRequest) returns (CreateAssistantResponse);
+    rpc SetAssistantPassword(SetAssistantPasswordRequest) returns (SetAssistantPasswordResponse);
+    rpc GetActiveAssistants(GetActiveAssistantsRequest) returns (GetActiveAssistantsResponse);
+}
+
+message CreateAssistantRequest {
+    string name = 1;
+    string phone = 2;
+    int32 period = 3;
+}
+
+message CreateAssistantResponse {
+    int32 id = 1;
+}
+
+message SetAssistantPasswordRequest {
+    string password = 1;
+    string password_confirm = 2;
+}
+
+message SetAssistantPasswordResponse {}
+
+message GetActiveAssistantsRequest {}
+
+message Assistant {
+    int32 id = 1;
+    string name = 2;
+    string phone = 3;
+    bool active = 4;
+    int32 period = 5;
+    google.protobuf.Timestamp created_at = 6;
+    google.protobuf.Timestamp updated_at = 7;
+}
+
+message GetActiveAssistantsResponse {
+    repeated Assistant assistants = 1;
+}
