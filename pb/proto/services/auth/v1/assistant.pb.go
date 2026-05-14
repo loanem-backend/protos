@@ -128,8 +128,9 @@ func (x *CreateAssistantResponse) GetId() int32 {
 
 type SetAssistantPasswordRequest struct {
 	state           protoimpl.MessageState `protogen:"open.v1"`
-	Password        string                 `protobuf:"bytes,1,opt,name=password,proto3" json:"password,omitempty"`
-	PasswordConfirm string                 `protobuf:"bytes,2,opt,name=password_confirm,json=passwordConfirm,proto3" json:"password_confirm,omitempty"`
+	OldPassword     string                 `protobuf:"bytes,1,opt,name=old_password,json=oldPassword,proto3" json:"old_password,omitempty"`
+	NewPassword     string                 `protobuf:"bytes,2,opt,name=new_password,json=newPassword,proto3" json:"new_password,omitempty"`
+	ConfirmPassword string                 `protobuf:"bytes,3,opt,name=confirm_password,json=confirmPassword,proto3" json:"confirm_password,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
@@ -164,16 +165,23 @@ func (*SetAssistantPasswordRequest) Descriptor() ([]byte, []int) {
 	return file_proto_services_auth_v1_assistant_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *SetAssistantPasswordRequest) GetPassword() string {
+func (x *SetAssistantPasswordRequest) GetOldPassword() string {
 	if x != nil {
-		return x.Password
+		return x.OldPassword
 	}
 	return ""
 }
 
-func (x *SetAssistantPasswordRequest) GetPasswordConfirm() string {
+func (x *SetAssistantPasswordRequest) GetNewPassword() string {
 	if x != nil {
-		return x.PasswordConfirm
+		return x.NewPassword
+	}
+	return ""
+}
+
+func (x *SetAssistantPasswordRequest) GetConfirmPassword() string {
+	if x != nil {
+		return x.ConfirmPassword
 	}
 	return ""
 }
@@ -396,10 +404,11 @@ const file_proto_services_auth_v1_assistant_proto_rawDesc = "" +
 	"\x05phone\x18\x02 \x01(\tR\x05phone\x12\x16\n" +
 	"\x06period\x18\x03 \x01(\x05R\x06period\")\n" +
 	"\x17CreateAssistantResponse\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\"d\n" +
-	"\x1bSetAssistantPasswordRequest\x12\x1a\n" +
-	"\bpassword\x18\x01 \x01(\tR\bpassword\x12)\n" +
-	"\x10password_confirm\x18\x02 \x01(\tR\x0fpasswordConfirm\"\x1e\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\"\x8e\x01\n" +
+	"\x1bSetAssistantPasswordRequest\x12!\n" +
+	"\fold_password\x18\x01 \x01(\tR\voldPassword\x12!\n" +
+	"\fnew_password\x18\x02 \x01(\tR\vnewPassword\x12)\n" +
+	"\x10confirm_password\x18\x03 \x01(\tR\x0fconfirmPassword\"\x1e\n" +
 	"\x1cSetAssistantPasswordResponse\"\x1c\n" +
 	"\x1aGetActiveAssistantsRequest\"\xeb\x01\n" +
 	"\tAssistant\x12\x0e\n" +
