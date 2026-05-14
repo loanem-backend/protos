@@ -2,3 +2,27 @@ syntax = "proto3";
 
 package services.inventory.v1;
 option go_package = "github.com/loanem-backend/protos/pb/services/inventory/v1;inventoryv1";
+
+service InventoryService {
+    rpc AddInstrument(AddInstrumentRequest) returns (AddInstrumentResponse);
+    rpc GetAllInstruments(GetAllInstrumentsRequest) returns (GetAllInstrumentsResponse);
+}
+
+message AddInstrumentRequest {
+    string name = 1;
+}
+
+message AddInstrumentResponse {
+    int32 id = 1;
+}
+
+message Instrument {
+    int32 id = 1;
+    string name = 2;
+}
+
+message GetAllInstrumentsRequest {}
+
+message GetAllInstrumentsResponse {
+    repeated Instrument instruments = 1;
+}
