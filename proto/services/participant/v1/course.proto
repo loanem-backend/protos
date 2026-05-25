@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package services.participant.v1;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/loanem-backend/protos/pb/services/participant/v1;participantv1";
+
+service CourseService {
+    rpc AddCourse(AddCourseRequest) returns (AddCourseResponse);
+    rpc GetCourses(GetCoursesRequest) returns (GetCoursesResponse);
+}
+
+message AddCourseRequest {
+    string name = 1;
+    int32 year = 2;
+}
+
+message AddCourseResponse {
+    int32 id = 1;
+}
+
+message Course {
+    int32 id = 1;
+    string name = 2;
+    int32 year = 3;
+    google.protobuf.Timestamp created_at = 4;
+    google.protobuf.Timestamp updated_at = 5;
+}
+
+message GetCoursesRequest {}
+
+message GetCoursesResponse {
+    repeated Course courses = 1;
+}
