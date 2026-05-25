@@ -1,10 +1,10 @@
 syntax = "proto3";
 
-package services.participant.v1;
+package services.course.v1;
 
 import "google/protobuf/timestamp.proto";
 
-option go_package = "github.com/loanem-backend/protos/pb/services/participant/v1;participantv1";
+option go_package = "github.com/loanem-backend/protos/pb/services/course/v1;coursev1";
 
 service CourseService {
     rpc AddCourse(AddCourseRequest) returns (AddCourseResponse);
