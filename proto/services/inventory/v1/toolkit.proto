@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package services.inventory.v1;
+option go_package = "github.com/loanem-backend/protos/pb/services/inventory/v1;inventoryv1";
+
+service ToolkitService {
+    rpc AddToolkit(AddToolkitRequest) returns (AddToolkitResponse);
+}
+
+message AddToolkitRequest {
+    string kit_name = 1;
+    int32 total_count = 2;
+}
+
+message AddToolkitResponse {
+    int32 id = 1;
+}
