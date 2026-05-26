@@ -19,7 +19,8 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ToolkitService_AddToolkit_FullMethodName = "/services.inventory.v1.ToolkitService/AddToolkit"
+	ToolkitService_AddToolkit_FullMethodName         = "/services.inventory.v1.ToolkitService/AddToolkit"
+	ToolkitService_SetToolkitCourseID_FullMethodName = "/services.inventory.v1.ToolkitService/SetToolkitCourseID"
 )
 
 // ToolkitServiceClient is the client API for ToolkitService service.
@@ -27,6 +28,7 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ToolkitServiceClient interface {
 	AddToolkit(ctx context.Context, in *AddToolkitRequest, opts ...grpc.CallOption) (*AddToolkitResponse, error)
+	SetToolkitCourseID(ctx context.Context, in *SetToolkitCourseIDRequest, opts ...grpc.CallOption) (*SetToolkitCourseIDResponse, error)
 }
 
 type toolkitServiceClient struct {
@@ -47,11 +49,22 @@ func (c *toolkitServiceClient) AddToolkit(ctx context.Context, in *AddToolkitReq
 	return out, nil
 }
 
+func (c *toolkitServiceClient) SetToolkitCourseID(ctx context.Context, in *SetToolkitCourseIDRequest, opts ...grpc.CallOption) (*SetToolkitCourseIDResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SetToolkitCourseIDResponse)
+	err := c.cc.Invoke(ctx, ToolkitService_SetToolkitCourseID_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ToolkitServiceServer is the server API for ToolkitService service.
 // All implementations must embed UnimplementedToolkitServiceServer
 // for forward compatibility.
 type ToolkitServiceServer interface {
 	AddToolkit(context.Context, *AddToolkitRequest) (*AddToolkitResponse, error)
+	SetToolkitCourseID(context.Context, *SetToolkitCourseIDRequest) (*SetToolkitCourseIDResponse, error)
 	mustEmbedUnimplementedToolkitServiceServer()
 }
 
@@ -64,6 +77,9 @@ type UnimplementedToolkitServiceServer struct{}
 
 func (UnimplementedToolkitServiceServer) AddToolkit(context.Context, *AddToolkitRequest) (*AddToolkitResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method AddToolkit not implemented")
+}
+func (UnimplementedToolkitServiceServer) SetToolkitCourseID(context.Context, *SetToolkitCourseIDRequest) (*SetToolkitCourseIDResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method SetToolkitCourseID not implemented")
 }
 func (UnimplementedToolkitServiceServer) mustEmbedUnimplementedToolkitServiceServer() {}
 func (UnimplementedToolkitServiceServer) testEmbeddedByValue()                        {}
@@ -104,6 +120,24 @@ func _ToolkitService_AddToolkit_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ToolkitService_SetToolkitCourseID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetToolkitCourseIDRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ToolkitServiceServer).SetToolkitCourseID(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ToolkitService_SetToolkitCourseID_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ToolkitServiceServer).SetToolkitCourseID(ctx, req.(*SetToolkitCourseIDRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ToolkitService_ServiceDesc is the grpc.ServiceDesc for ToolkitService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -114,6 +148,10 @@ var ToolkitService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "AddToolkit",
 			Handler:    _ToolkitService_AddToolkit_Handler,
+		},
+		{
+			MethodName: "SetToolkitCourseID",
+			Handler:    _ToolkitService_SetToolkitCourseID_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
