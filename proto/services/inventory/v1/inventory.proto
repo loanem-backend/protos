@@ -3,7 +3,7 @@ syntax = "proto3";
 package services.inventory.v1;
 option go_package = "github.com/loanem-backend/protos/pb/services/inventory/v1;inventoryv1";
 
-service InventoryService {
+service InstrumentService {
     rpc AddInstrument(AddInstrumentRequest) returns (AddInstrumentResponse);
     rpc GetAllInstruments(GetAllInstrumentsRequest) returns (GetAllInstrumentsResponse);
 }

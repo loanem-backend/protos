@@ -5,6 +5,7 @@ option go_package = "github.com/loanem-backend/protos/pb/services/inventory/v1;i
 
 service ToolkitService {
     rpc AddToolkit(AddToolkitRequest) returns (AddToolkitResponse);
+    rpc SetToolkitCourseID(SetToolkitCourseIDRequest) returns (SetToolkitCourseIDResponse);
 }
 
 message AddToolkitRequest {
@@ -15,3 +16,10 @@ message AddToolkitRequest {
 message AddToolkitResponse {
     int32 id = 1;
 }
+
+message SetToolkitCourseIDRequest {
+    int32 toolkit_id = 1;
+    int32 course_id = 2;
+}
+
+message SetToolkitCourseIDResponse {}
