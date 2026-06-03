@@ -9,6 +9,7 @@ option go_package = "github.com/loanem-backend/protos/pb/services/course/v1;cour
 service CourseService {
     rpc AddCourse(AddCourseRequest) returns (AddCourseResponse);
     rpc GetCourses(GetCoursesRequest) returns (GetCoursesResponse);
+    rpc RemoveCourse(RemoveCourseRequest) returns (RemoveCourseResponse);
 }
 
 message AddCourseRequest {
@@ -33,3 +34,9 @@ message GetCoursesRequest {}
 message GetCoursesResponse {
     repeated Course courses = 1;
 }
+
+message RemoveCourseRequest {
+    int32 id = 1;
+}
+
+message RemoveCourseResponse {}

@@ -274,6 +274,86 @@ func (x *GetCoursesResponse) GetCourses() []*Course {
 	return nil
 }
 
+type RemoveCourseRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RemoveCourseRequest) Reset() {
+	*x = RemoveCourseRequest{}
+	mi := &file_proto_services_course_v1_course_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RemoveCourseRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RemoveCourseRequest) ProtoMessage() {}
+
+func (x *RemoveCourseRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_services_course_v1_course_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RemoveCourseRequest.ProtoReflect.Descriptor instead.
+func (*RemoveCourseRequest) Descriptor() ([]byte, []int) {
+	return file_proto_services_course_v1_course_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *RemoveCourseRequest) GetId() int32 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+type RemoveCourseResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RemoveCourseResponse) Reset() {
+	*x = RemoveCourseResponse{}
+	mi := &file_proto_services_course_v1_course_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RemoveCourseResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RemoveCourseResponse) ProtoMessage() {}
+
+func (x *RemoveCourseResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_services_course_v1_course_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RemoveCourseResponse.ProtoReflect.Descriptor instead.
+func (*RemoveCourseResponse) Descriptor() ([]byte, []int) {
+	return file_proto_services_course_v1_course_proto_rawDescGZIP(), []int{6}
+}
+
 var File_proto_services_course_v1_course_proto protoreflect.FileDescriptor
 
 const file_proto_services_course_v1_course_proto_rawDesc = "" +
@@ -294,11 +374,15 @@ const file_proto_services_course_v1_course_proto_rawDesc = "" +
 	"updated_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"\x13\n" +
 	"\x11GetCoursesRequest\"J\n" +
 	"\x12GetCoursesResponse\x124\n" +
-	"\acourses\x18\x01 \x03(\v2\x1a.services.course.v1.CourseR\acourses2\xc6\x01\n" +
+	"\acourses\x18\x01 \x03(\v2\x1a.services.course.v1.CourseR\acourses\"%\n" +
+	"\x13RemoveCourseRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\"\x16\n" +
+	"\x14RemoveCourseResponse2\xa9\x02\n" +
 	"\rCourseService\x12X\n" +
 	"\tAddCourse\x12$.services.course.v1.AddCourseRequest\x1a%.services.course.v1.AddCourseResponse\x12[\n" +
 	"\n" +
-	"GetCourses\x12%.services.course.v1.GetCoursesRequest\x1a&.services.course.v1.GetCoursesResponseBAZ?github.com/loanem-backend/protos/pb/services/course/v1;coursev1b\x06proto3"
+	"GetCourses\x12%.services.course.v1.GetCoursesRequest\x1a&.services.course.v1.GetCoursesResponse\x12a\n" +
+	"\fRemoveCourse\x12'.services.course.v1.RemoveCourseRequest\x1a(.services.course.v1.RemoveCourseResponseBAZ?github.com/loanem-backend/protos/pb/services/course/v1;coursev1b\x06proto3"
 
 var (
 	file_proto_services_course_v1_course_proto_rawDescOnce sync.Once
@@ -312,25 +396,29 @@ func file_proto_services_course_v1_course_proto_rawDescGZIP() []byte {
 	return file_proto_services_course_v1_course_proto_rawDescData
 }
 
-var file_proto_services_course_v1_course_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_proto_services_course_v1_course_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_proto_services_course_v1_course_proto_goTypes = []any{
 	(*AddCourseRequest)(nil),      // 0: services.course.v1.AddCourseRequest
 	(*AddCourseResponse)(nil),     // 1: services.course.v1.AddCourseResponse
 	(*Course)(nil),                // 2: services.course.v1.Course
 	(*GetCoursesRequest)(nil),     // 3: services.course.v1.GetCoursesRequest
 	(*GetCoursesResponse)(nil),    // 4: services.course.v1.GetCoursesResponse
-	(*timestamppb.Timestamp)(nil), // 5: google.protobuf.Timestamp
+	(*RemoveCourseRequest)(nil),   // 5: services.course.v1.RemoveCourseRequest
+	(*RemoveCourseResponse)(nil),  // 6: services.course.v1.RemoveCourseResponse
+	(*timestamppb.Timestamp)(nil), // 7: google.protobuf.Timestamp
 }
 var file_proto_services_course_v1_course_proto_depIdxs = []int32{
-	5, // 0: services.course.v1.Course.created_at:type_name -> google.protobuf.Timestamp
-	5, // 1: services.course.v1.Course.updated_at:type_name -> google.protobuf.Timestamp
+	7, // 0: services.course.v1.Course.created_at:type_name -> google.protobuf.Timestamp
+	7, // 1: services.course.v1.Course.updated_at:type_name -> google.protobuf.Timestamp
 	2, // 2: services.course.v1.GetCoursesResponse.courses:type_name -> services.course.v1.Course
 	0, // 3: services.course.v1.CourseService.AddCourse:input_type -> services.course.v1.AddCourseRequest
 	3, // 4: services.course.v1.CourseService.GetCourses:input_type -> services.course.v1.GetCoursesRequest
-	1, // 5: services.course.v1.CourseService.AddCourse:output_type -> services.course.v1.AddCourseResponse
-	4, // 6: services.course.v1.CourseService.GetCourses:output_type -> services.course.v1.GetCoursesResponse
-	5, // [5:7] is the sub-list for method output_type
-	3, // [3:5] is the sub-list for method input_type
+	5, // 5: services.course.v1.CourseService.RemoveCourse:input_type -> services.course.v1.RemoveCourseRequest
+	1, // 6: services.course.v1.CourseService.AddCourse:output_type -> services.course.v1.AddCourseResponse
+	4, // 7: services.course.v1.CourseService.GetCourses:output_type -> services.course.v1.GetCoursesResponse
+	6, // 8: services.course.v1.CourseService.RemoveCourse:output_type -> services.course.v1.RemoveCourseResponse
+	6, // [6:9] is the sub-list for method output_type
+	3, // [3:6] is the sub-list for method input_type
 	3, // [3:3] is the sub-list for extension type_name
 	3, // [3:3] is the sub-list for extension extendee
 	0, // [0:3] is the sub-list for field type_name
@@ -347,7 +435,7 @@ func file_proto_services_course_v1_course_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_services_course_v1_course_proto_rawDesc), len(file_proto_services_course_v1_course_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   5,
+			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

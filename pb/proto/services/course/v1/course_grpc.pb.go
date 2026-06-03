@@ -19,8 +19,9 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	CourseService_AddCourse_FullMethodName  = "/services.course.v1.CourseService/AddCourse"
-	CourseService_GetCourses_FullMethodName = "/services.course.v1.CourseService/GetCourses"
+	CourseService_AddCourse_FullMethodName    = "/services.course.v1.CourseService/AddCourse"
+	CourseService_GetCourses_FullMethodName   = "/services.course.v1.CourseService/GetCourses"
+	CourseService_RemoveCourse_FullMethodName = "/services.course.v1.CourseService/RemoveCourse"
 )
 
 // CourseServiceClient is the client API for CourseService service.
@@ -29,6 +30,7 @@ const (
 type CourseServiceClient interface {
 	AddCourse(ctx context.Context, in *AddCourseRequest, opts ...grpc.CallOption) (*AddCourseResponse, error)
 	GetCourses(ctx context.Context, in *GetCoursesRequest, opts ...grpc.CallOption) (*GetCoursesResponse, error)
+	RemoveCourse(ctx context.Context, in *RemoveCourseRequest, opts ...grpc.CallOption) (*RemoveCourseResponse, error)
 }
 
 type courseServiceClient struct {
@@ -59,12 +61,23 @@ func (c *courseServiceClient) GetCourses(ctx context.Context, in *GetCoursesRequ
 	return out, nil
 }
 
+func (c *courseServiceClient) RemoveCourse(ctx context.Context, in *RemoveCourseRequest, opts ...grpc.CallOption) (*RemoveCourseResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RemoveCourseResponse)
+	err := c.cc.Invoke(ctx, CourseService_RemoveCourse_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // CourseServiceServer is the server API for CourseService service.
 // All implementations must embed UnimplementedCourseServiceServer
 // for forward compatibility.
 type CourseServiceServer interface {
 	AddCourse(context.Context, *AddCourseRequest) (*AddCourseResponse, error)
 	GetCourses(context.Context, *GetCoursesRequest) (*GetCoursesResponse, error)
+	RemoveCourse(context.Context, *RemoveCourseRequest) (*RemoveCourseResponse, error)
 	mustEmbedUnimplementedCourseServiceServer()
 }
 
@@ -80,6 +93,9 @@ func (UnimplementedCourseServiceServer) AddCourse(context.Context, *AddCourseReq
 }
 func (UnimplementedCourseServiceServer) GetCourses(context.Context, *GetCoursesRequest) (*GetCoursesResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetCourses not implemented")
+}
+func (UnimplementedCourseServiceServer) RemoveCourse(context.Context, *RemoveCourseRequest) (*RemoveCourseResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method RemoveCourse not implemented")
 }
 func (UnimplementedCourseServiceServer) mustEmbedUnimplementedCourseServiceServer() {}
 func (UnimplementedCourseServiceServer) testEmbeddedByValue()                       {}
@@ -138,6 +154,24 @@ func _CourseService_GetCourses_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
+func _CourseService_RemoveCourse_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RemoveCourseRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CourseServiceServer).RemoveCourse(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CourseService_RemoveCourse_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CourseServiceServer).RemoveCourse(ctx, req.(*RemoveCourseRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // CourseService_ServiceDesc is the grpc.ServiceDesc for CourseService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -152,6 +186,10 @@ var CourseService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetCourses",
 			Handler:    _CourseService_GetCourses_Handler,
+		},
+		{
+			MethodName: "RemoveCourse",
+			Handler:    _CourseService_RemoveCourse_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
