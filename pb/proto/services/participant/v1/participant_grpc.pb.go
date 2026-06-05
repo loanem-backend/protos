@@ -19,18 +19,14 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ParticipantService_AddClass_FullMethodName             = "/services.participant.v1.ParticipantService/AddClass"
-	ParticipantService_GetClassesByCourseID_FullMethodName = "/services.participant.v1.ParticipantService/GetClassesByCourseID"
-	ParticipantService_AddTeam_FullMethodName              = "/services.participant.v1.ParticipantService/AddTeam"
+	ParticipantService_AddTeam_FullMethodName = "/services.participant.v1.ParticipantService/AddTeam"
 )
 
 // ParticipantServiceClient is the client API for ParticipantService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ParticipantServiceClient interface {
-	AddClass(ctx context.Context, in *AddClassRequest, opts ...grpc.CallOption) (*AddClassResponse, error)
-	GetClassesByCourseID(ctx context.Context, in *GetClassesByCourseIDRequest, opts ...grpc.CallOption) (*GetClassesByCourseIDResponse, error)
-	AddTeam(ctx context.Context, in *AddTeamRequest, opts ...grpc.CallOption) (*AddTeamResponse, error)
+	AddTeam(ctx context.Context, in *AddParticipantRequest, opts ...grpc.CallOption) (*AddParticipantResponse, error)
 }
 
 type participantServiceClient struct {
@@ -41,29 +37,9 @@ func NewParticipantServiceClient(cc grpc.ClientConnInterface) ParticipantService
 	return &participantServiceClient{cc}
 }
 
-func (c *participantServiceClient) AddClass(ctx context.Context, in *AddClassRequest, opts ...grpc.CallOption) (*AddClassResponse, error) {
+func (c *participantServiceClient) AddTeam(ctx context.Context, in *AddParticipantRequest, opts ...grpc.CallOption) (*AddParticipantResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(AddClassResponse)
-	err := c.cc.Invoke(ctx, ParticipantService_AddClass_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *participantServiceClient) GetClassesByCourseID(ctx context.Context, in *GetClassesByCourseIDRequest, opts ...grpc.CallOption) (*GetClassesByCourseIDResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetClassesByCourseIDResponse)
-	err := c.cc.Invoke(ctx, ParticipantService_GetClassesByCourseID_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *participantServiceClient) AddTeam(ctx context.Context, in *AddTeamRequest, opts ...grpc.CallOption) (*AddTeamResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(AddTeamResponse)
+	out := new(AddParticipantResponse)
 	err := c.cc.Invoke(ctx, ParticipantService_AddTeam_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -75,9 +51,7 @@ func (c *participantServiceClient) AddTeam(ctx context.Context, in *AddTeamReque
 // All implementations must embed UnimplementedParticipantServiceServer
 // for forward compatibility.
 type ParticipantServiceServer interface {
-	AddClass(context.Context, *AddClassRequest) (*AddClassResponse, error)
-	GetClassesByCourseID(context.Context, *GetClassesByCourseIDRequest) (*GetClassesByCourseIDResponse, error)
-	AddTeam(context.Context, *AddTeamRequest) (*AddTeamResponse, error)
+	AddTeam(context.Context, *AddParticipantRequest) (*AddParticipantResponse, error)
 	mustEmbedUnimplementedParticipantServiceServer()
 }
 
@@ -88,13 +62,7 @@ type ParticipantServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedParticipantServiceServer struct{}
 
-func (UnimplementedParticipantServiceServer) AddClass(context.Context, *AddClassRequest) (*AddClassResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method AddClass not implemented")
-}
-func (UnimplementedParticipantServiceServer) GetClassesByCourseID(context.Context, *GetClassesByCourseIDRequest) (*GetClassesByCourseIDResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method GetClassesByCourseID not implemented")
-}
-func (UnimplementedParticipantServiceServer) AddTeam(context.Context, *AddTeamRequest) (*AddTeamResponse, error) {
+func (UnimplementedParticipantServiceServer) AddTeam(context.Context, *AddParticipantRequest) (*AddParticipantResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method AddTeam not implemented")
 }
 func (UnimplementedParticipantServiceServer) mustEmbedUnimplementedParticipantServiceServer() {}
@@ -118,44 +86,8 @@ func RegisterParticipantServiceServer(s grpc.ServiceRegistrar, srv ParticipantSe
 	s.RegisterService(&ParticipantService_ServiceDesc, srv)
 }
 
-func _ParticipantService_AddClass_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AddClassRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ParticipantServiceServer).AddClass(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ParticipantService_AddClass_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ParticipantServiceServer).AddClass(ctx, req.(*AddClassRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _ParticipantService_GetClassesByCourseID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetClassesByCourseIDRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ParticipantServiceServer).GetClassesByCourseID(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ParticipantService_GetClassesByCourseID_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ParticipantServiceServer).GetClassesByCourseID(ctx, req.(*GetClassesByCourseIDRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _ParticipantService_AddTeam_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AddTeamRequest)
+	in := new(AddParticipantRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -167,7 +99,7 @@ func _ParticipantService_AddTeam_Handler(srv interface{}, ctx context.Context, d
 		FullMethod: ParticipantService_AddTeam_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ParticipantServiceServer).AddTeam(ctx, req.(*AddTeamRequest))
+		return srv.(ParticipantServiceServer).AddTeam(ctx, req.(*AddParticipantRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -179,14 +111,6 @@ var ParticipantService_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "services.participant.v1.ParticipantService",
 	HandlerType: (*ParticipantServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
-		{
-			MethodName: "AddClass",
-			Handler:    _ParticipantService_AddClass_Handler,
-		},
-		{
-			MethodName: "GetClassesByCourseID",
-			Handler:    _ParticipantService_GetClassesByCourseID_Handler,
-		},
 		{
 			MethodName: "AddTeam",
 			Handler:    _ParticipantService_AddTeam_Handler,
