@@ -5,7 +5,7 @@ package services.participant.v1;
 option go_package = "github.com/loanem-backend/protos/pb/services/participant/v1;participantv1";
 
 service ParticipantService {
-    rpc AddTeam(AddParticipantRequest) returns (AddParticipantResponse);
+    rpc AddParticipant(AddParticipantRequest) returns (AddParticipantResponse);
 }
 
 message AddParticipantRequest {

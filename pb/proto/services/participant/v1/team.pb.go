@@ -22,28 +22,28 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type AddClassRequest struct {
+type AddClassesRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	CourseId      int32                  `protobuf:"varint,1,opt,name=course_id,json=courseId,proto3" json:"course_id,omitempty"`
-	Name          uint32                 `protobuf:"varint,2,opt,name=name,proto3" json:"name,omitempty"`
+	Names         []uint32               `protobuf:"varint,2,rep,packed,name=names,proto3" json:"names,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *AddClassRequest) Reset() {
-	*x = AddClassRequest{}
+func (x *AddClassesRequest) Reset() {
+	*x = AddClassesRequest{}
 	mi := &file_proto_services_participant_v1_team_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *AddClassRequest) String() string {
+func (x *AddClassesRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*AddClassRequest) ProtoMessage() {}
+func (*AddClassesRequest) ProtoMessage() {}
 
-func (x *AddClassRequest) ProtoReflect() protoreflect.Message {
+func (x *AddClassesRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_proto_services_participant_v1_team_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -55,46 +55,45 @@ func (x *AddClassRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use AddClassRequest.ProtoReflect.Descriptor instead.
-func (*AddClassRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use AddClassesRequest.ProtoReflect.Descriptor instead.
+func (*AddClassesRequest) Descriptor() ([]byte, []int) {
 	return file_proto_services_participant_v1_team_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *AddClassRequest) GetCourseId() int32 {
+func (x *AddClassesRequest) GetCourseId() int32 {
 	if x != nil {
 		return x.CourseId
 	}
 	return 0
 }
 
-func (x *AddClassRequest) GetName() uint32 {
+func (x *AddClassesRequest) GetNames() []uint32 {
 	if x != nil {
-		return x.Name
+		return x.Names
 	}
-	return 0
+	return nil
 }
 
-type AddClassResponse struct {
+type AddClassesResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *AddClassResponse) Reset() {
-	*x = AddClassResponse{}
+func (x *AddClassesResponse) Reset() {
+	*x = AddClassesResponse{}
 	mi := &file_proto_services_participant_v1_team_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *AddClassResponse) String() string {
+func (x *AddClassesResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*AddClassResponse) ProtoMessage() {}
+func (*AddClassesResponse) ProtoMessage() {}
 
-func (x *AddClassResponse) ProtoReflect() protoreflect.Message {
+func (x *AddClassesResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_proto_services_participant_v1_team_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -106,16 +105,9 @@ func (x *AddClassResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use AddClassResponse.ProtoReflect.Descriptor instead.
-func (*AddClassResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use AddClassesResponse.ProtoReflect.Descriptor instead.
+func (*AddClassesResponse) Descriptor() ([]byte, []int) {
 	return file_proto_services_participant_v1_team_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *AddClassResponse) GetId() int32 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
 }
 
 type Class struct {
@@ -282,29 +274,28 @@ func (x *GetClassesByCourseIDResponse) GetClasses() []*Class {
 	return nil
 }
 
-type AddTeamRequest struct {
+type AddTeamsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ClassId       int32                  `protobuf:"varint,1,opt,name=class_id,json=classId,proto3" json:"class_id,omitempty"`
-	Number        int32                  `protobuf:"varint,2,opt,name=number,proto3" json:"number,omitempty"`
-	Name          string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
+	Number        []int32                `protobuf:"varint,2,rep,packed,name=number,proto3" json:"number,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *AddTeamRequest) Reset() {
-	*x = AddTeamRequest{}
+func (x *AddTeamsRequest) Reset() {
+	*x = AddTeamsRequest{}
 	mi := &file_proto_services_participant_v1_team_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *AddTeamRequest) String() string {
+func (x *AddTeamsRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*AddTeamRequest) ProtoMessage() {}
+func (*AddTeamsRequest) ProtoMessage() {}
 
-func (x *AddTeamRequest) ProtoReflect() protoreflect.Message {
+func (x *AddTeamsRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_proto_services_participant_v1_team_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -316,53 +307,45 @@ func (x *AddTeamRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use AddTeamRequest.ProtoReflect.Descriptor instead.
-func (*AddTeamRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use AddTeamsRequest.ProtoReflect.Descriptor instead.
+func (*AddTeamsRequest) Descriptor() ([]byte, []int) {
 	return file_proto_services_participant_v1_team_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *AddTeamRequest) GetClassId() int32 {
+func (x *AddTeamsRequest) GetClassId() int32 {
 	if x != nil {
 		return x.ClassId
 	}
 	return 0
 }
 
-func (x *AddTeamRequest) GetNumber() int32 {
+func (x *AddTeamsRequest) GetNumber() []int32 {
 	if x != nil {
 		return x.Number
 	}
-	return 0
+	return nil
 }
 
-func (x *AddTeamRequest) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-type AddTeamResponse struct {
+type AddTeamsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *AddTeamResponse) Reset() {
-	*x = AddTeamResponse{}
+func (x *AddTeamsResponse) Reset() {
+	*x = AddTeamsResponse{}
 	mi := &file_proto_services_participant_v1_team_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *AddTeamResponse) String() string {
+func (x *AddTeamsResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*AddTeamResponse) ProtoMessage() {}
+func (*AddTeamsResponse) ProtoMessage() {}
 
-func (x *AddTeamResponse) ProtoReflect() protoreflect.Message {
+func (x *AddTeamsResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_proto_services_participant_v1_team_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -374,28 +357,20 @@ func (x *AddTeamResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use AddTeamResponse.ProtoReflect.Descriptor instead.
-func (*AddTeamResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use AddTeamsResponse.ProtoReflect.Descriptor instead.
+func (*AddTeamsResponse) Descriptor() ([]byte, []int) {
 	return file_proto_services_participant_v1_team_proto_rawDescGZIP(), []int{6}
-}
-
-func (x *AddTeamResponse) GetId() int32 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
 }
 
 var File_proto_services_participant_v1_team_proto protoreflect.FileDescriptor
 
 const file_proto_services_participant_v1_team_proto_rawDesc = "" +
 	"\n" +
-	"(proto/services/participant/v1/team.proto\x12\x17services.participant.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"B\n" +
-	"\x0fAddClassRequest\x12\x1b\n" +
-	"\tcourse_id\x18\x01 \x01(\x05R\bcourseId\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\rR\x04name\"\"\n" +
-	"\x10AddClassResponse\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\"\xbe\x01\n" +
+	"(proto/services/participant/v1/team.proto\x12\x17services.participant.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"F\n" +
+	"\x11AddClassesRequest\x12\x1b\n" +
+	"\tcourse_id\x18\x01 \x01(\x05R\bcourseId\x12\x14\n" +
+	"\x05names\x18\x02 \x03(\rR\x05names\"\x14\n" +
+	"\x12AddClassesResponse\"\xbe\x01\n" +
 	"\x05Class\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x1b\n" +
 	"\tcourse_id\x18\x02 \x01(\x05R\bcourseId\x12\x12\n" +
@@ -407,17 +382,16 @@ const file_proto_services_participant_v1_team_proto_rawDesc = "" +
 	"\x1bGetClassesByCourseIDRequest\x12\x1b\n" +
 	"\tcourse_id\x18\x01 \x01(\x05R\bcourseId\"X\n" +
 	"\x1cGetClassesByCourseIDResponse\x128\n" +
-	"\aclasses\x18\x01 \x03(\v2\x1e.services.participant.v1.ClassR\aclasses\"W\n" +
-	"\x0eAddTeamRequest\x12\x19\n" +
+	"\aclasses\x18\x01 \x03(\v2\x1e.services.participant.v1.ClassR\aclasses\"D\n" +
+	"\x0fAddTeamsRequest\x12\x19\n" +
 	"\bclass_id\x18\x01 \x01(\x05R\aclassId\x12\x16\n" +
-	"\x06number\x18\x02 \x01(\x05R\x06number\x12\x12\n" +
-	"\x04name\x18\x03 \x01(\tR\x04name\"!\n" +
-	"\x0fAddTeamResponse\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id2\xd2\x02\n" +
-	"\vTeamService\x12_\n" +
-	"\bAddClass\x12(.services.participant.v1.AddClassRequest\x1a).services.participant.v1.AddClassResponse\x12\x83\x01\n" +
-	"\x14GetClassesByCourseID\x124.services.participant.v1.GetClassesByCourseIDRequest\x1a5.services.participant.v1.GetClassesByCourseIDResponse\x12\\\n" +
-	"\aAddTeam\x12'.services.participant.v1.AddTeamRequest\x1a(.services.participant.v1.AddTeamResponseBKZIgithub.com/loanem-backend/protos/pb/services/participant/v1;participantv1b\x06proto3"
+	"\x06number\x18\x02 \x03(\x05R\x06number\"\x12\n" +
+	"\x10AddTeamsResponse2\xdb\x02\n" +
+	"\vTeamService\x12e\n" +
+	"\n" +
+	"AddClasses\x12*.services.participant.v1.AddClassesRequest\x1a+.services.participant.v1.AddClassesResponse\x12\x83\x01\n" +
+	"\x14GetClassesByCourseID\x124.services.participant.v1.GetClassesByCourseIDRequest\x1a5.services.participant.v1.GetClassesByCourseIDResponse\x12_\n" +
+	"\bAddTeams\x12(.services.participant.v1.AddTeamsRequest\x1a).services.participant.v1.AddTeamsResponseBKZIgithub.com/loanem-backend/protos/pb/services/participant/v1;participantv1b\x06proto3"
 
 var (
 	file_proto_services_participant_v1_team_proto_rawDescOnce sync.Once
@@ -433,25 +407,25 @@ func file_proto_services_participant_v1_team_proto_rawDescGZIP() []byte {
 
 var file_proto_services_participant_v1_team_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_proto_services_participant_v1_team_proto_goTypes = []any{
-	(*AddClassRequest)(nil),              // 0: services.participant.v1.AddClassRequest
-	(*AddClassResponse)(nil),             // 1: services.participant.v1.AddClassResponse
+	(*AddClassesRequest)(nil),            // 0: services.participant.v1.AddClassesRequest
+	(*AddClassesResponse)(nil),           // 1: services.participant.v1.AddClassesResponse
 	(*Class)(nil),                        // 2: services.participant.v1.Class
 	(*GetClassesByCourseIDRequest)(nil),  // 3: services.participant.v1.GetClassesByCourseIDRequest
 	(*GetClassesByCourseIDResponse)(nil), // 4: services.participant.v1.GetClassesByCourseIDResponse
-	(*AddTeamRequest)(nil),               // 5: services.participant.v1.AddTeamRequest
-	(*AddTeamResponse)(nil),              // 6: services.participant.v1.AddTeamResponse
+	(*AddTeamsRequest)(nil),              // 5: services.participant.v1.AddTeamsRequest
+	(*AddTeamsResponse)(nil),             // 6: services.participant.v1.AddTeamsResponse
 	(*timestamppb.Timestamp)(nil),        // 7: google.protobuf.Timestamp
 }
 var file_proto_services_participant_v1_team_proto_depIdxs = []int32{
 	7, // 0: services.participant.v1.Class.created_at:type_name -> google.protobuf.Timestamp
 	7, // 1: services.participant.v1.Class.updated_at:type_name -> google.protobuf.Timestamp
 	2, // 2: services.participant.v1.GetClassesByCourseIDResponse.classes:type_name -> services.participant.v1.Class
-	0, // 3: services.participant.v1.TeamService.AddClass:input_type -> services.participant.v1.AddClassRequest
+	0, // 3: services.participant.v1.TeamService.AddClasses:input_type -> services.participant.v1.AddClassesRequest
 	3, // 4: services.participant.v1.TeamService.GetClassesByCourseID:input_type -> services.participant.v1.GetClassesByCourseIDRequest
-	5, // 5: services.participant.v1.TeamService.AddTeam:input_type -> services.participant.v1.AddTeamRequest
-	1, // 6: services.participant.v1.TeamService.AddClass:output_type -> services.participant.v1.AddClassResponse
+	5, // 5: services.participant.v1.TeamService.AddTeams:input_type -> services.participant.v1.AddTeamsRequest
+	1, // 6: services.participant.v1.TeamService.AddClasses:output_type -> services.participant.v1.AddClassesResponse
 	4, // 7: services.participant.v1.TeamService.GetClassesByCourseID:output_type -> services.participant.v1.GetClassesByCourseIDResponse
-	6, // 8: services.participant.v1.TeamService.AddTeam:output_type -> services.participant.v1.AddTeamResponse
+	6, // 8: services.participant.v1.TeamService.AddTeams:output_type -> services.participant.v1.AddTeamsResponse
 	6, // [6:9] is the sub-list for method output_type
 	3, // [3:6] is the sub-list for method input_type
 	3, // [3:3] is the sub-list for extension type_name

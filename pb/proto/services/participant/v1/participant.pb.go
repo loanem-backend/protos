@@ -135,9 +135,9 @@ const file_proto_services_participant_v1_participant_proto_rawDesc = "" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x10\n" +
 	"\x03nim\x18\x03 \x01(\tR\x03nim\x12\x17\n" +
 	"\ateam_id\x18\x04 \x01(\x05R\x06teamId\"\x18\n" +
-	"\x16AddParticipantResponse2\x80\x01\n" +
-	"\x12ParticipantService\x12j\n" +
-	"\aAddTeam\x12..services.participant.v1.AddParticipantRequest\x1a/.services.participant.v1.AddParticipantResponseBKZIgithub.com/loanem-backend/protos/pb/services/participant/v1;participantv1b\x06proto3"
+	"\x16AddParticipantResponse2\x87\x01\n" +
+	"\x12ParticipantService\x12q\n" +
+	"\x0eAddParticipant\x12..services.participant.v1.AddParticipantRequest\x1a/.services.participant.v1.AddParticipantResponseBKZIgithub.com/loanem-backend/protos/pb/services/participant/v1;participantv1b\x06proto3"
 
 var (
 	file_proto_services_participant_v1_participant_proto_rawDescOnce sync.Once
@@ -157,8 +157,8 @@ var file_proto_services_participant_v1_participant_proto_goTypes = []any{
 	(*AddParticipantResponse)(nil), // 1: services.participant.v1.AddParticipantResponse
 }
 var file_proto_services_participant_v1_participant_proto_depIdxs = []int32{
-	0, // 0: services.participant.v1.ParticipantService.AddTeam:input_type -> services.participant.v1.AddParticipantRequest
-	1, // 1: services.participant.v1.ParticipantService.AddTeam:output_type -> services.participant.v1.AddParticipantResponse
+	0, // 0: services.participant.v1.ParticipantService.AddParticipant:input_type -> services.participant.v1.AddParticipantRequest
+	1, // 1: services.participant.v1.ParticipantService.AddParticipant:output_type -> services.participant.v1.AddParticipantResponse
 	1, // [1:2] is the sub-list for method output_type
 	0, // [0:1] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name

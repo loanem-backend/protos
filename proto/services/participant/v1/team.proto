@@ -7,20 +7,18 @@ import "google/protobuf/timestamp.proto";
 option go_package = "github.com/loanem-backend/protos/pb/services/participant/v1;participantv1";
 
 service TeamService {
-    rpc AddClass(AddClassRequest) returns (AddClassResponse);
+    rpc AddClasses(AddClassesRequest) returns (AddClassesResponse);
     rpc GetClassesByCourseID(GetClassesByCourseIDRequest) returns (GetClassesByCourseIDResponse);
 
-    rpc AddTeam(AddTeamRequest) returns (AddTeamResponse);
+    rpc AddTeams(AddTeamsRequest) returns (AddTeamsResponse);
 }
 
-message AddClassRequest {
+message AddClassesRequest {
     int32 course_id = 1;
-    uint32 name = 2;
+    repeated uint32 names = 2;
 }
 
-message AddClassResponse {
-    int32 id = 1;
-}
+message AddClassesResponse {}
 
 message Class {
     int32 id = 1;
@@ -38,12 +36,9 @@ message GetClassesByCourseIDResponse {
     repeated Class classes = 1;
 }
 
-message AddTeamRequest {
+message AddTeamsRequest {
     int32 class_id = 1;
-    int32 number = 2;
-    string name = 3;
+    repeated int32 number = 2;
 }
 
-message AddTeamResponse {
-    int32 id = 1;
-}
+message AddTeamsResponse {}
