@@ -277,7 +277,7 @@ func (x *GetClassesByCourseIDResponse) GetClasses() []*Class {
 type AddTeamsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ClassId       int32                  `protobuf:"varint,1,opt,name=class_id,json=classId,proto3" json:"class_id,omitempty"`
-	Number        []int32                `protobuf:"varint,2,rep,packed,name=number,proto3" json:"number,omitempty"`
+	NumberOfTeams int32                  `protobuf:"varint,2,opt,name=number_of_teams,json=numberOfTeams,proto3" json:"number_of_teams,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -319,11 +319,11 @@ func (x *AddTeamsRequest) GetClassId() int32 {
 	return 0
 }
 
-func (x *AddTeamsRequest) GetNumber() []int32 {
+func (x *AddTeamsRequest) GetNumberOfTeams() int32 {
 	if x != nil {
-		return x.Number
+		return x.NumberOfTeams
 	}
-	return nil
+	return 0
 }
 
 type AddTeamsResponse struct {
@@ -382,10 +382,10 @@ const file_proto_services_participant_v1_team_proto_rawDesc = "" +
 	"\x1bGetClassesByCourseIDRequest\x12\x1b\n" +
 	"\tcourse_id\x18\x01 \x01(\x05R\bcourseId\"X\n" +
 	"\x1cGetClassesByCourseIDResponse\x128\n" +
-	"\aclasses\x18\x01 \x03(\v2\x1e.services.participant.v1.ClassR\aclasses\"D\n" +
+	"\aclasses\x18\x01 \x03(\v2\x1e.services.participant.v1.ClassR\aclasses\"T\n" +
 	"\x0fAddTeamsRequest\x12\x19\n" +
-	"\bclass_id\x18\x01 \x01(\x05R\aclassId\x12\x16\n" +
-	"\x06number\x18\x02 \x03(\x05R\x06number\"\x12\n" +
+	"\bclass_id\x18\x01 \x01(\x05R\aclassId\x12&\n" +
+	"\x0fnumber_of_teams\x18\x02 \x01(\x05R\rnumberOfTeams\"\x12\n" +
 	"\x10AddTeamsResponse2\xdb\x02\n" +
 	"\vTeamService\x12e\n" +
 	"\n" +
