@@ -9,6 +9,7 @@ package inventoryv1
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -113,6 +114,8 @@ type Instrument struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -159,6 +162,20 @@ func (x *Instrument) GetName() string {
 		return x.Name
 	}
 	return ""
+}
+
+func (x *Instrument) GetCreatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return nil
+}
+
+func (x *Instrument) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
 }
 
 type GetAllInstrumentsRequest struct {
@@ -245,15 +262,19 @@ var File_proto_services_inventory_v1_instrument_proto protoreflect.FileDescripto
 
 const file_proto_services_inventory_v1_instrument_proto_rawDesc = "" +
 	"\n" +
-	",proto/services/inventory/v1/instrument.proto\x12\x15services.inventory.v1\"*\n" +
+	",proto/services/inventory/v1/instrument.proto\x12\x15services.inventory.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"*\n" +
 	"\x14AddInstrumentRequest\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\"'\n" +
 	"\x15AddInstrumentResponse\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\"0\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\"\xa6\x01\n" +
 	"\n" +
 	"Instrument\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\"\x1a\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x129\n" +
+	"\n" +
+	"created_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"\n" +
+	"updated_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"\x1a\n" +
 	"\x18GetAllInstrumentsRequest\"`\n" +
 	"\x19GetAllInstrumentsResponse\x12C\n" +
 	"\vinstruments\x18\x01 \x03(\v2!.services.inventory.v1.InstrumentR\vinstruments2\xf7\x01\n" +
@@ -280,18 +301,21 @@ var file_proto_services_inventory_v1_instrument_proto_goTypes = []any{
 	(*Instrument)(nil),                // 2: services.inventory.v1.Instrument
 	(*GetAllInstrumentsRequest)(nil),  // 3: services.inventory.v1.GetAllInstrumentsRequest
 	(*GetAllInstrumentsResponse)(nil), // 4: services.inventory.v1.GetAllInstrumentsResponse
+	(*timestamppb.Timestamp)(nil),     // 5: google.protobuf.Timestamp
 }
 var file_proto_services_inventory_v1_instrument_proto_depIdxs = []int32{
-	2, // 0: services.inventory.v1.GetAllInstrumentsResponse.instruments:type_name -> services.inventory.v1.Instrument
-	0, // 1: services.inventory.v1.InstrumentService.AddInstrument:input_type -> services.inventory.v1.AddInstrumentRequest
-	3, // 2: services.inventory.v1.InstrumentService.GetAllInstruments:input_type -> services.inventory.v1.GetAllInstrumentsRequest
-	1, // 3: services.inventory.v1.InstrumentService.AddInstrument:output_type -> services.inventory.v1.AddInstrumentResponse
-	4, // 4: services.inventory.v1.InstrumentService.GetAllInstruments:output_type -> services.inventory.v1.GetAllInstrumentsResponse
-	3, // [3:5] is the sub-list for method output_type
-	1, // [1:3] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	5, // 0: services.inventory.v1.Instrument.created_at:type_name -> google.protobuf.Timestamp
+	5, // 1: services.inventory.v1.Instrument.updated_at:type_name -> google.protobuf.Timestamp
+	2, // 2: services.inventory.v1.GetAllInstrumentsResponse.instruments:type_name -> services.inventory.v1.Instrument
+	0, // 3: services.inventory.v1.InstrumentService.AddInstrument:input_type -> services.inventory.v1.AddInstrumentRequest
+	3, // 4: services.inventory.v1.InstrumentService.GetAllInstruments:input_type -> services.inventory.v1.GetAllInstrumentsRequest
+	1, // 5: services.inventory.v1.InstrumentService.AddInstrument:output_type -> services.inventory.v1.AddInstrumentResponse
+	4, // 6: services.inventory.v1.InstrumentService.GetAllInstruments:output_type -> services.inventory.v1.GetAllInstrumentsResponse
+	5, // [5:7] is the sub-list for method output_type
+	3, // [3:5] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_proto_services_inventory_v1_instrument_proto_init() }
