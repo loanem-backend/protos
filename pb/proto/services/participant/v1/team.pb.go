@@ -25,7 +25,7 @@ const (
 type AddClassesRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	CourseId      int32                  `protobuf:"varint,1,opt,name=course_id,json=courseId,proto3" json:"course_id,omitempty"`
-	Names         []uint32               `protobuf:"varint,2,rep,packed,name=names,proto3" json:"names,omitempty"`
+	Names         []string               `protobuf:"bytes,2,rep,name=names,proto3" json:"names,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -67,7 +67,7 @@ func (x *AddClassesRequest) GetCourseId() int32 {
 	return 0
 }
 
-func (x *AddClassesRequest) GetNames() []uint32 {
+func (x *AddClassesRequest) GetNames() []string {
 	if x != nil {
 		return x.Names
 	}
@@ -369,7 +369,7 @@ const file_proto_services_participant_v1_team_proto_rawDesc = "" +
 	"(proto/services/participant/v1/team.proto\x12\x17services.participant.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"F\n" +
 	"\x11AddClassesRequest\x12\x1b\n" +
 	"\tcourse_id\x18\x01 \x01(\x05R\bcourseId\x12\x14\n" +
-	"\x05names\x18\x02 \x03(\rR\x05names\"\x14\n" +
+	"\x05names\x18\x02 \x03(\tR\x05names\"\x14\n" +
 	"\x12AddClassesResponse\"\xbe\x01\n" +
 	"\x05Class\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x1b\n" +
