@@ -113,10 +113,12 @@ func (*AddClassesResponse) Descriptor() ([]byte, []int) {
 type Class struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	CourseId      int32                  `protobuf:"varint,2,opt,name=course_id,json=courseId,proto3" json:"course_id,omitempty"`
-	Name          string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
-	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	CourseId      int32                  `protobuf:"varint,3,opt,name=course_id,json=courseId,proto3" json:"course_id,omitempty"`
+	CourseName    string                 `protobuf:"bytes,4,opt,name=course_name,json=courseName,proto3" json:"course_name,omitempty"`
+	CourseYear    int32                  `protobuf:"varint,5,opt,name=course_year,json=courseYear,proto3" json:"course_year,omitempty"`
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -158,6 +160,13 @@ func (x *Class) GetId() int32 {
 	return 0
 }
 
+func (x *Class) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
 func (x *Class) GetCourseId() int32 {
 	if x != nil {
 		return x.CourseId
@@ -165,11 +174,18 @@ func (x *Class) GetCourseId() int32 {
 	return 0
 }
 
-func (x *Class) GetName() string {
+func (x *Class) GetCourseName() string {
 	if x != nil {
-		return x.Name
+		return x.CourseName
 	}
 	return ""
+}
+
+func (x *Class) GetCourseYear() int32 {
+	if x != nil {
+		return x.CourseYear
+	}
+	return 0
 }
 
 func (x *Class) GetCreatedAt() *timestamppb.Timestamp {
@@ -370,15 +386,19 @@ const file_proto_services_participant_v1_team_proto_rawDesc = "" +
 	"\x11AddClassesRequest\x12\x1b\n" +
 	"\tcourse_id\x18\x01 \x01(\x05R\bcourseId\x12\x14\n" +
 	"\x05names\x18\x02 \x03(\tR\x05names\"\x14\n" +
-	"\x12AddClassesResponse\"\xbe\x01\n" +
+	"\x12AddClassesResponse\"\x80\x02\n" +
 	"\x05Class\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x1b\n" +
-	"\tcourse_id\x18\x02 \x01(\x05R\bcourseId\x12\x12\n" +
-	"\x04name\x18\x03 \x01(\tR\x04name\x129\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1b\n" +
+	"\tcourse_id\x18\x03 \x01(\x05R\bcourseId\x12\x1f\n" +
+	"\vcourse_name\x18\x04 \x01(\tR\n" +
+	"courseName\x12\x1f\n" +
+	"\vcourse_year\x18\x05 \x01(\x05R\n" +
+	"courseYear\x129\n" +
 	"\n" +
-	"created_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"created_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"updated_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\":\n" +
+	"updated_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\":\n" +
 	"\x1bGetClassesByCourseIDRequest\x12\x1b\n" +
 	"\tcourse_id\x18\x01 \x01(\x05R\bcourseId\"X\n" +
 	"\x1cGetClassesByCourseIDResponse\x128\n" +
