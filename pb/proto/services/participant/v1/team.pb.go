@@ -114,7 +114,7 @@ type Class struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	CourseId      int32                  `protobuf:"varint,2,opt,name=course_id,json=courseId,proto3" json:"course_id,omitempty"`
-	Name          uint32                 `protobuf:"varint,3,opt,name=name,proto3" json:"name,omitempty"`
+	Name          string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -165,11 +165,11 @@ func (x *Class) GetCourseId() int32 {
 	return 0
 }
 
-func (x *Class) GetName() uint32 {
+func (x *Class) GetName() string {
 	if x != nil {
 		return x.Name
 	}
-	return 0
+	return ""
 }
 
 func (x *Class) GetCreatedAt() *timestamppb.Timestamp {
@@ -374,7 +374,7 @@ const file_proto_services_participant_v1_team_proto_rawDesc = "" +
 	"\x05Class\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x1b\n" +
 	"\tcourse_id\x18\x02 \x01(\x05R\bcourseId\x12\x12\n" +
-	"\x04name\x18\x03 \x01(\rR\x04name\x129\n" +
+	"\x04name\x18\x03 \x01(\tR\x04name\x129\n" +
 	"\n" +
 	"created_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
