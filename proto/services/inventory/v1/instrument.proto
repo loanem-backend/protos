@@ -9,6 +9,8 @@ option go_package = "github.com/loanem-backend/protos/pb/services/inventory/v1;i
 service InstrumentService {
     rpc AddInstrument(AddInstrumentRequest) returns (AddInstrumentResponse);
     rpc GetAllInstruments(GetAllInstrumentsRequest) returns (GetAllInstrumentsResponse);
+    rpc SetInstrumentPicture(SetInstrumentPictureRequest) returns (SetInstrumentPictureResponse);
+    rpc GetInstrumentsByToolkitID(GetInstrumentsByToolkitIDRequest) returns (GetInstrumentsByToolkitIDResponse);
 }
 
 message AddInstrumentRequest {
@@ -29,5 +31,20 @@ message Instrument {
 message GetAllInstrumentsRequest {}
 
 message GetAllInstrumentsResponse {
+    repeated Instrument instruments = 1;
+}
+
+message SetInstrumentPictureRequest {
+    int32 id = 1;
+    string key = 2;
+}
+
+message SetInstrumentPictureResponse {}
+
+message GetInstrumentsByToolkitIDRequest {
+    int32 toolkit_id = 1;
+}
+
+message GetInstrumentsByToolkitIDResponse {
     repeated Instrument instruments = 1;
 }

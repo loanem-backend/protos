@@ -19,8 +19,9 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ToolkitService_AddToolkit_FullMethodName         = "/services.inventory.v1.ToolkitService/AddToolkit"
-	ToolkitService_SetToolkitCourseID_FullMethodName = "/services.inventory.v1.ToolkitService/SetToolkitCourseID"
+	ToolkitService_AddToolkit_FullMethodName           = "/services.inventory.v1.ToolkitService/AddToolkit"
+	ToolkitService_AddToolkitInstrument_FullMethodName = "/services.inventory.v1.ToolkitService/AddToolkitInstrument"
+	ToolkitService_SetToolkitCourseID_FullMethodName   = "/services.inventory.v1.ToolkitService/SetToolkitCourseID"
 )
 
 // ToolkitServiceClient is the client API for ToolkitService service.
@@ -28,6 +29,7 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ToolkitServiceClient interface {
 	AddToolkit(ctx context.Context, in *AddToolkitRequest, opts ...grpc.CallOption) (*AddToolkitResponse, error)
+	AddToolkitInstrument(ctx context.Context, in *AddToolkitInstrumentRequest, opts ...grpc.CallOption) (*AddToolkitInstrumentResponse, error)
 	SetToolkitCourseID(ctx context.Context, in *SetToolkitCourseIDRequest, opts ...grpc.CallOption) (*SetToolkitCourseIDResponse, error)
 }
 
@@ -49,6 +51,16 @@ func (c *toolkitServiceClient) AddToolkit(ctx context.Context, in *AddToolkitReq
 	return out, nil
 }
 
+func (c *toolkitServiceClient) AddToolkitInstrument(ctx context.Context, in *AddToolkitInstrumentRequest, opts ...grpc.CallOption) (*AddToolkitInstrumentResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(AddToolkitInstrumentResponse)
+	err := c.cc.Invoke(ctx, ToolkitService_AddToolkitInstrument_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *toolkitServiceClient) SetToolkitCourseID(ctx context.Context, in *SetToolkitCourseIDRequest, opts ...grpc.CallOption) (*SetToolkitCourseIDResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(SetToolkitCourseIDResponse)
@@ -64,6 +76,7 @@ func (c *toolkitServiceClient) SetToolkitCourseID(ctx context.Context, in *SetTo
 // for forward compatibility.
 type ToolkitServiceServer interface {
 	AddToolkit(context.Context, *AddToolkitRequest) (*AddToolkitResponse, error)
+	AddToolkitInstrument(context.Context, *AddToolkitInstrumentRequest) (*AddToolkitInstrumentResponse, error)
 	SetToolkitCourseID(context.Context, *SetToolkitCourseIDRequest) (*SetToolkitCourseIDResponse, error)
 	mustEmbedUnimplementedToolkitServiceServer()
 }
@@ -77,6 +90,9 @@ type UnimplementedToolkitServiceServer struct{}
 
 func (UnimplementedToolkitServiceServer) AddToolkit(context.Context, *AddToolkitRequest) (*AddToolkitResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method AddToolkit not implemented")
+}
+func (UnimplementedToolkitServiceServer) AddToolkitInstrument(context.Context, *AddToolkitInstrumentRequest) (*AddToolkitInstrumentResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method AddToolkitInstrument not implemented")
 }
 func (UnimplementedToolkitServiceServer) SetToolkitCourseID(context.Context, *SetToolkitCourseIDRequest) (*SetToolkitCourseIDResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method SetToolkitCourseID not implemented")
@@ -120,6 +136,24 @@ func _ToolkitService_AddToolkit_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ToolkitService_AddToolkitInstrument_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddToolkitInstrumentRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ToolkitServiceServer).AddToolkitInstrument(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ToolkitService_AddToolkitInstrument_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ToolkitServiceServer).AddToolkitInstrument(ctx, req.(*AddToolkitInstrumentRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _ToolkitService_SetToolkitCourseID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SetToolkitCourseIDRequest)
 	if err := dec(in); err != nil {
@@ -148,6 +182,10 @@ var ToolkitService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "AddToolkit",
 			Handler:    _ToolkitService_AddToolkit_Handler,
+		},
+		{
+			MethodName: "AddToolkitInstrument",
+			Handler:    _ToolkitService_AddToolkitInstrument_Handler,
 		},
 		{
 			MethodName: "SetToolkitCourseID",

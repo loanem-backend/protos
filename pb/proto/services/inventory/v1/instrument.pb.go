@@ -258,6 +258,182 @@ func (x *GetAllInstrumentsResponse) GetInstruments() []*Instrument {
 	return nil
 }
 
+type SetInstrumentPictureRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Key           string                 `protobuf:"bytes,2,opt,name=key,proto3" json:"key,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SetInstrumentPictureRequest) Reset() {
+	*x = SetInstrumentPictureRequest{}
+	mi := &file_proto_services_inventory_v1_instrument_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SetInstrumentPictureRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SetInstrumentPictureRequest) ProtoMessage() {}
+
+func (x *SetInstrumentPictureRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_services_inventory_v1_instrument_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SetInstrumentPictureRequest.ProtoReflect.Descriptor instead.
+func (*SetInstrumentPictureRequest) Descriptor() ([]byte, []int) {
+	return file_proto_services_inventory_v1_instrument_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *SetInstrumentPictureRequest) GetId() int32 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *SetInstrumentPictureRequest) GetKey() string {
+	if x != nil {
+		return x.Key
+	}
+	return ""
+}
+
+type SetInstrumentPictureResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SetInstrumentPictureResponse) Reset() {
+	*x = SetInstrumentPictureResponse{}
+	mi := &file_proto_services_inventory_v1_instrument_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SetInstrumentPictureResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SetInstrumentPictureResponse) ProtoMessage() {}
+
+func (x *SetInstrumentPictureResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_services_inventory_v1_instrument_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SetInstrumentPictureResponse.ProtoReflect.Descriptor instead.
+func (*SetInstrumentPictureResponse) Descriptor() ([]byte, []int) {
+	return file_proto_services_inventory_v1_instrument_proto_rawDescGZIP(), []int{6}
+}
+
+type GetInstrumentsByToolkitIDRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ToolkitId     int32                  `protobuf:"varint,1,opt,name=toolkit_id,json=toolkitId,proto3" json:"toolkit_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetInstrumentsByToolkitIDRequest) Reset() {
+	*x = GetInstrumentsByToolkitIDRequest{}
+	mi := &file_proto_services_inventory_v1_instrument_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetInstrumentsByToolkitIDRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetInstrumentsByToolkitIDRequest) ProtoMessage() {}
+
+func (x *GetInstrumentsByToolkitIDRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_services_inventory_v1_instrument_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetInstrumentsByToolkitIDRequest.ProtoReflect.Descriptor instead.
+func (*GetInstrumentsByToolkitIDRequest) Descriptor() ([]byte, []int) {
+	return file_proto_services_inventory_v1_instrument_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *GetInstrumentsByToolkitIDRequest) GetToolkitId() int32 {
+	if x != nil {
+		return x.ToolkitId
+	}
+	return 0
+}
+
+type GetInstrumentsByToolkitIDResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Instruments   []*Instrument          `protobuf:"bytes,1,rep,name=instruments,proto3" json:"instruments,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetInstrumentsByToolkitIDResponse) Reset() {
+	*x = GetInstrumentsByToolkitIDResponse{}
+	mi := &file_proto_services_inventory_v1_instrument_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetInstrumentsByToolkitIDResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetInstrumentsByToolkitIDResponse) ProtoMessage() {}
+
+func (x *GetInstrumentsByToolkitIDResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_services_inventory_v1_instrument_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetInstrumentsByToolkitIDResponse.ProtoReflect.Descriptor instead.
+func (*GetInstrumentsByToolkitIDResponse) Descriptor() ([]byte, []int) {
+	return file_proto_services_inventory_v1_instrument_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *GetInstrumentsByToolkitIDResponse) GetInstruments() []*Instrument {
+	if x != nil {
+		return x.Instruments
+	}
+	return nil
+}
+
 var File_proto_services_inventory_v1_instrument_proto protoreflect.FileDescriptor
 
 const file_proto_services_inventory_v1_instrument_proto_rawDesc = "" +
@@ -277,10 +453,21 @@ const file_proto_services_inventory_v1_instrument_proto_rawDesc = "" +
 	"updated_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"\x1a\n" +
 	"\x18GetAllInstrumentsRequest\"`\n" +
 	"\x19GetAllInstrumentsResponse\x12C\n" +
-	"\vinstruments\x18\x01 \x03(\v2!.services.inventory.v1.InstrumentR\vinstruments2\xf7\x01\n" +
+	"\vinstruments\x18\x01 \x03(\v2!.services.inventory.v1.InstrumentR\vinstruments\"?\n" +
+	"\x1bSetInstrumentPictureRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x10\n" +
+	"\x03key\x18\x02 \x01(\tR\x03key\"\x1e\n" +
+	"\x1cSetInstrumentPictureResponse\"A\n" +
+	" GetInstrumentsByToolkitIDRequest\x12\x1d\n" +
+	"\n" +
+	"toolkit_id\x18\x01 \x01(\x05R\ttoolkitId\"h\n" +
+	"!GetInstrumentsByToolkitIDResponse\x12C\n" +
+	"\vinstruments\x18\x01 \x03(\v2!.services.inventory.v1.InstrumentR\vinstruments2\x89\x04\n" +
 	"\x11InstrumentService\x12j\n" +
 	"\rAddInstrument\x12+.services.inventory.v1.AddInstrumentRequest\x1a,.services.inventory.v1.AddInstrumentResponse\x12v\n" +
-	"\x11GetAllInstruments\x12/.services.inventory.v1.GetAllInstrumentsRequest\x1a0.services.inventory.v1.GetAllInstrumentsResponseBGZEgithub.com/loanem-backend/protos/pb/services/inventory/v1;inventoryv1b\x06proto3"
+	"\x11GetAllInstruments\x12/.services.inventory.v1.GetAllInstrumentsRequest\x1a0.services.inventory.v1.GetAllInstrumentsResponse\x12\x7f\n" +
+	"\x14SetInstrumentPicture\x122.services.inventory.v1.SetInstrumentPictureRequest\x1a3.services.inventory.v1.SetInstrumentPictureResponse\x12\x8e\x01\n" +
+	"\x19GetInstrumentsByToolkitID\x127.services.inventory.v1.GetInstrumentsByToolkitIDRequest\x1a8.services.inventory.v1.GetInstrumentsByToolkitIDResponseBGZEgithub.com/loanem-backend/protos/pb/services/inventory/v1;inventoryv1b\x06proto3"
 
 var (
 	file_proto_services_inventory_v1_instrument_proto_rawDescOnce sync.Once
@@ -294,28 +481,37 @@ func file_proto_services_inventory_v1_instrument_proto_rawDescGZIP() []byte {
 	return file_proto_services_inventory_v1_instrument_proto_rawDescData
 }
 
-var file_proto_services_inventory_v1_instrument_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_proto_services_inventory_v1_instrument_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_proto_services_inventory_v1_instrument_proto_goTypes = []any{
-	(*AddInstrumentRequest)(nil),      // 0: services.inventory.v1.AddInstrumentRequest
-	(*AddInstrumentResponse)(nil),     // 1: services.inventory.v1.AddInstrumentResponse
-	(*Instrument)(nil),                // 2: services.inventory.v1.Instrument
-	(*GetAllInstrumentsRequest)(nil),  // 3: services.inventory.v1.GetAllInstrumentsRequest
-	(*GetAllInstrumentsResponse)(nil), // 4: services.inventory.v1.GetAllInstrumentsResponse
-	(*timestamppb.Timestamp)(nil),     // 5: google.protobuf.Timestamp
+	(*AddInstrumentRequest)(nil),              // 0: services.inventory.v1.AddInstrumentRequest
+	(*AddInstrumentResponse)(nil),             // 1: services.inventory.v1.AddInstrumentResponse
+	(*Instrument)(nil),                        // 2: services.inventory.v1.Instrument
+	(*GetAllInstrumentsRequest)(nil),          // 3: services.inventory.v1.GetAllInstrumentsRequest
+	(*GetAllInstrumentsResponse)(nil),         // 4: services.inventory.v1.GetAllInstrumentsResponse
+	(*SetInstrumentPictureRequest)(nil),       // 5: services.inventory.v1.SetInstrumentPictureRequest
+	(*SetInstrumentPictureResponse)(nil),      // 6: services.inventory.v1.SetInstrumentPictureResponse
+	(*GetInstrumentsByToolkitIDRequest)(nil),  // 7: services.inventory.v1.GetInstrumentsByToolkitIDRequest
+	(*GetInstrumentsByToolkitIDResponse)(nil), // 8: services.inventory.v1.GetInstrumentsByToolkitIDResponse
+	(*timestamppb.Timestamp)(nil),             // 9: google.protobuf.Timestamp
 }
 var file_proto_services_inventory_v1_instrument_proto_depIdxs = []int32{
-	5, // 0: services.inventory.v1.Instrument.created_at:type_name -> google.protobuf.Timestamp
-	5, // 1: services.inventory.v1.Instrument.updated_at:type_name -> google.protobuf.Timestamp
+	9, // 0: services.inventory.v1.Instrument.created_at:type_name -> google.protobuf.Timestamp
+	9, // 1: services.inventory.v1.Instrument.updated_at:type_name -> google.protobuf.Timestamp
 	2, // 2: services.inventory.v1.GetAllInstrumentsResponse.instruments:type_name -> services.inventory.v1.Instrument
-	0, // 3: services.inventory.v1.InstrumentService.AddInstrument:input_type -> services.inventory.v1.AddInstrumentRequest
-	3, // 4: services.inventory.v1.InstrumentService.GetAllInstruments:input_type -> services.inventory.v1.GetAllInstrumentsRequest
-	1, // 5: services.inventory.v1.InstrumentService.AddInstrument:output_type -> services.inventory.v1.AddInstrumentResponse
-	4, // 6: services.inventory.v1.InstrumentService.GetAllInstruments:output_type -> services.inventory.v1.GetAllInstrumentsResponse
-	5, // [5:7] is the sub-list for method output_type
-	3, // [3:5] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	2, // 3: services.inventory.v1.GetInstrumentsByToolkitIDResponse.instruments:type_name -> services.inventory.v1.Instrument
+	0, // 4: services.inventory.v1.InstrumentService.AddInstrument:input_type -> services.inventory.v1.AddInstrumentRequest
+	3, // 5: services.inventory.v1.InstrumentService.GetAllInstruments:input_type -> services.inventory.v1.GetAllInstrumentsRequest
+	5, // 6: services.inventory.v1.InstrumentService.SetInstrumentPicture:input_type -> services.inventory.v1.SetInstrumentPictureRequest
+	7, // 7: services.inventory.v1.InstrumentService.GetInstrumentsByToolkitID:input_type -> services.inventory.v1.GetInstrumentsByToolkitIDRequest
+	1, // 8: services.inventory.v1.InstrumentService.AddInstrument:output_type -> services.inventory.v1.AddInstrumentResponse
+	4, // 9: services.inventory.v1.InstrumentService.GetAllInstruments:output_type -> services.inventory.v1.GetAllInstrumentsResponse
+	6, // 10: services.inventory.v1.InstrumentService.SetInstrumentPicture:output_type -> services.inventory.v1.SetInstrumentPictureResponse
+	8, // 11: services.inventory.v1.InstrumentService.GetInstrumentsByToolkitID:output_type -> services.inventory.v1.GetInstrumentsByToolkitIDResponse
+	8, // [8:12] is the sub-list for method output_type
+	4, // [4:8] is the sub-list for method input_type
+	4, // [4:4] is the sub-list for extension type_name
+	4, // [4:4] is the sub-list for extension extendee
+	0, // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_proto_services_inventory_v1_instrument_proto_init() }
@@ -329,7 +525,7 @@ func file_proto_services_inventory_v1_instrument_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_services_inventory_v1_instrument_proto_rawDesc), len(file_proto_services_inventory_v1_instrument_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   5,
+			NumMessages:   9,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

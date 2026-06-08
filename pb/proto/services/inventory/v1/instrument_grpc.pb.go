@@ -19,8 +19,10 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	InstrumentService_AddInstrument_FullMethodName     = "/services.inventory.v1.InstrumentService/AddInstrument"
-	InstrumentService_GetAllInstruments_FullMethodName = "/services.inventory.v1.InstrumentService/GetAllInstruments"
+	InstrumentService_AddInstrument_FullMethodName             = "/services.inventory.v1.InstrumentService/AddInstrument"
+	InstrumentService_GetAllInstruments_FullMethodName         = "/services.inventory.v1.InstrumentService/GetAllInstruments"
+	InstrumentService_SetInstrumentPicture_FullMethodName      = "/services.inventory.v1.InstrumentService/SetInstrumentPicture"
+	InstrumentService_GetInstrumentsByToolkitID_FullMethodName = "/services.inventory.v1.InstrumentService/GetInstrumentsByToolkitID"
 )
 
 // InstrumentServiceClient is the client API for InstrumentService service.
@@ -29,6 +31,8 @@ const (
 type InstrumentServiceClient interface {
 	AddInstrument(ctx context.Context, in *AddInstrumentRequest, opts ...grpc.CallOption) (*AddInstrumentResponse, error)
 	GetAllInstruments(ctx context.Context, in *GetAllInstrumentsRequest, opts ...grpc.CallOption) (*GetAllInstrumentsResponse, error)
+	SetInstrumentPicture(ctx context.Context, in *SetInstrumentPictureRequest, opts ...grpc.CallOption) (*SetInstrumentPictureResponse, error)
+	GetInstrumentsByToolkitID(ctx context.Context, in *GetInstrumentsByToolkitIDRequest, opts ...grpc.CallOption) (*GetInstrumentsByToolkitIDResponse, error)
 }
 
 type instrumentServiceClient struct {
@@ -59,12 +63,34 @@ func (c *instrumentServiceClient) GetAllInstruments(ctx context.Context, in *Get
 	return out, nil
 }
 
+func (c *instrumentServiceClient) SetInstrumentPicture(ctx context.Context, in *SetInstrumentPictureRequest, opts ...grpc.CallOption) (*SetInstrumentPictureResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SetInstrumentPictureResponse)
+	err := c.cc.Invoke(ctx, InstrumentService_SetInstrumentPicture_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *instrumentServiceClient) GetInstrumentsByToolkitID(ctx context.Context, in *GetInstrumentsByToolkitIDRequest, opts ...grpc.CallOption) (*GetInstrumentsByToolkitIDResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetInstrumentsByToolkitIDResponse)
+	err := c.cc.Invoke(ctx, InstrumentService_GetInstrumentsByToolkitID_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // InstrumentServiceServer is the server API for InstrumentService service.
 // All implementations must embed UnimplementedInstrumentServiceServer
 // for forward compatibility.
 type InstrumentServiceServer interface {
 	AddInstrument(context.Context, *AddInstrumentRequest) (*AddInstrumentResponse, error)
 	GetAllInstruments(context.Context, *GetAllInstrumentsRequest) (*GetAllInstrumentsResponse, error)
+	SetInstrumentPicture(context.Context, *SetInstrumentPictureRequest) (*SetInstrumentPictureResponse, error)
+	GetInstrumentsByToolkitID(context.Context, *GetInstrumentsByToolkitIDRequest) (*GetInstrumentsByToolkitIDResponse, error)
 	mustEmbedUnimplementedInstrumentServiceServer()
 }
 
@@ -80,6 +106,12 @@ func (UnimplementedInstrumentServiceServer) AddInstrument(context.Context, *AddI
 }
 func (UnimplementedInstrumentServiceServer) GetAllInstruments(context.Context, *GetAllInstrumentsRequest) (*GetAllInstrumentsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetAllInstruments not implemented")
+}
+func (UnimplementedInstrumentServiceServer) SetInstrumentPicture(context.Context, *SetInstrumentPictureRequest) (*SetInstrumentPictureResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method SetInstrumentPicture not implemented")
+}
+func (UnimplementedInstrumentServiceServer) GetInstrumentsByToolkitID(context.Context, *GetInstrumentsByToolkitIDRequest) (*GetInstrumentsByToolkitIDResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetInstrumentsByToolkitID not implemented")
 }
 func (UnimplementedInstrumentServiceServer) mustEmbedUnimplementedInstrumentServiceServer() {}
 func (UnimplementedInstrumentServiceServer) testEmbeddedByValue()                           {}
@@ -138,6 +170,42 @@ func _InstrumentService_GetAllInstruments_Handler(srv interface{}, ctx context.C
 	return interceptor(ctx, in, info, handler)
 }
 
+func _InstrumentService_SetInstrumentPicture_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetInstrumentPictureRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(InstrumentServiceServer).SetInstrumentPicture(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: InstrumentService_SetInstrumentPicture_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(InstrumentServiceServer).SetInstrumentPicture(ctx, req.(*SetInstrumentPictureRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _InstrumentService_GetInstrumentsByToolkitID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetInstrumentsByToolkitIDRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(InstrumentServiceServer).GetInstrumentsByToolkitID(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: InstrumentService_GetInstrumentsByToolkitID_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(InstrumentServiceServer).GetInstrumentsByToolkitID(ctx, req.(*GetInstrumentsByToolkitIDRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // InstrumentService_ServiceDesc is the grpc.ServiceDesc for InstrumentService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -152,6 +220,14 @@ var InstrumentService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetAllInstruments",
 			Handler:    _InstrumentService_GetAllInstruments_Handler,
+		},
+		{
+			MethodName: "SetInstrumentPicture",
+			Handler:    _InstrumentService_SetInstrumentPicture_Handler,
+		},
+		{
+			MethodName: "GetInstrumentsByToolkitID",
+			Handler:    _InstrumentService_GetInstrumentsByToolkitID_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
