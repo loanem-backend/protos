@@ -18,6 +18,7 @@ message LoginRequest {
 message LoginResponse {
     string access_token = 1;
     string refresh_token = 2;
+    int32 refresh_expiration_hour = 3;
 }
 
 message ValidateTokenRequest {

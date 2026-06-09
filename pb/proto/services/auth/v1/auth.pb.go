@@ -74,11 +74,12 @@ func (x *LoginRequest) GetPassword() string {
 }
 
 type LoginResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	AccessToken   string                 `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
-	RefreshToken  string                 `protobuf:"bytes,2,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state                 protoimpl.MessageState `protogen:"open.v1"`
+	AccessToken           string                 `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
+	RefreshToken          string                 `protobuf:"bytes,2,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token,omitempty"`
+	RefreshExpirationHour int32                  `protobuf:"varint,3,opt,name=refresh_expiration_hour,json=refreshExpirationHour,proto3" json:"refresh_expiration_hour,omitempty"`
+	unknownFields         protoimpl.UnknownFields
+	sizeCache             protoimpl.SizeCache
 }
 
 func (x *LoginResponse) Reset() {
@@ -123,6 +124,13 @@ func (x *LoginResponse) GetRefreshToken() string {
 		return x.RefreshToken
 	}
 	return ""
+}
+
+func (x *LoginResponse) GetRefreshExpirationHour() int32 {
+	if x != nil {
+		return x.RefreshExpirationHour
+	}
+	return 0
 }
 
 type ValidateTokenRequest struct {
@@ -412,10 +420,11 @@ const file_proto_services_auth_v1_auth_proto_rawDesc = "" +
 	"!proto/services/auth/v1/auth.proto\x12\x10services.auth.v1\"@\n" +
 	"\fLoginRequest\x12\x14\n" +
 	"\x05phone\x18\x01 \x01(\tR\x05phone\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword\"W\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword\"\x8f\x01\n" +
 	"\rLoginResponse\x12!\n" +
 	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12#\n" +
-	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\"9\n" +
+	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\x126\n" +
+	"\x17refresh_expiration_hour\x18\x03 \x01(\x05R\x15refreshExpirationHour\"9\n" +
 	"\x14ValidateTokenRequest\x12!\n" +
 	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\"_\n" +
 	"\x15ValidateTokenResponse\x12\x19\n" +
