@@ -127,7 +127,7 @@ func (x *LoginResponse) GetRefreshToken() string {
 
 type ValidateTokenRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Token         string                 `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
+	AccessToken   string                 `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -162,9 +162,9 @@ func (*ValidateTokenRequest) Descriptor() ([]byte, []int) {
 	return file_proto_services_auth_v1_auth_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *ValidateTokenRequest) GetToken() string {
+func (x *ValidateTokenRequest) GetAccessToken() string {
 	if x != nil {
-		return x.Token
+		return x.AccessToken
 	}
 	return ""
 }
@@ -317,6 +317,86 @@ func (x *RefreshTokenResponse) GetAccessToken() string {
 	return ""
 }
 
+type LogoutRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	AccessToken   string                 `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *LogoutRequest) Reset() {
+	*x = LogoutRequest{}
+	mi := &file_proto_services_auth_v1_auth_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *LogoutRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*LogoutRequest) ProtoMessage() {}
+
+func (x *LogoutRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_services_auth_v1_auth_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use LogoutRequest.ProtoReflect.Descriptor instead.
+func (*LogoutRequest) Descriptor() ([]byte, []int) {
+	return file_proto_services_auth_v1_auth_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *LogoutRequest) GetAccessToken() string {
+	if x != nil {
+		return x.AccessToken
+	}
+	return ""
+}
+
+type LogoutResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *LogoutResponse) Reset() {
+	*x = LogoutResponse{}
+	mi := &file_proto_services_auth_v1_auth_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *LogoutResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*LogoutResponse) ProtoMessage() {}
+
+func (x *LogoutResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_services_auth_v1_auth_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use LogoutResponse.ProtoReflect.Descriptor instead.
+func (*LogoutResponse) Descriptor() ([]byte, []int) {
+	return file_proto_services_auth_v1_auth_proto_rawDescGZIP(), []int{7}
+}
+
 var File_proto_services_auth_v1_auth_proto protoreflect.FileDescriptor
 
 const file_proto_services_auth_v1_auth_proto_rawDesc = "" +
@@ -327,9 +407,9 @@ const file_proto_services_auth_v1_auth_proto_rawDesc = "" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\"W\n" +
 	"\rLoginResponse\x12!\n" +
 	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12#\n" +
-	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\",\n" +
-	"\x14ValidateTokenRequest\x12\x14\n" +
-	"\x05token\x18\x01 \x01(\tR\x05token\"_\n" +
+	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\"9\n" +
+	"\x14ValidateTokenRequest\x12!\n" +
+	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\"_\n" +
 	"\x15ValidateTokenResponse\x12\x19\n" +
 	"\bis_valid\x18\x01 \x01(\bR\aisValid\x12\x17\n" +
 	"\auser_id\x18\x02 \x01(\x05R\x06userId\x12\x12\n" +
@@ -337,11 +417,15 @@ const file_proto_services_auth_v1_auth_proto_rawDesc = "" +
 	"\x13RefreshTokenRequest\x12#\n" +
 	"\rrefresh_token\x18\x01 \x01(\tR\frefreshToken\"9\n" +
 	"\x14RefreshTokenResponse\x12!\n" +
-	"\faccess_token\x18\x01 \x01(\tR\vaccessToken2\x98\x02\n" +
+	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\"2\n" +
+	"\rLogoutRequest\x12!\n" +
+	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\"\x10\n" +
+	"\x0eLogoutResponse2\xe5\x02\n" +
 	"\vAuthService\x12H\n" +
 	"\x05Login\x12\x1e.services.auth.v1.LoginRequest\x1a\x1f.services.auth.v1.LoginResponse\x12`\n" +
 	"\rValidateToken\x12&.services.auth.v1.ValidateTokenRequest\x1a'.services.auth.v1.ValidateTokenResponse\x12]\n" +
-	"\fRefreshToken\x12%.services.auth.v1.RefreshTokenRequest\x1a&.services.auth.v1.RefreshTokenResponseB=Z;github.com/loanem-backend/protos/pb/services/auth/v1;authv1b\x06proto3"
+	"\fRefreshToken\x12%.services.auth.v1.RefreshTokenRequest\x1a&.services.auth.v1.RefreshTokenResponse\x12K\n" +
+	"\x06Logout\x12\x1f.services.auth.v1.LogoutRequest\x1a .services.auth.v1.LogoutResponseB=Z;github.com/loanem-backend/protos/pb/services/auth/v1;authv1b\x06proto3"
 
 var (
 	file_proto_services_auth_v1_auth_proto_rawDescOnce sync.Once
@@ -355,7 +439,7 @@ func file_proto_services_auth_v1_auth_proto_rawDescGZIP() []byte {
 	return file_proto_services_auth_v1_auth_proto_rawDescData
 }
 
-var file_proto_services_auth_v1_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_proto_services_auth_v1_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_proto_services_auth_v1_auth_proto_goTypes = []any{
 	(*LoginRequest)(nil),          // 0: services.auth.v1.LoginRequest
 	(*LoginResponse)(nil),         // 1: services.auth.v1.LoginResponse
@@ -363,16 +447,20 @@ var file_proto_services_auth_v1_auth_proto_goTypes = []any{
 	(*ValidateTokenResponse)(nil), // 3: services.auth.v1.ValidateTokenResponse
 	(*RefreshTokenRequest)(nil),   // 4: services.auth.v1.RefreshTokenRequest
 	(*RefreshTokenResponse)(nil),  // 5: services.auth.v1.RefreshTokenResponse
+	(*LogoutRequest)(nil),         // 6: services.auth.v1.LogoutRequest
+	(*LogoutResponse)(nil),        // 7: services.auth.v1.LogoutResponse
 }
 var file_proto_services_auth_v1_auth_proto_depIdxs = []int32{
 	0, // 0: services.auth.v1.AuthService.Login:input_type -> services.auth.v1.LoginRequest
 	2, // 1: services.auth.v1.AuthService.ValidateToken:input_type -> services.auth.v1.ValidateTokenRequest
 	4, // 2: services.auth.v1.AuthService.RefreshToken:input_type -> services.auth.v1.RefreshTokenRequest
-	1, // 3: services.auth.v1.AuthService.Login:output_type -> services.auth.v1.LoginResponse
-	3, // 4: services.auth.v1.AuthService.ValidateToken:output_type -> services.auth.v1.ValidateTokenResponse
-	5, // 5: services.auth.v1.AuthService.RefreshToken:output_type -> services.auth.v1.RefreshTokenResponse
-	3, // [3:6] is the sub-list for method output_type
-	0, // [0:3] is the sub-list for method input_type
+	6, // 3: services.auth.v1.AuthService.Logout:input_type -> services.auth.v1.LogoutRequest
+	1, // 4: services.auth.v1.AuthService.Login:output_type -> services.auth.v1.LoginResponse
+	3, // 5: services.auth.v1.AuthService.ValidateToken:output_type -> services.auth.v1.ValidateTokenResponse
+	5, // 6: services.auth.v1.AuthService.RefreshToken:output_type -> services.auth.v1.RefreshTokenResponse
+	7, // 7: services.auth.v1.AuthService.Logout:output_type -> services.auth.v1.LogoutResponse
+	4, // [4:8] is the sub-list for method output_type
+	0, // [0:4] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -389,7 +477,7 @@ func file_proto_services_auth_v1_auth_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_services_auth_v1_auth_proto_rawDesc), len(file_proto_services_auth_v1_auth_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   6,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
