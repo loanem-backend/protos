@@ -282,10 +282,12 @@ func (x *RefreshTokenRequest) GetRefreshToken() string {
 }
 
 type RefreshTokenResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	AccessToken   string                 `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state                 protoimpl.MessageState `protogen:"open.v1"`
+	AccessToken           string                 `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
+	RefreshToken          string                 `protobuf:"bytes,2,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token,omitempty"`
+	RefreshExpirationHour int32                  `protobuf:"varint,3,opt,name=refresh_expiration_hour,json=refreshExpirationHour,proto3" json:"refresh_expiration_hour,omitempty"`
+	unknownFields         protoimpl.UnknownFields
+	sizeCache             protoimpl.SizeCache
 }
 
 func (x *RefreshTokenResponse) Reset() {
@@ -323,6 +325,20 @@ func (x *RefreshTokenResponse) GetAccessToken() string {
 		return x.AccessToken
 	}
 	return ""
+}
+
+func (x *RefreshTokenResponse) GetRefreshToken() string {
+	if x != nil {
+		return x.RefreshToken
+	}
+	return ""
+}
+
+func (x *RefreshTokenResponse) GetRefreshExpirationHour() int32 {
+	if x != nil {
+		return x.RefreshExpirationHour
+	}
+	return 0
 }
 
 type LogoutRequest struct {
@@ -432,9 +448,11 @@ const file_proto_services_auth_v1_auth_proto_rawDesc = "" +
 	"\auser_id\x18\x02 \x01(\x05R\x06userId\x12\x12\n" +
 	"\x04name\x18\x03 \x01(\tR\x04name\":\n" +
 	"\x13RefreshTokenRequest\x12#\n" +
-	"\rrefresh_token\x18\x01 \x01(\tR\frefreshToken\"9\n" +
+	"\rrefresh_token\x18\x01 \x01(\tR\frefreshToken\"\x96\x01\n" +
 	"\x14RefreshTokenResponse\x12!\n" +
-	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\"W\n" +
+	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12#\n" +
+	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\x126\n" +
+	"\x17refresh_expiration_hour\x18\x03 \x01(\x05R\x15refreshExpirationHour\"W\n" +
 	"\rLogoutRequest\x12!\n" +
 	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12#\n" +
 	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\"\x10\n" +
