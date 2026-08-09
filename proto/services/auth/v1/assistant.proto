@@ -10,6 +10,7 @@ service AssistantService {
     rpc CreateAssistant(CreateAssistantRequest) returns (CreateAssistantResponse);
     rpc SetAssistantPassword(SetAssistantPasswordRequest) returns (SetAssistantPasswordResponse);
     rpc GetActiveAssistants(GetActiveAssistantsRequest) returns (GetActiveAssistantsResponse);
+    rpc DeleteAssistant(DeleteAssistantRequest) returns (DeleteAssistantResponse);
 }
 
 message CreateAssistantRequest {
@@ -45,3 +46,9 @@ message Assistant {
 message GetActiveAssistantsResponse {
     repeated Assistant assistants = 1;
 }
+
+message DeleteAssistantRequest {
+    int32 id = 1;
+}
+
+message DeleteAssistantResponse {}

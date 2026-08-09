@@ -22,6 +22,7 @@ const (
 	AssistantService_CreateAssistant_FullMethodName      = "/services.auth.v1.AssistantService/CreateAssistant"
 	AssistantService_SetAssistantPassword_FullMethodName = "/services.auth.v1.AssistantService/SetAssistantPassword"
 	AssistantService_GetActiveAssistants_FullMethodName  = "/services.auth.v1.AssistantService/GetActiveAssistants"
+	AssistantService_DeleteAssistant_FullMethodName      = "/services.auth.v1.AssistantService/DeleteAssistant"
 )
 
 // AssistantServiceClient is the client API for AssistantService service.
@@ -31,6 +32,7 @@ type AssistantServiceClient interface {
 	CreateAssistant(ctx context.Context, in *CreateAssistantRequest, opts ...grpc.CallOption) (*CreateAssistantResponse, error)
 	SetAssistantPassword(ctx context.Context, in *SetAssistantPasswordRequest, opts ...grpc.CallOption) (*SetAssistantPasswordResponse, error)
 	GetActiveAssistants(ctx context.Context, in *GetActiveAssistantsRequest, opts ...grpc.CallOption) (*GetActiveAssistantsResponse, error)
+	DeleteAssistant(ctx context.Context, in *DeleteAssistantRequest, opts ...grpc.CallOption) (*DeleteAssistantResponse, error)
 }
 
 type assistantServiceClient struct {
@@ -71,6 +73,16 @@ func (c *assistantServiceClient) GetActiveAssistants(ctx context.Context, in *Ge
 	return out, nil
 }
 
+func (c *assistantServiceClient) DeleteAssistant(ctx context.Context, in *DeleteAssistantRequest, opts ...grpc.CallOption) (*DeleteAssistantResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteAssistantResponse)
+	err := c.cc.Invoke(ctx, AssistantService_DeleteAssistant_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // AssistantServiceServer is the server API for AssistantService service.
 // All implementations must embed UnimplementedAssistantServiceServer
 // for forward compatibility.
@@ -78,6 +90,7 @@ type AssistantServiceServer interface {
 	CreateAssistant(context.Context, *CreateAssistantRequest) (*CreateAssistantResponse, error)
 	SetAssistantPassword(context.Context, *SetAssistantPasswordRequest) (*SetAssistantPasswordResponse, error)
 	GetActiveAssistants(context.Context, *GetActiveAssistantsRequest) (*GetActiveAssistantsResponse, error)
+	DeleteAssistant(context.Context, *DeleteAssistantRequest) (*DeleteAssistantResponse, error)
 	mustEmbedUnimplementedAssistantServiceServer()
 }
 
@@ -96,6 +109,9 @@ func (UnimplementedAssistantServiceServer) SetAssistantPassword(context.Context,
 }
 func (UnimplementedAssistantServiceServer) GetActiveAssistants(context.Context, *GetActiveAssistantsRequest) (*GetActiveAssistantsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetActiveAssistants not implemented")
+}
+func (UnimplementedAssistantServiceServer) DeleteAssistant(context.Context, *DeleteAssistantRequest) (*DeleteAssistantResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method DeleteAssistant not implemented")
 }
 func (UnimplementedAssistantServiceServer) mustEmbedUnimplementedAssistantServiceServer() {}
 func (UnimplementedAssistantServiceServer) testEmbeddedByValue()                          {}
@@ -172,6 +188,24 @@ func _AssistantService_GetActiveAssistants_Handler(srv interface{}, ctx context.
 	return interceptor(ctx, in, info, handler)
 }
 
+func _AssistantService_DeleteAssistant_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteAssistantRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AssistantServiceServer).DeleteAssistant(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AssistantService_DeleteAssistant_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AssistantServiceServer).DeleteAssistant(ctx, req.(*DeleteAssistantRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // AssistantService_ServiceDesc is the grpc.ServiceDesc for AssistantService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -190,6 +224,10 @@ var AssistantService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetActiveAssistants",
 			Handler:    _AssistantService_GetActiveAssistants_Handler,
+		},
+		{
+			MethodName: "DeleteAssistant",
+			Handler:    _AssistantService_DeleteAssistant_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
