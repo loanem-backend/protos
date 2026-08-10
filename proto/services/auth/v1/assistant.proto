@@ -8,6 +8,7 @@ option go_package = "github.com/loanem-backend/protos/pb/services/auth/v1;authv1
 
 service AssistantService {
     rpc CreateAssistant(CreateAssistantRequest) returns (CreateAssistantResponse);
+    rpc SubmitAssistantPasswordChange(SubmitAssistantPasswordChangeRequest) returns (SubmitAssistantPasswordChangeResponse);
     rpc SetAssistantPassword(SetAssistantPasswordRequest) returns (SetAssistantPasswordResponse);
     rpc GetActiveAssistants(GetActiveAssistantsRequest) returns (GetActiveAssistantsResponse);
     rpc DeleteAssistant(DeleteAssistantRequest) returns (DeleteAssistantResponse);
@@ -23,10 +24,16 @@ message CreateAssistantResponse {
     int32 id = 1;
 }
 
-message SetAssistantPasswordRequest {
+message SubmitAssistantPasswordChangeRequest {
     string old_password = 1;
     string new_password = 2;
     string confirm_password = 3;
+}
+
+message SubmitAssistantPasswordChangeResponse {}
+
+message SetAssistantPasswordRequest {
+    string change_password_token = 1;
 }
 
 message SetAssistantPasswordResponse {}

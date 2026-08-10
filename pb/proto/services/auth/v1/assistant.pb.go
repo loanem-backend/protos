@@ -126,7 +126,7 @@ func (x *CreateAssistantResponse) GetId() int32 {
 	return 0
 }
 
-type SetAssistantPasswordRequest struct {
+type SubmitAssistantPasswordChangeRequest struct {
 	state           protoimpl.MessageState `protogen:"open.v1"`
 	OldPassword     string                 `protobuf:"bytes,1,opt,name=old_password,json=oldPassword,proto3" json:"old_password,omitempty"`
 	NewPassword     string                 `protobuf:"bytes,2,opt,name=new_password,json=newPassword,proto3" json:"new_password,omitempty"`
@@ -135,9 +135,103 @@ type SetAssistantPasswordRequest struct {
 	sizeCache       protoimpl.SizeCache
 }
 
+func (x *SubmitAssistantPasswordChangeRequest) Reset() {
+	*x = SubmitAssistantPasswordChangeRequest{}
+	mi := &file_proto_services_auth_v1_assistant_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SubmitAssistantPasswordChangeRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SubmitAssistantPasswordChangeRequest) ProtoMessage() {}
+
+func (x *SubmitAssistantPasswordChangeRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_services_auth_v1_assistant_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SubmitAssistantPasswordChangeRequest.ProtoReflect.Descriptor instead.
+func (*SubmitAssistantPasswordChangeRequest) Descriptor() ([]byte, []int) {
+	return file_proto_services_auth_v1_assistant_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *SubmitAssistantPasswordChangeRequest) GetOldPassword() string {
+	if x != nil {
+		return x.OldPassword
+	}
+	return ""
+}
+
+func (x *SubmitAssistantPasswordChangeRequest) GetNewPassword() string {
+	if x != nil {
+		return x.NewPassword
+	}
+	return ""
+}
+
+func (x *SubmitAssistantPasswordChangeRequest) GetConfirmPassword() string {
+	if x != nil {
+		return x.ConfirmPassword
+	}
+	return ""
+}
+
+type SubmitAssistantPasswordChangeResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SubmitAssistantPasswordChangeResponse) Reset() {
+	*x = SubmitAssistantPasswordChangeResponse{}
+	mi := &file_proto_services_auth_v1_assistant_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SubmitAssistantPasswordChangeResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SubmitAssistantPasswordChangeResponse) ProtoMessage() {}
+
+func (x *SubmitAssistantPasswordChangeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_services_auth_v1_assistant_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SubmitAssistantPasswordChangeResponse.ProtoReflect.Descriptor instead.
+func (*SubmitAssistantPasswordChangeResponse) Descriptor() ([]byte, []int) {
+	return file_proto_services_auth_v1_assistant_proto_rawDescGZIP(), []int{3}
+}
+
+type SetAssistantPasswordRequest struct {
+	state               protoimpl.MessageState `protogen:"open.v1"`
+	ChangePasswordToken string                 `protobuf:"bytes,1,opt,name=change_password_token,json=changePasswordToken,proto3" json:"change_password_token,omitempty"`
+	unknownFields       protoimpl.UnknownFields
+	sizeCache           protoimpl.SizeCache
+}
+
 func (x *SetAssistantPasswordRequest) Reset() {
 	*x = SetAssistantPasswordRequest{}
-	mi := &file_proto_services_auth_v1_assistant_proto_msgTypes[2]
+	mi := &file_proto_services_auth_v1_assistant_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -149,7 +243,7 @@ func (x *SetAssistantPasswordRequest) String() string {
 func (*SetAssistantPasswordRequest) ProtoMessage() {}
 
 func (x *SetAssistantPasswordRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_services_auth_v1_assistant_proto_msgTypes[2]
+	mi := &file_proto_services_auth_v1_assistant_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -162,26 +256,12 @@ func (x *SetAssistantPasswordRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetAssistantPasswordRequest.ProtoReflect.Descriptor instead.
 func (*SetAssistantPasswordRequest) Descriptor() ([]byte, []int) {
-	return file_proto_services_auth_v1_assistant_proto_rawDescGZIP(), []int{2}
+	return file_proto_services_auth_v1_assistant_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *SetAssistantPasswordRequest) GetOldPassword() string {
+func (x *SetAssistantPasswordRequest) GetChangePasswordToken() string {
 	if x != nil {
-		return x.OldPassword
-	}
-	return ""
-}
-
-func (x *SetAssistantPasswordRequest) GetNewPassword() string {
-	if x != nil {
-		return x.NewPassword
-	}
-	return ""
-}
-
-func (x *SetAssistantPasswordRequest) GetConfirmPassword() string {
-	if x != nil {
-		return x.ConfirmPassword
+		return x.ChangePasswordToken
 	}
 	return ""
 }
@@ -194,7 +274,7 @@ type SetAssistantPasswordResponse struct {
 
 func (x *SetAssistantPasswordResponse) Reset() {
 	*x = SetAssistantPasswordResponse{}
-	mi := &file_proto_services_auth_v1_assistant_proto_msgTypes[3]
+	mi := &file_proto_services_auth_v1_assistant_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -206,7 +286,7 @@ func (x *SetAssistantPasswordResponse) String() string {
 func (*SetAssistantPasswordResponse) ProtoMessage() {}
 
 func (x *SetAssistantPasswordResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_services_auth_v1_assistant_proto_msgTypes[3]
+	mi := &file_proto_services_auth_v1_assistant_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -219,7 +299,7 @@ func (x *SetAssistantPasswordResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetAssistantPasswordResponse.ProtoReflect.Descriptor instead.
 func (*SetAssistantPasswordResponse) Descriptor() ([]byte, []int) {
-	return file_proto_services_auth_v1_assistant_proto_rawDescGZIP(), []int{3}
+	return file_proto_services_auth_v1_assistant_proto_rawDescGZIP(), []int{5}
 }
 
 type GetActiveAssistantsRequest struct {
@@ -230,7 +310,7 @@ type GetActiveAssistantsRequest struct {
 
 func (x *GetActiveAssistantsRequest) Reset() {
 	*x = GetActiveAssistantsRequest{}
-	mi := &file_proto_services_auth_v1_assistant_proto_msgTypes[4]
+	mi := &file_proto_services_auth_v1_assistant_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -242,7 +322,7 @@ func (x *GetActiveAssistantsRequest) String() string {
 func (*GetActiveAssistantsRequest) ProtoMessage() {}
 
 func (x *GetActiveAssistantsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_services_auth_v1_assistant_proto_msgTypes[4]
+	mi := &file_proto_services_auth_v1_assistant_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -255,7 +335,7 @@ func (x *GetActiveAssistantsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetActiveAssistantsRequest.ProtoReflect.Descriptor instead.
 func (*GetActiveAssistantsRequest) Descriptor() ([]byte, []int) {
-	return file_proto_services_auth_v1_assistant_proto_rawDescGZIP(), []int{4}
+	return file_proto_services_auth_v1_assistant_proto_rawDescGZIP(), []int{6}
 }
 
 type Assistant struct {
@@ -273,7 +353,7 @@ type Assistant struct {
 
 func (x *Assistant) Reset() {
 	*x = Assistant{}
-	mi := &file_proto_services_auth_v1_assistant_proto_msgTypes[5]
+	mi := &file_proto_services_auth_v1_assistant_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -285,7 +365,7 @@ func (x *Assistant) String() string {
 func (*Assistant) ProtoMessage() {}
 
 func (x *Assistant) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_services_auth_v1_assistant_proto_msgTypes[5]
+	mi := &file_proto_services_auth_v1_assistant_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -298,7 +378,7 @@ func (x *Assistant) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Assistant.ProtoReflect.Descriptor instead.
 func (*Assistant) Descriptor() ([]byte, []int) {
-	return file_proto_services_auth_v1_assistant_proto_rawDescGZIP(), []int{5}
+	return file_proto_services_auth_v1_assistant_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *Assistant) GetId() int32 {
@@ -359,7 +439,7 @@ type GetActiveAssistantsResponse struct {
 
 func (x *GetActiveAssistantsResponse) Reset() {
 	*x = GetActiveAssistantsResponse{}
-	mi := &file_proto_services_auth_v1_assistant_proto_msgTypes[6]
+	mi := &file_proto_services_auth_v1_assistant_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -371,7 +451,7 @@ func (x *GetActiveAssistantsResponse) String() string {
 func (*GetActiveAssistantsResponse) ProtoMessage() {}
 
 func (x *GetActiveAssistantsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_services_auth_v1_assistant_proto_msgTypes[6]
+	mi := &file_proto_services_auth_v1_assistant_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -384,7 +464,7 @@ func (x *GetActiveAssistantsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetActiveAssistantsResponse.ProtoReflect.Descriptor instead.
 func (*GetActiveAssistantsResponse) Descriptor() ([]byte, []int) {
-	return file_proto_services_auth_v1_assistant_proto_rawDescGZIP(), []int{6}
+	return file_proto_services_auth_v1_assistant_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *GetActiveAssistantsResponse) GetAssistants() []*Assistant {
@@ -403,7 +483,7 @@ type DeleteAssistantRequest struct {
 
 func (x *DeleteAssistantRequest) Reset() {
 	*x = DeleteAssistantRequest{}
-	mi := &file_proto_services_auth_v1_assistant_proto_msgTypes[7]
+	mi := &file_proto_services_auth_v1_assistant_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -415,7 +495,7 @@ func (x *DeleteAssistantRequest) String() string {
 func (*DeleteAssistantRequest) ProtoMessage() {}
 
 func (x *DeleteAssistantRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_services_auth_v1_assistant_proto_msgTypes[7]
+	mi := &file_proto_services_auth_v1_assistant_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -428,7 +508,7 @@ func (x *DeleteAssistantRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteAssistantRequest.ProtoReflect.Descriptor instead.
 func (*DeleteAssistantRequest) Descriptor() ([]byte, []int) {
-	return file_proto_services_auth_v1_assistant_proto_rawDescGZIP(), []int{7}
+	return file_proto_services_auth_v1_assistant_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *DeleteAssistantRequest) GetId() int32 {
@@ -446,7 +526,7 @@ type DeleteAssistantResponse struct {
 
 func (x *DeleteAssistantResponse) Reset() {
 	*x = DeleteAssistantResponse{}
-	mi := &file_proto_services_auth_v1_assistant_proto_msgTypes[8]
+	mi := &file_proto_services_auth_v1_assistant_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -458,7 +538,7 @@ func (x *DeleteAssistantResponse) String() string {
 func (*DeleteAssistantResponse) ProtoMessage() {}
 
 func (x *DeleteAssistantResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_services_auth_v1_assistant_proto_msgTypes[8]
+	mi := &file_proto_services_auth_v1_assistant_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -471,7 +551,7 @@ func (x *DeleteAssistantResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteAssistantResponse.ProtoReflect.Descriptor instead.
 func (*DeleteAssistantResponse) Descriptor() ([]byte, []int) {
-	return file_proto_services_auth_v1_assistant_proto_rawDescGZIP(), []int{8}
+	return file_proto_services_auth_v1_assistant_proto_rawDescGZIP(), []int{10}
 }
 
 var File_proto_services_auth_v1_assistant_proto protoreflect.FileDescriptor
@@ -484,11 +564,14 @@ const file_proto_services_auth_v1_assistant_proto_rawDesc = "" +
 	"\x05phone\x18\x02 \x01(\tR\x05phone\x12\x16\n" +
 	"\x06period\x18\x03 \x01(\x05R\x06period\")\n" +
 	"\x17CreateAssistantResponse\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\"\x8e\x01\n" +
-	"\x1bSetAssistantPasswordRequest\x12!\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\"\x97\x01\n" +
+	"$SubmitAssistantPasswordChangeRequest\x12!\n" +
 	"\fold_password\x18\x01 \x01(\tR\voldPassword\x12!\n" +
 	"\fnew_password\x18\x02 \x01(\tR\vnewPassword\x12)\n" +
-	"\x10confirm_password\x18\x03 \x01(\tR\x0fconfirmPassword\"\x1e\n" +
+	"\x10confirm_password\x18\x03 \x01(\tR\x0fconfirmPassword\"'\n" +
+	"%SubmitAssistantPasswordChangeResponse\"Q\n" +
+	"\x1bSetAssistantPasswordRequest\x122\n" +
+	"\x15change_password_token\x18\x01 \x01(\tR\x13changePasswordToken\"\x1e\n" +
 	"\x1cSetAssistantPasswordResponse\"\x1c\n" +
 	"\x1aGetActiveAssistantsRequest\"\xeb\x01\n" +
 	"\tAssistant\x12\x0e\n" +
@@ -507,9 +590,10 @@ const file_proto_services_auth_v1_assistant_proto_rawDesc = "" +
 	"assistants\"(\n" +
 	"\x16DeleteAssistantRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\"\x19\n" +
-	"\x17DeleteAssistantResponse2\xcd\x03\n" +
+	"\x17DeleteAssistantResponse2\xe0\x04\n" +
 	"\x10AssistantService\x12f\n" +
-	"\x0fCreateAssistant\x12(.services.auth.v1.CreateAssistantRequest\x1a).services.auth.v1.CreateAssistantResponse\x12u\n" +
+	"\x0fCreateAssistant\x12(.services.auth.v1.CreateAssistantRequest\x1a).services.auth.v1.CreateAssistantResponse\x12\x90\x01\n" +
+	"\x1dSubmitAssistantPasswordChange\x126.services.auth.v1.SubmitAssistantPasswordChangeRequest\x1a7.services.auth.v1.SubmitAssistantPasswordChangeResponse\x12u\n" +
 	"\x14SetAssistantPassword\x12-.services.auth.v1.SetAssistantPasswordRequest\x1a..services.auth.v1.SetAssistantPasswordResponse\x12r\n" +
 	"\x13GetActiveAssistants\x12,.services.auth.v1.GetActiveAssistantsRequest\x1a-.services.auth.v1.GetActiveAssistantsResponse\x12f\n" +
 	"\x0fDeleteAssistant\x12(.services.auth.v1.DeleteAssistantRequest\x1a).services.auth.v1.DeleteAssistantResponseB=Z;github.com/loanem-backend/protos/pb/services/auth/v1;authv1b\x06proto3"
@@ -526,36 +610,40 @@ func file_proto_services_auth_v1_assistant_proto_rawDescGZIP() []byte {
 	return file_proto_services_auth_v1_assistant_proto_rawDescData
 }
 
-var file_proto_services_auth_v1_assistant_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_proto_services_auth_v1_assistant_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_proto_services_auth_v1_assistant_proto_goTypes = []any{
-	(*CreateAssistantRequest)(nil),       // 0: services.auth.v1.CreateAssistantRequest
-	(*CreateAssistantResponse)(nil),      // 1: services.auth.v1.CreateAssistantResponse
-	(*SetAssistantPasswordRequest)(nil),  // 2: services.auth.v1.SetAssistantPasswordRequest
-	(*SetAssistantPasswordResponse)(nil), // 3: services.auth.v1.SetAssistantPasswordResponse
-	(*GetActiveAssistantsRequest)(nil),   // 4: services.auth.v1.GetActiveAssistantsRequest
-	(*Assistant)(nil),                    // 5: services.auth.v1.Assistant
-	(*GetActiveAssistantsResponse)(nil),  // 6: services.auth.v1.GetActiveAssistantsResponse
-	(*DeleteAssistantRequest)(nil),       // 7: services.auth.v1.DeleteAssistantRequest
-	(*DeleteAssistantResponse)(nil),      // 8: services.auth.v1.DeleteAssistantResponse
-	(*timestamppb.Timestamp)(nil),        // 9: google.protobuf.Timestamp
+	(*CreateAssistantRequest)(nil),                // 0: services.auth.v1.CreateAssistantRequest
+	(*CreateAssistantResponse)(nil),               // 1: services.auth.v1.CreateAssistantResponse
+	(*SubmitAssistantPasswordChangeRequest)(nil),  // 2: services.auth.v1.SubmitAssistantPasswordChangeRequest
+	(*SubmitAssistantPasswordChangeResponse)(nil), // 3: services.auth.v1.SubmitAssistantPasswordChangeResponse
+	(*SetAssistantPasswordRequest)(nil),           // 4: services.auth.v1.SetAssistantPasswordRequest
+	(*SetAssistantPasswordResponse)(nil),          // 5: services.auth.v1.SetAssistantPasswordResponse
+	(*GetActiveAssistantsRequest)(nil),            // 6: services.auth.v1.GetActiveAssistantsRequest
+	(*Assistant)(nil),                             // 7: services.auth.v1.Assistant
+	(*GetActiveAssistantsResponse)(nil),           // 8: services.auth.v1.GetActiveAssistantsResponse
+	(*DeleteAssistantRequest)(nil),                // 9: services.auth.v1.DeleteAssistantRequest
+	(*DeleteAssistantResponse)(nil),               // 10: services.auth.v1.DeleteAssistantResponse
+	(*timestamppb.Timestamp)(nil),                 // 11: google.protobuf.Timestamp
 }
 var file_proto_services_auth_v1_assistant_proto_depIdxs = []int32{
-	9, // 0: services.auth.v1.Assistant.created_at:type_name -> google.protobuf.Timestamp
-	9, // 1: services.auth.v1.Assistant.updated_at:type_name -> google.protobuf.Timestamp
-	5, // 2: services.auth.v1.GetActiveAssistantsResponse.assistants:type_name -> services.auth.v1.Assistant
-	0, // 3: services.auth.v1.AssistantService.CreateAssistant:input_type -> services.auth.v1.CreateAssistantRequest
-	2, // 4: services.auth.v1.AssistantService.SetAssistantPassword:input_type -> services.auth.v1.SetAssistantPasswordRequest
-	4, // 5: services.auth.v1.AssistantService.GetActiveAssistants:input_type -> services.auth.v1.GetActiveAssistantsRequest
-	7, // 6: services.auth.v1.AssistantService.DeleteAssistant:input_type -> services.auth.v1.DeleteAssistantRequest
-	1, // 7: services.auth.v1.AssistantService.CreateAssistant:output_type -> services.auth.v1.CreateAssistantResponse
-	3, // 8: services.auth.v1.AssistantService.SetAssistantPassword:output_type -> services.auth.v1.SetAssistantPasswordResponse
-	6, // 9: services.auth.v1.AssistantService.GetActiveAssistants:output_type -> services.auth.v1.GetActiveAssistantsResponse
-	8, // 10: services.auth.v1.AssistantService.DeleteAssistant:output_type -> services.auth.v1.DeleteAssistantResponse
-	7, // [7:11] is the sub-list for method output_type
-	3, // [3:7] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	11, // 0: services.auth.v1.Assistant.created_at:type_name -> google.protobuf.Timestamp
+	11, // 1: services.auth.v1.Assistant.updated_at:type_name -> google.protobuf.Timestamp
+	7,  // 2: services.auth.v1.GetActiveAssistantsResponse.assistants:type_name -> services.auth.v1.Assistant
+	0,  // 3: services.auth.v1.AssistantService.CreateAssistant:input_type -> services.auth.v1.CreateAssistantRequest
+	2,  // 4: services.auth.v1.AssistantService.SubmitAssistantPasswordChange:input_type -> services.auth.v1.SubmitAssistantPasswordChangeRequest
+	4,  // 5: services.auth.v1.AssistantService.SetAssistantPassword:input_type -> services.auth.v1.SetAssistantPasswordRequest
+	6,  // 6: services.auth.v1.AssistantService.GetActiveAssistants:input_type -> services.auth.v1.GetActiveAssistantsRequest
+	9,  // 7: services.auth.v1.AssistantService.DeleteAssistant:input_type -> services.auth.v1.DeleteAssistantRequest
+	1,  // 8: services.auth.v1.AssistantService.CreateAssistant:output_type -> services.auth.v1.CreateAssistantResponse
+	3,  // 9: services.auth.v1.AssistantService.SubmitAssistantPasswordChange:output_type -> services.auth.v1.SubmitAssistantPasswordChangeResponse
+	5,  // 10: services.auth.v1.AssistantService.SetAssistantPassword:output_type -> services.auth.v1.SetAssistantPasswordResponse
+	8,  // 11: services.auth.v1.AssistantService.GetActiveAssistants:output_type -> services.auth.v1.GetActiveAssistantsResponse
+	10, // 12: services.auth.v1.AssistantService.DeleteAssistant:output_type -> services.auth.v1.DeleteAssistantResponse
+	8,  // [8:13] is the sub-list for method output_type
+	3,  // [3:8] is the sub-list for method input_type
+	3,  // [3:3] is the sub-list for extension type_name
+	3,  // [3:3] is the sub-list for extension extendee
+	0,  // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_proto_services_auth_v1_assistant_proto_init() }
@@ -569,7 +657,7 @@ func file_proto_services_auth_v1_assistant_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_services_auth_v1_assistant_proto_rawDesc), len(file_proto_services_auth_v1_assistant_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   9,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
