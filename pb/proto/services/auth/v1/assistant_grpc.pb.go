@@ -19,10 +19,11 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	AssistantService_CreateAssistant_FullMethodName      = "/services.auth.v1.AssistantService/CreateAssistant"
-	AssistantService_SetAssistantPassword_FullMethodName = "/services.auth.v1.AssistantService/SetAssistantPassword"
-	AssistantService_GetActiveAssistants_FullMethodName  = "/services.auth.v1.AssistantService/GetActiveAssistants"
-	AssistantService_DeleteAssistant_FullMethodName      = "/services.auth.v1.AssistantService/DeleteAssistant"
+	AssistantService_CreateAssistant_FullMethodName               = "/services.auth.v1.AssistantService/CreateAssistant"
+	AssistantService_SubmitAssistantPasswordChange_FullMethodName = "/services.auth.v1.AssistantService/SubmitAssistantPasswordChange"
+	AssistantService_SetAssistantPassword_FullMethodName          = "/services.auth.v1.AssistantService/SetAssistantPassword"
+	AssistantService_GetActiveAssistants_FullMethodName           = "/services.auth.v1.AssistantService/GetActiveAssistants"
+	AssistantService_DeleteAssistant_FullMethodName               = "/services.auth.v1.AssistantService/DeleteAssistant"
 )
 
 // AssistantServiceClient is the client API for AssistantService service.
@@ -30,6 +31,7 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type AssistantServiceClient interface {
 	CreateAssistant(ctx context.Context, in *CreateAssistantRequest, opts ...grpc.CallOption) (*CreateAssistantResponse, error)
+	SubmitAssistantPasswordChange(ctx context.Context, in *SubmitAssistantPasswordChangeRequest, opts ...grpc.CallOption) (*SubmitAssistantPasswordChangeResponse, error)
 	SetAssistantPassword(ctx context.Context, in *SetAssistantPasswordRequest, opts ...grpc.CallOption) (*SetAssistantPasswordResponse, error)
 	GetActiveAssistants(ctx context.Context, in *GetActiveAssistantsRequest, opts ...grpc.CallOption) (*GetActiveAssistantsResponse, error)
 	DeleteAssistant(ctx context.Context, in *DeleteAssistantRequest, opts ...grpc.CallOption) (*DeleteAssistantResponse, error)
@@ -47,6 +49,16 @@ func (c *assistantServiceClient) CreateAssistant(ctx context.Context, in *Create
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CreateAssistantResponse)
 	err := c.cc.Invoke(ctx, AssistantService_CreateAssistant_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *assistantServiceClient) SubmitAssistantPasswordChange(ctx context.Context, in *SubmitAssistantPasswordChangeRequest, opts ...grpc.CallOption) (*SubmitAssistantPasswordChangeResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SubmitAssistantPasswordChangeResponse)
+	err := c.cc.Invoke(ctx, AssistantService_SubmitAssistantPasswordChange_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -88,6 +100,7 @@ func (c *assistantServiceClient) DeleteAssistant(ctx context.Context, in *Delete
 // for forward compatibility.
 type AssistantServiceServer interface {
 	CreateAssistant(context.Context, *CreateAssistantRequest) (*CreateAssistantResponse, error)
+	SubmitAssistantPasswordChange(context.Context, *SubmitAssistantPasswordChangeRequest) (*SubmitAssistantPasswordChangeResponse, error)
 	SetAssistantPassword(context.Context, *SetAssistantPasswordRequest) (*SetAssistantPasswordResponse, error)
 	GetActiveAssistants(context.Context, *GetActiveAssistantsRequest) (*GetActiveAssistantsResponse, error)
 	DeleteAssistant(context.Context, *DeleteAssistantRequest) (*DeleteAssistantResponse, error)
@@ -103,6 +116,9 @@ type UnimplementedAssistantServiceServer struct{}
 
 func (UnimplementedAssistantServiceServer) CreateAssistant(context.Context, *CreateAssistantRequest) (*CreateAssistantResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method CreateAssistant not implemented")
+}
+func (UnimplementedAssistantServiceServer) SubmitAssistantPasswordChange(context.Context, *SubmitAssistantPasswordChangeRequest) (*SubmitAssistantPasswordChangeResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method SubmitAssistantPasswordChange not implemented")
 }
 func (UnimplementedAssistantServiceServer) SetAssistantPassword(context.Context, *SetAssistantPasswordRequest) (*SetAssistantPasswordResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method SetAssistantPassword not implemented")
@@ -148,6 +164,24 @@ func _AssistantService_CreateAssistant_Handler(srv interface{}, ctx context.Cont
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AssistantServiceServer).CreateAssistant(ctx, req.(*CreateAssistantRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AssistantService_SubmitAssistantPasswordChange_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SubmitAssistantPasswordChangeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AssistantServiceServer).SubmitAssistantPasswordChange(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AssistantService_SubmitAssistantPasswordChange_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AssistantServiceServer).SubmitAssistantPasswordChange(ctx, req.(*SubmitAssistantPasswordChangeRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -216,6 +250,10 @@ var AssistantService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CreateAssistant",
 			Handler:    _AssistantService_CreateAssistant_Handler,
+		},
+		{
+			MethodName: "SubmitAssistantPasswordChange",
+			Handler:    _AssistantService_SubmitAssistantPasswordChange_Handler,
 		},
 		{
 			MethodName: "SetAssistantPassword",
