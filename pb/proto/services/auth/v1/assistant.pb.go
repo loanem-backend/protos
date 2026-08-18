@@ -27,6 +27,7 @@ type CreateAssistantRequest struct {
 	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	Phone         string                 `protobuf:"bytes,2,opt,name=phone,proto3" json:"phone,omitempty"`
 	Period        int32                  `protobuf:"varint,3,opt,name=period,proto3" json:"period,omitempty"`
+	Email         string                 `protobuf:"bytes,4,opt,name=email,proto3" json:"email,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -80,6 +81,13 @@ func (x *CreateAssistantRequest) GetPeriod() int32 {
 		return x.Period
 	}
 	return 0
+}
+
+func (x *CreateAssistantRequest) GetEmail() string {
+	if x != nil {
+		return x.Email
+	}
+	return ""
 }
 
 type CreateAssistantResponse struct {
@@ -345,8 +353,9 @@ type Assistant struct {
 	Phone         string                 `protobuf:"bytes,3,opt,name=phone,proto3" json:"phone,omitempty"`
 	Active        bool                   `protobuf:"varint,4,opt,name=active,proto3" json:"active,omitempty"`
 	Period        int32                  `protobuf:"varint,5,opt,name=period,proto3" json:"period,omitempty"`
-	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Email         string                 `protobuf:"bytes,6,opt,name=email,proto3" json:"email,omitempty"`
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -414,6 +423,13 @@ func (x *Assistant) GetPeriod() int32 {
 		return x.Period
 	}
 	return 0
+}
+
+func (x *Assistant) GetEmail() string {
+	if x != nil {
+		return x.Email
+	}
+	return ""
 }
 
 func (x *Assistant) GetCreatedAt() *timestamppb.Timestamp {
@@ -558,11 +574,12 @@ var File_proto_services_auth_v1_assistant_proto protoreflect.FileDescriptor
 
 const file_proto_services_auth_v1_assistant_proto_rawDesc = "" +
 	"\n" +
-	"&proto/services/auth/v1/assistant.proto\x12\x10services.auth.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"Z\n" +
+	"&proto/services/auth/v1/assistant.proto\x12\x10services.auth.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"p\n" +
 	"\x16CreateAssistantRequest\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x14\n" +
 	"\x05phone\x18\x02 \x01(\tR\x05phone\x12\x16\n" +
-	"\x06period\x18\x03 \x01(\x05R\x06period\")\n" +
+	"\x06period\x18\x03 \x01(\x05R\x06period\x12\x14\n" +
+	"\x05email\x18\x04 \x01(\tR\x05email\")\n" +
 	"\x17CreateAssistantResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\"\x97\x01\n" +
 	"$SubmitAssistantPasswordChangeRequest\x12!\n" +
@@ -573,17 +590,18 @@ const file_proto_services_auth_v1_assistant_proto_rawDesc = "" +
 	"\x1bSetAssistantPasswordRequest\x122\n" +
 	"\x15change_password_token\x18\x01 \x01(\tR\x13changePasswordToken\"\x1e\n" +
 	"\x1cSetAssistantPasswordResponse\"\x1c\n" +
-	"\x1aGetActiveAssistantsRequest\"\xeb\x01\n" +
+	"\x1aGetActiveAssistantsRequest\"\x81\x02\n" +
 	"\tAssistant\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
 	"\x05phone\x18\x03 \x01(\tR\x05phone\x12\x16\n" +
 	"\x06active\x18\x04 \x01(\bR\x06active\x12\x16\n" +
-	"\x06period\x18\x05 \x01(\x05R\x06period\x129\n" +
+	"\x06period\x18\x05 \x01(\x05R\x06period\x12\x14\n" +
+	"\x05email\x18\x06 \x01(\tR\x05email\x129\n" +
 	"\n" +
-	"created_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"updated_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"Z\n" +
+	"updated_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"Z\n" +
 	"\x1bGetActiveAssistantsResponse\x12;\n" +
 	"\n" +
 	"assistants\x18\x01 \x03(\v2\x1b.services.auth.v1.AssistantR\n" +
