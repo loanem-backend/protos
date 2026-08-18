@@ -18,6 +18,7 @@ message CreateAssistantRequest {
     string name = 1;
     string phone = 2;
     int32 period = 3;
+    string email = 4;
 }
 
 message CreateAssistantResponse {
@@ -46,8 +47,9 @@ message Assistant {
     string phone = 3;
     bool active = 4;
     int32 period = 5;
-    google.protobuf.Timestamp created_at = 6;
-    google.protobuf.Timestamp updated_at = 7;
+    string email = 6;
+    google.protobuf.Timestamp created_at = 7;
+    google.protobuf.Timestamp updated_at = 8;
 }
 
 message GetActiveAssistantsResponse {
