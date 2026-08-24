@@ -122,10 +122,11 @@ type Toolkit struct {
 	state           protoimpl.MessageState `protogen:"open.v1"`
 	Id              int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	KitName         string                 `protobuf:"bytes,2,opt,name=kit_name,json=kitName,proto3" json:"kit_name,omitempty"`
-	TotalCount      int32                  `protobuf:"varint,3,opt,name=total_count,json=totalCount,proto3" json:"total_count,omitempty"`
-	OutOfOrderCount int32                  `protobuf:"varint,4,opt,name=out_of_order_count,json=outOfOrderCount,proto3" json:"out_of_order_count,omitempty"`
-	CreatedAt       *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt       *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	CourseId        int32                  `protobuf:"varint,3,opt,name=course_id,json=courseId,proto3" json:"course_id,omitempty"`
+	TotalCount      int32                  `protobuf:"varint,4,opt,name=total_count,json=totalCount,proto3" json:"total_count,omitempty"`
+	OutOfOrderCount int32                  `protobuf:"varint,5,opt,name=out_of_order_count,json=outOfOrderCount,proto3" json:"out_of_order_count,omitempty"`
+	CreatedAt       *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt       *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
@@ -172,6 +173,13 @@ func (x *Toolkit) GetKitName() string {
 		return x.KitName
 	}
 	return ""
+}
+
+func (x *Toolkit) GetCourseId() int32 {
+	if x != nil {
+		return x.CourseId
+	}
+	return 0
 }
 
 func (x *Toolkit) GetTotalCount() int32 {
@@ -458,27 +466,204 @@ func (*AddToolkitInstrumentResponse) Descriptor() ([]byte, []int) {
 	return file_proto_services_inventory_v1_toolkit_proto_rawDescGZIP(), []int{8}
 }
 
+type GetToolkitsWithInstrumentsRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetToolkitsWithInstrumentsRequest) Reset() {
+	*x = GetToolkitsWithInstrumentsRequest{}
+	mi := &file_proto_services_inventory_v1_toolkit_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetToolkitsWithInstrumentsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetToolkitsWithInstrumentsRequest) ProtoMessage() {}
+
+func (x *GetToolkitsWithInstrumentsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_services_inventory_v1_toolkit_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetToolkitsWithInstrumentsRequest.ProtoReflect.Descriptor instead.
+func (*GetToolkitsWithInstrumentsRequest) Descriptor() ([]byte, []int) {
+	return file_proto_services_inventory_v1_toolkit_proto_rawDescGZIP(), []int{9}
+}
+
+type ToolkitWithInstruments struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Toolkit       *Toolkit               `protobuf:"bytes,1,opt,name=toolkit,proto3" json:"toolkit,omitempty"`
+	Instruments   []*Instrument          `protobuf:"bytes,2,rep,name=instruments,proto3" json:"instruments,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ToolkitWithInstruments) Reset() {
+	*x = ToolkitWithInstruments{}
+	mi := &file_proto_services_inventory_v1_toolkit_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ToolkitWithInstruments) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ToolkitWithInstruments) ProtoMessage() {}
+
+func (x *ToolkitWithInstruments) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_services_inventory_v1_toolkit_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ToolkitWithInstruments.ProtoReflect.Descriptor instead.
+func (*ToolkitWithInstruments) Descriptor() ([]byte, []int) {
+	return file_proto_services_inventory_v1_toolkit_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *ToolkitWithInstruments) GetToolkit() *Toolkit {
+	if x != nil {
+		return x.Toolkit
+	}
+	return nil
+}
+
+func (x *ToolkitWithInstruments) GetInstruments() []*Instrument {
+	if x != nil {
+		return x.Instruments
+	}
+	return nil
+}
+
+type GetToolkitsWithInstrumentsResponse struct {
+	state         protoimpl.MessageState    `protogen:"open.v1"`
+	Toolkits      []*ToolkitWithInstruments `protobuf:"bytes,1,rep,name=toolkits,proto3" json:"toolkits,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetToolkitsWithInstrumentsResponse) Reset() {
+	*x = GetToolkitsWithInstrumentsResponse{}
+	mi := &file_proto_services_inventory_v1_toolkit_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetToolkitsWithInstrumentsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetToolkitsWithInstrumentsResponse) ProtoMessage() {}
+
+func (x *GetToolkitsWithInstrumentsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_services_inventory_v1_toolkit_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetToolkitsWithInstrumentsResponse.ProtoReflect.Descriptor instead.
+func (*GetToolkitsWithInstrumentsResponse) Descriptor() ([]byte, []int) {
+	return file_proto_services_inventory_v1_toolkit_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *GetToolkitsWithInstrumentsResponse) GetToolkits() []*ToolkitWithInstruments {
+	if x != nil {
+		return x.Toolkits
+	}
+	return nil
+}
+
+type GetToolkitByIDRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ToolkitId     int32                  `protobuf:"varint,1,opt,name=toolkit_id,json=toolkitId,proto3" json:"toolkit_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetToolkitByIDRequest) Reset() {
+	*x = GetToolkitByIDRequest{}
+	mi := &file_proto_services_inventory_v1_toolkit_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetToolkitByIDRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetToolkitByIDRequest) ProtoMessage() {}
+
+func (x *GetToolkitByIDRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_services_inventory_v1_toolkit_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetToolkitByIDRequest.ProtoReflect.Descriptor instead.
+func (*GetToolkitByIDRequest) Descriptor() ([]byte, []int) {
+	return file_proto_services_inventory_v1_toolkit_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *GetToolkitByIDRequest) GetToolkitId() int32 {
+	if x != nil {
+		return x.ToolkitId
+	}
+	return 0
+}
+
 var File_proto_services_inventory_v1_toolkit_proto protoreflect.FileDescriptor
 
 const file_proto_services_inventory_v1_toolkit_proto_rawDesc = "" +
 	"\n" +
-	")proto/services/inventory/v1/toolkit.proto\x12\x15services.inventory.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"O\n" +
+	")proto/services/inventory/v1/toolkit.proto\x12\x15services.inventory.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a,proto/services/inventory/v1/instrument.proto\"O\n" +
 	"\x11AddToolkitRequest\x12\x19\n" +
 	"\bkit_name\x18\x01 \x01(\tR\akitName\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
 	"totalCount\"$\n" +
 	"\x12AddToolkitResponse\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\"\xf8\x01\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\"\x95\x02\n" +
 	"\aToolkit\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x19\n" +
-	"\bkit_name\x18\x02 \x01(\tR\akitName\x12\x1f\n" +
-	"\vtotal_count\x18\x03 \x01(\x05R\n" +
+	"\bkit_name\x18\x02 \x01(\tR\akitName\x12\x1b\n" +
+	"\tcourse_id\x18\x03 \x01(\x05R\bcourseId\x12\x1f\n" +
+	"\vtotal_count\x18\x04 \x01(\x05R\n" +
 	"totalCount\x12+\n" +
-	"\x12out_of_order_count\x18\x04 \x01(\x05R\x0foutOfOrderCount\x129\n" +
+	"\x12out_of_order_count\x18\x05 \x01(\x05R\x0foutOfOrderCount\x129\n" +
 	"\n" +
-	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"created_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"\x17\n" +
+	"updated_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"\x17\n" +
 	"\x15GetAllToolkitsRequest\"T\n" +
 	"\x16GetAllToolkitsResponse\x12:\n" +
 	"\btoolkits\x18\x01 \x03(\v2\x1e.services.inventory.v1.ToolkitR\btoolkits\"W\n" +
@@ -491,13 +676,24 @@ const file_proto_services_inventory_v1_toolkit_proto_rawDesc = "" +
 	"\n" +
 	"toolkit_id\x18\x01 \x01(\x05R\ttoolkitId\x12#\n" +
 	"\rinstrument_id\x18\x02 \x01(\x05R\finstrumentId\"\x1e\n" +
-	"\x1cAddToolkitInstrumentResponse2\xde\x03\n" +
+	"\x1cAddToolkitInstrumentResponse\"#\n" +
+	"!GetToolkitsWithInstrumentsRequest\"\x97\x01\n" +
+	"\x16ToolkitWithInstruments\x128\n" +
+	"\atoolkit\x18\x01 \x01(\v2\x1e.services.inventory.v1.ToolkitR\atoolkit\x12C\n" +
+	"\vinstruments\x18\x02 \x03(\v2!.services.inventory.v1.InstrumentR\vinstruments\"o\n" +
+	"\"GetToolkitsWithInstrumentsResponse\x12I\n" +
+	"\btoolkits\x18\x01 \x03(\v2-.services.inventory.v1.ToolkitWithInstrumentsR\btoolkits\"6\n" +
+	"\x15GetToolkitByIDRequest\x12\x1d\n" +
+	"\n" +
+	"toolkit_id\x18\x01 \x01(\x05R\ttoolkitId2\xe1\x05\n" +
 	"\x0eToolkitService\x12a\n" +
 	"\n" +
 	"AddToolkit\x12(.services.inventory.v1.AddToolkitRequest\x1a).services.inventory.v1.AddToolkitResponse\x12m\n" +
 	"\x0eGetAllToolkits\x12,.services.inventory.v1.GetAllToolkitsRequest\x1a-.services.inventory.v1.GetAllToolkitsResponse\x12\x7f\n" +
 	"\x14AddToolkitInstrument\x122.services.inventory.v1.AddToolkitInstrumentRequest\x1a3.services.inventory.v1.AddToolkitInstrumentResponse\x12y\n" +
-	"\x12SetToolkitCourseID\x120.services.inventory.v1.SetToolkitCourseIDRequest\x1a1.services.inventory.v1.SetToolkitCourseIDResponseBGZEgithub.com/loanem-backend/protos/pb/services/inventory/v1;inventoryv1b\x06proto3"
+	"\x12SetToolkitCourseID\x120.services.inventory.v1.SetToolkitCourseIDRequest\x1a1.services.inventory.v1.SetToolkitCourseIDResponse\x12\x91\x01\n" +
+	"\x1aGetToolkitsWithInstruments\x128.services.inventory.v1.GetToolkitsWithInstrumentsRequest\x1a9.services.inventory.v1.GetToolkitsWithInstrumentsResponse\x12m\n" +
+	"\x0eGetToolkitByID\x12,.services.inventory.v1.GetToolkitByIDRequest\x1a-.services.inventory.v1.ToolkitWithInstrumentsBGZEgithub.com/loanem-backend/protos/pb/services/inventory/v1;inventoryv1b\x06proto3"
 
 var (
 	file_proto_services_inventory_v1_toolkit_proto_rawDescOnce sync.Once
@@ -511,36 +707,48 @@ func file_proto_services_inventory_v1_toolkit_proto_rawDescGZIP() []byte {
 	return file_proto_services_inventory_v1_toolkit_proto_rawDescData
 }
 
-var file_proto_services_inventory_v1_toolkit_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_proto_services_inventory_v1_toolkit_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
 var file_proto_services_inventory_v1_toolkit_proto_goTypes = []any{
-	(*AddToolkitRequest)(nil),            // 0: services.inventory.v1.AddToolkitRequest
-	(*AddToolkitResponse)(nil),           // 1: services.inventory.v1.AddToolkitResponse
-	(*Toolkit)(nil),                      // 2: services.inventory.v1.Toolkit
-	(*GetAllToolkitsRequest)(nil),        // 3: services.inventory.v1.GetAllToolkitsRequest
-	(*GetAllToolkitsResponse)(nil),       // 4: services.inventory.v1.GetAllToolkitsResponse
-	(*SetToolkitCourseIDRequest)(nil),    // 5: services.inventory.v1.SetToolkitCourseIDRequest
-	(*SetToolkitCourseIDResponse)(nil),   // 6: services.inventory.v1.SetToolkitCourseIDResponse
-	(*AddToolkitInstrumentRequest)(nil),  // 7: services.inventory.v1.AddToolkitInstrumentRequest
-	(*AddToolkitInstrumentResponse)(nil), // 8: services.inventory.v1.AddToolkitInstrumentResponse
-	(*timestamppb.Timestamp)(nil),        // 9: google.protobuf.Timestamp
+	(*AddToolkitRequest)(nil),                  // 0: services.inventory.v1.AddToolkitRequest
+	(*AddToolkitResponse)(nil),                 // 1: services.inventory.v1.AddToolkitResponse
+	(*Toolkit)(nil),                            // 2: services.inventory.v1.Toolkit
+	(*GetAllToolkitsRequest)(nil),              // 3: services.inventory.v1.GetAllToolkitsRequest
+	(*GetAllToolkitsResponse)(nil),             // 4: services.inventory.v1.GetAllToolkitsResponse
+	(*SetToolkitCourseIDRequest)(nil),          // 5: services.inventory.v1.SetToolkitCourseIDRequest
+	(*SetToolkitCourseIDResponse)(nil),         // 6: services.inventory.v1.SetToolkitCourseIDResponse
+	(*AddToolkitInstrumentRequest)(nil),        // 7: services.inventory.v1.AddToolkitInstrumentRequest
+	(*AddToolkitInstrumentResponse)(nil),       // 8: services.inventory.v1.AddToolkitInstrumentResponse
+	(*GetToolkitsWithInstrumentsRequest)(nil),  // 9: services.inventory.v1.GetToolkitsWithInstrumentsRequest
+	(*ToolkitWithInstruments)(nil),             // 10: services.inventory.v1.ToolkitWithInstruments
+	(*GetToolkitsWithInstrumentsResponse)(nil), // 11: services.inventory.v1.GetToolkitsWithInstrumentsResponse
+	(*GetToolkitByIDRequest)(nil),              // 12: services.inventory.v1.GetToolkitByIDRequest
+	(*timestamppb.Timestamp)(nil),              // 13: google.protobuf.Timestamp
+	(*Instrument)(nil),                         // 14: services.inventory.v1.Instrument
 }
 var file_proto_services_inventory_v1_toolkit_proto_depIdxs = []int32{
-	9, // 0: services.inventory.v1.Toolkit.created_at:type_name -> google.protobuf.Timestamp
-	9, // 1: services.inventory.v1.Toolkit.updated_at:type_name -> google.protobuf.Timestamp
-	2, // 2: services.inventory.v1.GetAllToolkitsResponse.toolkits:type_name -> services.inventory.v1.Toolkit
-	0, // 3: services.inventory.v1.ToolkitService.AddToolkit:input_type -> services.inventory.v1.AddToolkitRequest
-	3, // 4: services.inventory.v1.ToolkitService.GetAllToolkits:input_type -> services.inventory.v1.GetAllToolkitsRequest
-	7, // 5: services.inventory.v1.ToolkitService.AddToolkitInstrument:input_type -> services.inventory.v1.AddToolkitInstrumentRequest
-	5, // 6: services.inventory.v1.ToolkitService.SetToolkitCourseID:input_type -> services.inventory.v1.SetToolkitCourseIDRequest
-	1, // 7: services.inventory.v1.ToolkitService.AddToolkit:output_type -> services.inventory.v1.AddToolkitResponse
-	4, // 8: services.inventory.v1.ToolkitService.GetAllToolkits:output_type -> services.inventory.v1.GetAllToolkitsResponse
-	8, // 9: services.inventory.v1.ToolkitService.AddToolkitInstrument:output_type -> services.inventory.v1.AddToolkitInstrumentResponse
-	6, // 10: services.inventory.v1.ToolkitService.SetToolkitCourseID:output_type -> services.inventory.v1.SetToolkitCourseIDResponse
-	7, // [7:11] is the sub-list for method output_type
-	3, // [3:7] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	13, // 0: services.inventory.v1.Toolkit.created_at:type_name -> google.protobuf.Timestamp
+	13, // 1: services.inventory.v1.Toolkit.updated_at:type_name -> google.protobuf.Timestamp
+	2,  // 2: services.inventory.v1.GetAllToolkitsResponse.toolkits:type_name -> services.inventory.v1.Toolkit
+	2,  // 3: services.inventory.v1.ToolkitWithInstruments.toolkit:type_name -> services.inventory.v1.Toolkit
+	14, // 4: services.inventory.v1.ToolkitWithInstruments.instruments:type_name -> services.inventory.v1.Instrument
+	10, // 5: services.inventory.v1.GetToolkitsWithInstrumentsResponse.toolkits:type_name -> services.inventory.v1.ToolkitWithInstruments
+	0,  // 6: services.inventory.v1.ToolkitService.AddToolkit:input_type -> services.inventory.v1.AddToolkitRequest
+	3,  // 7: services.inventory.v1.ToolkitService.GetAllToolkits:input_type -> services.inventory.v1.GetAllToolkitsRequest
+	7,  // 8: services.inventory.v1.ToolkitService.AddToolkitInstrument:input_type -> services.inventory.v1.AddToolkitInstrumentRequest
+	5,  // 9: services.inventory.v1.ToolkitService.SetToolkitCourseID:input_type -> services.inventory.v1.SetToolkitCourseIDRequest
+	9,  // 10: services.inventory.v1.ToolkitService.GetToolkitsWithInstruments:input_type -> services.inventory.v1.GetToolkitsWithInstrumentsRequest
+	12, // 11: services.inventory.v1.ToolkitService.GetToolkitByID:input_type -> services.inventory.v1.GetToolkitByIDRequest
+	1,  // 12: services.inventory.v1.ToolkitService.AddToolkit:output_type -> services.inventory.v1.AddToolkitResponse
+	4,  // 13: services.inventory.v1.ToolkitService.GetAllToolkits:output_type -> services.inventory.v1.GetAllToolkitsResponse
+	8,  // 14: services.inventory.v1.ToolkitService.AddToolkitInstrument:output_type -> services.inventory.v1.AddToolkitInstrumentResponse
+	6,  // 15: services.inventory.v1.ToolkitService.SetToolkitCourseID:output_type -> services.inventory.v1.SetToolkitCourseIDResponse
+	11, // 16: services.inventory.v1.ToolkitService.GetToolkitsWithInstruments:output_type -> services.inventory.v1.GetToolkitsWithInstrumentsResponse
+	10, // 17: services.inventory.v1.ToolkitService.GetToolkitByID:output_type -> services.inventory.v1.ToolkitWithInstruments
+	12, // [12:18] is the sub-list for method output_type
+	6,  // [6:12] is the sub-list for method input_type
+	6,  // [6:6] is the sub-list for extension type_name
+	6,  // [6:6] is the sub-list for extension extendee
+	0,  // [0:6] is the sub-list for field type_name
 }
 
 func init() { file_proto_services_inventory_v1_toolkit_proto_init() }
@@ -548,13 +756,14 @@ func file_proto_services_inventory_v1_toolkit_proto_init() {
 	if File_proto_services_inventory_v1_toolkit_proto != nil {
 		return
 	}
+	file_proto_services_inventory_v1_instrument_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_services_inventory_v1_toolkit_proto_rawDesc), len(file_proto_services_inventory_v1_toolkit_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   9,
+			NumMessages:   13,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

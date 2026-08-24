@@ -3,6 +3,7 @@ syntax = "proto3";
 package services.inventory.v1;
 
 import "google/protobuf/timestamp.proto";
+import "proto/services/inventory/v1/instrument.proto";
 
 option go_package = "github.com/loanem-backend/protos/pb/services/inventory/v1;inventoryv1";
 
@@ -12,6 +13,8 @@ service ToolkitService {
     rpc AddToolkitInstrument(AddToolkitInstrumentRequest) returns (AddToolkitInstrumentResponse);
 
     rpc SetToolkitCourseID(SetToolkitCourseIDRequest) returns (SetToolkitCourseIDResponse);
+    rpc GetToolkitsWithInstruments(GetToolkitsWithInstrumentsRequest) returns (GetToolkitsWithInstrumentsResponse);
+    rpc GetToolkitByID(GetToolkitByIDRequest) returns (ToolkitWithInstruments);
 }
 
 message AddToolkitRequest {
@@ -26,10 +29,11 @@ message AddToolkitResponse {
 message Toolkit {
     int32 id = 1;
     string kit_name = 2;
-    int32 total_count = 3;
-    int32 out_of_order_count = 4;
-    google.protobuf.Timestamp created_at = 5;
-    google.protobuf.Timestamp updated_at = 6;
+    int32 course_id = 3;
+    int32 total_count = 4;
+    int32 out_of_order_count = 5;
+    google.protobuf.Timestamp created_at = 6;
+    google.protobuf.Timestamp updated_at = 7;
 }
 
 message GetAllToolkitsRequest {}
@@ -51,3 +55,18 @@ message AddToolkitInstrumentRequest {
 }
 
 message AddToolkitInstrumentResponse {}
+
+message GetToolkitsWithInstrumentsRequest {}
+
+message ToolkitWithInstruments {
+    Toolkit toolkit = 1;
+    repeated Instrument instruments = 2;
+}
+
+message GetToolkitsWithInstrumentsResponse {
+    repeated ToolkitWithInstruments toolkits = 1;
+}
+
+message GetToolkitByIDRequest {
+    int32 toolkit_id = 1;
+}
