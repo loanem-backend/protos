@@ -2,17 +2,32 @@ syntax = "proto3";
 
 package services.participant.v1;
 
-option go_package = "github.com/loanem-backend/protos/pb/services/participant/v1;participantv1";
+option go_package = "github.com/loanem-backend/protos/pb/proto/services/participant/v1;participantv1";
 
 service ParticipantService {
     rpc AddParticipant(AddParticipantRequest) returns (AddParticipantResponse);
+
+    rpc GetParticipantsByTeamID(GetParticipantsByTeamIDRequest) returns (GetParticipantsByTeamIDResponse);
 }
 
 message AddParticipantRequest {
     string id = 1;
     string name = 2;
     string nim = 3;
-    int32 team_id = 4;
+    string team_id = 4;
 }
 
 message AddParticipantResponse {}
+
+message GetParticipantsByTeamIDRequest {
+    string team_id = 1;
+}
+
+message Participant {
+    string id = 1;
+    // 
+}
+
+message GetParticipantsByTeamIDResponse {
+    repeated Participant participants = 1;
+}

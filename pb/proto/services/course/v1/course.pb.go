@@ -382,7 +382,7 @@ const file_proto_services_course_v1_course_proto_rawDesc = "" +
 	"\tAddCourse\x12$.services.course.v1.AddCourseRequest\x1a%.services.course.v1.AddCourseResponse\x12[\n" +
 	"\n" +
 	"GetCourses\x12%.services.course.v1.GetCoursesRequest\x1a&.services.course.v1.GetCoursesResponse\x12a\n" +
-	"\fRemoveCourse\x12'.services.course.v1.RemoveCourseRequest\x1a(.services.course.v1.RemoveCourseResponseBAZ?github.com/loanem-backend/protos/pb/services/course/v1;coursev1b\x06proto3"
+	"\fRemoveCourse\x12'.services.course.v1.RemoveCourseRequest\x1a(.services.course.v1.RemoveCourseResponseBGZEgithub.com/loanem-backend/protos/pb/proto/services/course/v1;coursev1b\x06proto3"
 
 var (
 	file_proto_services_course_v1_course_proto_rawDescOnce sync.Once

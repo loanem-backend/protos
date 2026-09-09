@@ -22,6 +22,7 @@ const (
 	TeamService_AddClasses_FullMethodName           = "/services.participant.v1.TeamService/AddClasses"
 	TeamService_GetClassesByCourseID_FullMethodName = "/services.participant.v1.TeamService/GetClassesByCourseID"
 	TeamService_AddTeams_FullMethodName             = "/services.participant.v1.TeamService/AddTeams"
+	TeamService_GetTeamsByClassID_FullMethodName    = "/services.participant.v1.TeamService/GetTeamsByClassID"
 )
 
 // TeamServiceClient is the client API for TeamService service.
@@ -31,6 +32,7 @@ type TeamServiceClient interface {
 	AddClasses(ctx context.Context, in *AddClassesRequest, opts ...grpc.CallOption) (*AddClassesResponse, error)
 	GetClassesByCourseID(ctx context.Context, in *GetClassesByCourseIDRequest, opts ...grpc.CallOption) (*GetClassesByCourseIDResponse, error)
 	AddTeams(ctx context.Context, in *AddTeamsRequest, opts ...grpc.CallOption) (*AddTeamsResponse, error)
+	GetTeamsByClassID(ctx context.Context, in *GetTeamsByClassIDRequest, opts ...grpc.CallOption) (*GetTeamsByClassIDResponse, error)
 }
 
 type teamServiceClient struct {
@@ -71,6 +73,16 @@ func (c *teamServiceClient) AddTeams(ctx context.Context, in *AddTeamsRequest, o
 	return out, nil
 }
 
+func (c *teamServiceClient) GetTeamsByClassID(ctx context.Context, in *GetTeamsByClassIDRequest, opts ...grpc.CallOption) (*GetTeamsByClassIDResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetTeamsByClassIDResponse)
+	err := c.cc.Invoke(ctx, TeamService_GetTeamsByClassID_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // TeamServiceServer is the server API for TeamService service.
 // All implementations must embed UnimplementedTeamServiceServer
 // for forward compatibility.
@@ -78,6 +90,7 @@ type TeamServiceServer interface {
 	AddClasses(context.Context, *AddClassesRequest) (*AddClassesResponse, error)
 	GetClassesByCourseID(context.Context, *GetClassesByCourseIDRequest) (*GetClassesByCourseIDResponse, error)
 	AddTeams(context.Context, *AddTeamsRequest) (*AddTeamsResponse, error)
+	GetTeamsByClassID(context.Context, *GetTeamsByClassIDRequest) (*GetTeamsByClassIDResponse, error)
 	mustEmbedUnimplementedTeamServiceServer()
 }
 
@@ -96,6 +109,9 @@ func (UnimplementedTeamServiceServer) GetClassesByCourseID(context.Context, *Get
 }
 func (UnimplementedTeamServiceServer) AddTeams(context.Context, *AddTeamsRequest) (*AddTeamsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method AddTeams not implemented")
+}
+func (UnimplementedTeamServiceServer) GetTeamsByClassID(context.Context, *GetTeamsByClassIDRequest) (*GetTeamsByClassIDResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetTeamsByClassID not implemented")
 }
 func (UnimplementedTeamServiceServer) mustEmbedUnimplementedTeamServiceServer() {}
 func (UnimplementedTeamServiceServer) testEmbeddedByValue()                     {}
@@ -172,6 +188,24 @@ func _TeamService_AddTeams_Handler(srv interface{}, ctx context.Context, dec fun
 	return interceptor(ctx, in, info, handler)
 }
 
+func _TeamService_GetTeamsByClassID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetTeamsByClassIDRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TeamServiceServer).GetTeamsByClassID(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TeamService_GetTeamsByClassID_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TeamServiceServer).GetTeamsByClassID(ctx, req.(*GetTeamsByClassIDRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // TeamService_ServiceDesc is the grpc.ServiceDesc for TeamService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -190,6 +224,10 @@ var TeamService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "AddTeams",
 			Handler:    _TeamService_AddTeams_Handler,
+		},
+		{
+			MethodName: "GetTeamsByClassID",
+			Handler:    _TeamService_GetTeamsByClassID_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

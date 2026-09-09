@@ -614,7 +614,7 @@ const file_proto_services_auth_v1_assistant_proto_rawDesc = "" +
 	"\x1dSubmitAssistantPasswordChange\x126.services.auth.v1.SubmitAssistantPasswordChangeRequest\x1a7.services.auth.v1.SubmitAssistantPasswordChangeResponse\x12u\n" +
 	"\x14SetAssistantPassword\x12-.services.auth.v1.SetAssistantPasswordRequest\x1a..services.auth.v1.SetAssistantPasswordResponse\x12r\n" +
 	"\x13GetActiveAssistants\x12,.services.auth.v1.GetActiveAssistantsRequest\x1a-.services.auth.v1.GetActiveAssistantsResponse\x12f\n" +
-	"\x0fDeleteAssistant\x12(.services.auth.v1.DeleteAssistantRequest\x1a).services.auth.v1.DeleteAssistantResponseB=Z;github.com/loanem-backend/protos/pb/services/auth/v1;authv1b\x06proto3"
+	"\x0fDeleteAssistant\x12(.services.auth.v1.DeleteAssistantRequest\x1a).services.auth.v1.DeleteAssistantResponseBCZAgithub.com/loanem-backend/protos/pb/proto/services/auth/v1;authv1b\x06proto3"
 
 var (
 	file_proto_services_auth_v1_assistant_proto_rawDescOnce sync.Once

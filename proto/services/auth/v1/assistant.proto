@@ -4,7 +4,7 @@ package services.auth.v1;
 
 import "google/protobuf/timestamp.proto";
 
-option go_package = "github.com/loanem-backend/protos/pb/services/auth/v1;authv1";
+option go_package = "github.com/loanem-backend/protos/pb/proto/services/auth/v1;authv1";
 
 service AssistantService {
     rpc CreateAssistant(CreateAssistantRequest) returns (CreateAssistantResponse);

@@ -19,7 +19,8 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ParticipantService_AddParticipant_FullMethodName = "/services.participant.v1.ParticipantService/AddParticipant"
+	ParticipantService_AddParticipant_FullMethodName          = "/services.participant.v1.ParticipantService/AddParticipant"
+	ParticipantService_GetParticipantsByTeamID_FullMethodName = "/services.participant.v1.ParticipantService/GetParticipantsByTeamID"
 )
 
 // ParticipantServiceClient is the client API for ParticipantService service.
@@ -27,6 +28,7 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ParticipantServiceClient interface {
 	AddParticipant(ctx context.Context, in *AddParticipantRequest, opts ...grpc.CallOption) (*AddParticipantResponse, error)
+	GetParticipantsByTeamID(ctx context.Context, in *GetParticipantsByTeamIDRequest, opts ...grpc.CallOption) (*GetParticipantsByTeamIDResponse, error)
 }
 
 type participantServiceClient struct {
@@ -47,11 +49,22 @@ func (c *participantServiceClient) AddParticipant(ctx context.Context, in *AddPa
 	return out, nil
 }
 
+func (c *participantServiceClient) GetParticipantsByTeamID(ctx context.Context, in *GetParticipantsByTeamIDRequest, opts ...grpc.CallOption) (*GetParticipantsByTeamIDResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetParticipantsByTeamIDResponse)
+	err := c.cc.Invoke(ctx, ParticipantService_GetParticipantsByTeamID_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ParticipantServiceServer is the server API for ParticipantService service.
 // All implementations must embed UnimplementedParticipantServiceServer
 // for forward compatibility.
 type ParticipantServiceServer interface {
 	AddParticipant(context.Context, *AddParticipantRequest) (*AddParticipantResponse, error)
+	GetParticipantsByTeamID(context.Context, *GetParticipantsByTeamIDRequest) (*GetParticipantsByTeamIDResponse, error)
 	mustEmbedUnimplementedParticipantServiceServer()
 }
 
@@ -64,6 +77,9 @@ type UnimplementedParticipantServiceServer struct{}
 
 func (UnimplementedParticipantServiceServer) AddParticipant(context.Context, *AddParticipantRequest) (*AddParticipantResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method AddParticipant not implemented")
+}
+func (UnimplementedParticipantServiceServer) GetParticipantsByTeamID(context.Context, *GetParticipantsByTeamIDRequest) (*GetParticipantsByTeamIDResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetParticipantsByTeamID not implemented")
 }
 func (UnimplementedParticipantServiceServer) mustEmbedUnimplementedParticipantServiceServer() {}
 func (UnimplementedParticipantServiceServer) testEmbeddedByValue()                            {}
@@ -104,6 +120,24 @@ func _ParticipantService_AddParticipant_Handler(srv interface{}, ctx context.Con
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ParticipantService_GetParticipantsByTeamID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetParticipantsByTeamIDRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ParticipantServiceServer).GetParticipantsByTeamID(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ParticipantService_GetParticipantsByTeamID_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ParticipantServiceServer).GetParticipantsByTeamID(ctx, req.(*GetParticipantsByTeamIDRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ParticipantService_ServiceDesc is the grpc.ServiceDesc for ParticipantService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -114,6 +148,10 @@ var ParticipantService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "AddParticipant",
 			Handler:    _ParticipantService_AddParticipant_Handler,
+		},
+		{
+			MethodName: "GetParticipantsByTeamID",
+			Handler:    _ParticipantService_GetParticipantsByTeamID_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

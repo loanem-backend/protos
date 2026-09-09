@@ -5,7 +5,7 @@ package services.inventory.v1;
 import "google/protobuf/timestamp.proto";
 import "proto/services/inventory/v1/instrument.proto";
 
-option go_package = "github.com/loanem-backend/protos/pb/services/inventory/v1;inventoryv1";
+option go_package = "github.com/loanem-backend/protos/pb/proto/services/inventory/v1;inventoryv1";
 
 service ToolkitService {
     rpc AddToolkit(AddToolkitRequest) returns (AddToolkitResponse);
