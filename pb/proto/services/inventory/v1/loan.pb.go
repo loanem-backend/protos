@@ -802,7 +802,7 @@ const file_proto_services_inventory_v1_loan_proto_rawDesc = "" +
 	"\vSetLoanNote\x12).services.inventory.v1.SetLoanNoteRequest\x1a*.services.inventory.v1.SetLoanNoteResponse\x12d\n" +
 	"\vGetLoanByID\x12).services.inventory.v1.GetLoanByIDRequest\x1a*.services.inventory.v1.GetLoanByIDResponse\x12m\n" +
 	"\x0eGetLoansByDate\x12,.services.inventory.v1.GetLoansByDateRequest\x1a-.services.inventory.v1.GetLoansByDateResponse\x12s\n" +
-	"\x10GetLoansByTeamID\x12..services.inventory.v1.GetLoansByTeamIDRequest\x1a/.services.inventory.v1.GetLoansByTeamIDResponseBGZEgithub.com/loanem-backend/protos/pb/services/inventory/v1;inventoryv1b\x06proto3"
+	"\x10GetLoansByTeamID\x12..services.inventory.v1.GetLoansByTeamIDRequest\x1a/.services.inventory.v1.GetLoansByTeamIDResponseBMZKgithub.com/loanem-backend/protos/pb/proto/services/inventory/v1;inventoryv1b\x06proto3"
 
 var (
 	file_proto_services_inventory_v1_loan_proto_rawDescOnce sync.Once

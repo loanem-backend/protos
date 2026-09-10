@@ -4,7 +4,7 @@ package services.inventory.v1;
 
 import "google/protobuf/timestamp.proto";
 
-option go_package = "github.com/loanem-backend/protos/pb/services/inventory/v1;inventoryv1";
+option go_package = "github.com/loanem-backend/protos/pb/proto/services/inventory/v1;inventoryv1";
 
 service InstrumentService {
     rpc AddInstrument(AddInstrumentRequest) returns (AddInstrumentResponse);

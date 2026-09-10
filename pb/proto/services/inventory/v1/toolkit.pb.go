@@ -693,7 +693,7 @@ const file_proto_services_inventory_v1_toolkit_proto_rawDesc = "" +
 	"\x14AddToolkitInstrument\x122.services.inventory.v1.AddToolkitInstrumentRequest\x1a3.services.inventory.v1.AddToolkitInstrumentResponse\x12y\n" +
 	"\x12SetToolkitCourseID\x120.services.inventory.v1.SetToolkitCourseIDRequest\x1a1.services.inventory.v1.SetToolkitCourseIDResponse\x12\x91\x01\n" +
 	"\x1aGetToolkitsWithInstruments\x128.services.inventory.v1.GetToolkitsWithInstrumentsRequest\x1a9.services.inventory.v1.GetToolkitsWithInstrumentsResponse\x12m\n" +
-	"\x0eGetToolkitByID\x12,.services.inventory.v1.GetToolkitByIDRequest\x1a-.services.inventory.v1.ToolkitWithInstrumentsBGZEgithub.com/loanem-backend/protos/pb/services/inventory/v1;inventoryv1b\x06proto3"
+	"\x0eGetToolkitByID\x12,.services.inventory.v1.GetToolkitByIDRequest\x1a-.services.inventory.v1.ToolkitWithInstrumentsBMZKgithub.com/loanem-backend/protos/pb/proto/services/inventory/v1;inventoryv1b\x06proto3"
 
 var (
 	file_proto_services_inventory_v1_toolkit_proto_rawDescOnce sync.Once

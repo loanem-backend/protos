@@ -3,14 +3,17 @@ syntax = "proto3";
 package services.participant.v1;
 
 import "google/protobuf/timestamp.proto";
+import "proto/services/course/v1/course.proto";
 
-option go_package = "github.com/loanem-backend/protos/pb/services/participant/v1;participantv1";
+option go_package = "github.com/loanem-backend/protos/pb/proto/services/participant/v1;participantv1";
 
 service TeamService {
     rpc AddClasses(AddClassesRequest) returns (AddClassesResponse);
     rpc GetClassesByCourseID(GetClassesByCourseIDRequest) returns (GetClassesByCourseIDResponse);
 
     rpc AddTeams(AddTeamsRequest) returns (AddTeamsResponse);
+    rpc GetTeamsByClassID(GetTeamsByClassIDRequest) returns (GetTeamsByClassIDResponse);
+    rpc GetTeamByParticipantID(GetTeamByParticipantIDRequest) returns (GetTeamByParticipantIDResponse);
 }
 
 message AddClassesRequest {
@@ -23,11 +26,9 @@ message AddClassesResponse {}
 message Class {
     int32 id = 1;
     string name = 2;
-    int32 course_id = 3;
-    string course_name = 4;
-    int32 course_year = 5;
-    google.protobuf.Timestamp created_at = 6;
-    google.protobuf.Timestamp updated_at = 7;
+    services.course.v1.Course course = 3;
+    google.protobuf.Timestamp created_at = 4;
+    google.protobuf.Timestamp updated_at = 5;
 }
 
 message GetClassesByCourseIDRequest {
@@ -44,3 +45,27 @@ message AddTeamsRequest {
 }
 
 message AddTeamsResponse {}
+
+message Team {
+    string id = 1;
+    Class class = 2;
+    int32 number = 3;
+    google.protobuf.Timestamp created_at = 4;
+    google.protobuf.Timestamp updated_at = 5;
+}
+
+message GetTeamsByClassIDRequest {
+    int32 class_id = 1;
+}
+
+message GetTeamsByClassIDResponse {
+    repeated Team teams = 1;
+}
+
+message GetTeamByParticipantIDRequest {
+    string participant_id = 1; 
+}
+
+message GetTeamByParticipantIDResponse {
+    Team team = 1;
+}

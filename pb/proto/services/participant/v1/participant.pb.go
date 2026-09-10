@@ -9,6 +9,7 @@ package participantv1
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -26,7 +27,7 @@ type AddParticipantRequest struct {
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	Nim           string                 `protobuf:"bytes,3,opt,name=nim,proto3" json:"nim,omitempty"`
-	TeamId        int32                  `protobuf:"varint,4,opt,name=team_id,json=teamId,proto3" json:"team_id,omitempty"`
+	TeamId        string                 `protobuf:"bytes,4,opt,name=team_id,json=teamId,proto3" json:"team_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -82,11 +83,11 @@ func (x *AddParticipantRequest) GetNim() string {
 	return ""
 }
 
-func (x *AddParticipantRequest) GetTeamId() int32 {
+func (x *AddParticipantRequest) GetTeamId() string {
 	if x != nil {
 		return x.TeamId
 	}
-	return 0
+	return ""
 }
 
 type AddParticipantResponse struct {
@@ -125,19 +126,391 @@ func (*AddParticipantResponse) Descriptor() ([]byte, []int) {
 	return file_proto_services_participant_v1_participant_proto_rawDescGZIP(), []int{1}
 }
 
+type GetParticipantsByTeamIDRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TeamId        string                 `protobuf:"bytes,1,opt,name=team_id,json=teamId,proto3" json:"team_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetParticipantsByTeamIDRequest) Reset() {
+	*x = GetParticipantsByTeamIDRequest{}
+	mi := &file_proto_services_participant_v1_participant_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetParticipantsByTeamIDRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetParticipantsByTeamIDRequest) ProtoMessage() {}
+
+func (x *GetParticipantsByTeamIDRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_services_participant_v1_participant_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetParticipantsByTeamIDRequest.ProtoReflect.Descriptor instead.
+func (*GetParticipantsByTeamIDRequest) Descriptor() ([]byte, []int) {
+	return file_proto_services_participant_v1_participant_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *GetParticipantsByTeamIDRequest) GetTeamId() string {
+	if x != nil {
+		return x.TeamId
+	}
+	return ""
+}
+
+type Participant struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Class         *Class                 `protobuf:"bytes,2,opt,name=class,proto3" json:"class,omitempty"`
+	Nim           string                 `protobuf:"bytes,3,opt,name=nim,proto3" json:"nim,omitempty"`
+	Name          string                 `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Participant) Reset() {
+	*x = Participant{}
+	mi := &file_proto_services_participant_v1_participant_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Participant) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Participant) ProtoMessage() {}
+
+func (x *Participant) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_services_participant_v1_participant_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Participant.ProtoReflect.Descriptor instead.
+func (*Participant) Descriptor() ([]byte, []int) {
+	return file_proto_services_participant_v1_participant_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *Participant) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *Participant) GetClass() *Class {
+	if x != nil {
+		return x.Class
+	}
+	return nil
+}
+
+func (x *Participant) GetNim() string {
+	if x != nil {
+		return x.Nim
+	}
+	return ""
+}
+
+func (x *Participant) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *Participant) GetCreatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return nil
+}
+
+func (x *Participant) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
+}
+
+type GetParticipantsByTeamIDResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Participants  []*Participant         `protobuf:"bytes,1,rep,name=participants,proto3" json:"participants,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetParticipantsByTeamIDResponse) Reset() {
+	*x = GetParticipantsByTeamIDResponse{}
+	mi := &file_proto_services_participant_v1_participant_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetParticipantsByTeamIDResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetParticipantsByTeamIDResponse) ProtoMessage() {}
+
+func (x *GetParticipantsByTeamIDResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_services_participant_v1_participant_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetParticipantsByTeamIDResponse.ProtoReflect.Descriptor instead.
+func (*GetParticipantsByTeamIDResponse) Descriptor() ([]byte, []int) {
+	return file_proto_services_participant_v1_participant_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *GetParticipantsByTeamIDResponse) GetParticipants() []*Participant {
+	if x != nil {
+		return x.Participants
+	}
+	return nil
+}
+
+type GetParticipantsByClassIDRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ClassId       int32                  `protobuf:"varint,1,opt,name=class_id,json=classId,proto3" json:"class_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetParticipantsByClassIDRequest) Reset() {
+	*x = GetParticipantsByClassIDRequest{}
+	mi := &file_proto_services_participant_v1_participant_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetParticipantsByClassIDRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetParticipantsByClassIDRequest) ProtoMessage() {}
+
+func (x *GetParticipantsByClassIDRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_services_participant_v1_participant_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetParticipantsByClassIDRequest.ProtoReflect.Descriptor instead.
+func (*GetParticipantsByClassIDRequest) Descriptor() ([]byte, []int) {
+	return file_proto_services_participant_v1_participant_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *GetParticipantsByClassIDRequest) GetClassId() int32 {
+	if x != nil {
+		return x.ClassId
+	}
+	return 0
+}
+
+type GetParticipantsByClassIDResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Participants  []*Participant         `protobuf:"bytes,1,rep,name=participants,proto3" json:"participants,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetParticipantsByClassIDResponse) Reset() {
+	*x = GetParticipantsByClassIDResponse{}
+	mi := &file_proto_services_participant_v1_participant_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetParticipantsByClassIDResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetParticipantsByClassIDResponse) ProtoMessage() {}
+
+func (x *GetParticipantsByClassIDResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_services_participant_v1_participant_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetParticipantsByClassIDResponse.ProtoReflect.Descriptor instead.
+func (*GetParticipantsByClassIDResponse) Descriptor() ([]byte, []int) {
+	return file_proto_services_participant_v1_participant_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *GetParticipantsByClassIDResponse) GetParticipants() []*Participant {
+	if x != nil {
+		return x.Participants
+	}
+	return nil
+}
+
+type GetParticipantByNimRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Nim           string                 `protobuf:"bytes,1,opt,name=nim,proto3" json:"nim,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetParticipantByNimRequest) Reset() {
+	*x = GetParticipantByNimRequest{}
+	mi := &file_proto_services_participant_v1_participant_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetParticipantByNimRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetParticipantByNimRequest) ProtoMessage() {}
+
+func (x *GetParticipantByNimRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_services_participant_v1_participant_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetParticipantByNimRequest.ProtoReflect.Descriptor instead.
+func (*GetParticipantByNimRequest) Descriptor() ([]byte, []int) {
+	return file_proto_services_participant_v1_participant_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *GetParticipantByNimRequest) GetNim() string {
+	if x != nil {
+		return x.Nim
+	}
+	return ""
+}
+
+type GetParticipantByNimResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Participant   *Participant           `protobuf:"bytes,1,opt,name=participant,proto3" json:"participant,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetParticipantByNimResponse) Reset() {
+	*x = GetParticipantByNimResponse{}
+	mi := &file_proto_services_participant_v1_participant_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetParticipantByNimResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetParticipantByNimResponse) ProtoMessage() {}
+
+func (x *GetParticipantByNimResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_services_participant_v1_participant_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetParticipantByNimResponse.ProtoReflect.Descriptor instead.
+func (*GetParticipantByNimResponse) Descriptor() ([]byte, []int) {
+	return file_proto_services_participant_v1_participant_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *GetParticipantByNimResponse) GetParticipant() *Participant {
+	if x != nil {
+		return x.Participant
+	}
+	return nil
+}
+
 var File_proto_services_participant_v1_participant_proto protoreflect.FileDescriptor
 
 const file_proto_services_participant_v1_participant_proto_rawDesc = "" +
 	"\n" +
-	"/proto/services/participant/v1/participant.proto\x12\x17services.participant.v1\"f\n" +
+	"/proto/services/participant/v1/participant.proto\x12\x17services.participant.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a(proto/services/participant/v1/team.proto\"f\n" +
 	"\x15AddParticipantRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x10\n" +
 	"\x03nim\x18\x03 \x01(\tR\x03nim\x12\x17\n" +
-	"\ateam_id\x18\x04 \x01(\x05R\x06teamId\"\x18\n" +
-	"\x16AddParticipantResponse2\x87\x01\n" +
+	"\ateam_id\x18\x04 \x01(\tR\x06teamId\"\x18\n" +
+	"\x16AddParticipantResponse\"9\n" +
+	"\x1eGetParticipantsByTeamIDRequest\x12\x17\n" +
+	"\ateam_id\x18\x01 \x01(\tR\x06teamId\"\xef\x01\n" +
+	"\vParticipant\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x124\n" +
+	"\x05class\x18\x02 \x01(\v2\x1e.services.participant.v1.ClassR\x05class\x12\x10\n" +
+	"\x03nim\x18\x03 \x01(\tR\x03nim\x12\x12\n" +
+	"\x04name\x18\x04 \x01(\tR\x04name\x129\n" +
+	"\n" +
+	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"\n" +
+	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"k\n" +
+	"\x1fGetParticipantsByTeamIDResponse\x12H\n" +
+	"\fparticipants\x18\x01 \x03(\v2$.services.participant.v1.ParticipantR\fparticipants\"<\n" +
+	"\x1fGetParticipantsByClassIDRequest\x12\x19\n" +
+	"\bclass_id\x18\x01 \x01(\x05R\aclassId\"l\n" +
+	" GetParticipantsByClassIDResponse\x12H\n" +
+	"\fparticipants\x18\x01 \x03(\v2$.services.participant.v1.ParticipantR\fparticipants\".\n" +
+	"\x1aGetParticipantByNimRequest\x12\x10\n" +
+	"\x03nim\x18\x01 \x01(\tR\x03nim\"e\n" +
+	"\x1bGetParticipantByNimResponse\x12F\n" +
+	"\vparticipant\x18\x01 \x01(\v2$.services.participant.v1.ParticipantR\vparticipant2\xab\x04\n" +
 	"\x12ParticipantService\x12q\n" +
-	"\x0eAddParticipant\x12..services.participant.v1.AddParticipantRequest\x1a/.services.participant.v1.AddParticipantResponseBKZIgithub.com/loanem-backend/protos/pb/services/participant/v1;participantv1b\x06proto3"
+	"\x0eAddParticipant\x12..services.participant.v1.AddParticipantRequest\x1a/.services.participant.v1.AddParticipantResponse\x12\x80\x01\n" +
+	"\x13GetParticipantByNim\x123.services.participant.v1.GetParticipantByNimRequest\x1a4.services.participant.v1.GetParticipantByNimResponse\x12\x8c\x01\n" +
+	"\x17GetParticipantsByTeamID\x127.services.participant.v1.GetParticipantsByTeamIDRequest\x1a8.services.participant.v1.GetParticipantsByTeamIDResponse\x12\x8f\x01\n" +
+	"\x18GetParticipantsByClassID\x128.services.participant.v1.GetParticipantsByClassIDRequest\x1a9.services.participant.v1.GetParticipantsByClassIDResponseBQZOgithub.com/loanem-backend/protos/pb/proto/services/participant/v1;participantv1b\x06proto3"
 
 var (
 	file_proto_services_participant_v1_participant_proto_rawDescOnce sync.Once
@@ -151,19 +524,40 @@ func file_proto_services_participant_v1_participant_proto_rawDescGZIP() []byte {
 	return file_proto_services_participant_v1_participant_proto_rawDescData
 }
 
-var file_proto_services_participant_v1_participant_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_proto_services_participant_v1_participant_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_proto_services_participant_v1_participant_proto_goTypes = []any{
-	(*AddParticipantRequest)(nil),  // 0: services.participant.v1.AddParticipantRequest
-	(*AddParticipantResponse)(nil), // 1: services.participant.v1.AddParticipantResponse
+	(*AddParticipantRequest)(nil),            // 0: services.participant.v1.AddParticipantRequest
+	(*AddParticipantResponse)(nil),           // 1: services.participant.v1.AddParticipantResponse
+	(*GetParticipantsByTeamIDRequest)(nil),   // 2: services.participant.v1.GetParticipantsByTeamIDRequest
+	(*Participant)(nil),                      // 3: services.participant.v1.Participant
+	(*GetParticipantsByTeamIDResponse)(nil),  // 4: services.participant.v1.GetParticipantsByTeamIDResponse
+	(*GetParticipantsByClassIDRequest)(nil),  // 5: services.participant.v1.GetParticipantsByClassIDRequest
+	(*GetParticipantsByClassIDResponse)(nil), // 6: services.participant.v1.GetParticipantsByClassIDResponse
+	(*GetParticipantByNimRequest)(nil),       // 7: services.participant.v1.GetParticipantByNimRequest
+	(*GetParticipantByNimResponse)(nil),      // 8: services.participant.v1.GetParticipantByNimResponse
+	(*Class)(nil),                            // 9: services.participant.v1.Class
+	(*timestamppb.Timestamp)(nil),            // 10: google.protobuf.Timestamp
 }
 var file_proto_services_participant_v1_participant_proto_depIdxs = []int32{
-	0, // 0: services.participant.v1.ParticipantService.AddParticipant:input_type -> services.participant.v1.AddParticipantRequest
-	1, // 1: services.participant.v1.ParticipantService.AddParticipant:output_type -> services.participant.v1.AddParticipantResponse
-	1, // [1:2] is the sub-list for method output_type
-	0, // [0:1] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	9,  // 0: services.participant.v1.Participant.class:type_name -> services.participant.v1.Class
+	10, // 1: services.participant.v1.Participant.created_at:type_name -> google.protobuf.Timestamp
+	10, // 2: services.participant.v1.Participant.updated_at:type_name -> google.protobuf.Timestamp
+	3,  // 3: services.participant.v1.GetParticipantsByTeamIDResponse.participants:type_name -> services.participant.v1.Participant
+	3,  // 4: services.participant.v1.GetParticipantsByClassIDResponse.participants:type_name -> services.participant.v1.Participant
+	3,  // 5: services.participant.v1.GetParticipantByNimResponse.participant:type_name -> services.participant.v1.Participant
+	0,  // 6: services.participant.v1.ParticipantService.AddParticipant:input_type -> services.participant.v1.AddParticipantRequest
+	7,  // 7: services.participant.v1.ParticipantService.GetParticipantByNim:input_type -> services.participant.v1.GetParticipantByNimRequest
+	2,  // 8: services.participant.v1.ParticipantService.GetParticipantsByTeamID:input_type -> services.participant.v1.GetParticipantsByTeamIDRequest
+	5,  // 9: services.participant.v1.ParticipantService.GetParticipantsByClassID:input_type -> services.participant.v1.GetParticipantsByClassIDRequest
+	1,  // 10: services.participant.v1.ParticipantService.AddParticipant:output_type -> services.participant.v1.AddParticipantResponse
+	8,  // 11: services.participant.v1.ParticipantService.GetParticipantByNim:output_type -> services.participant.v1.GetParticipantByNimResponse
+	4,  // 12: services.participant.v1.ParticipantService.GetParticipantsByTeamID:output_type -> services.participant.v1.GetParticipantsByTeamIDResponse
+	6,  // 13: services.participant.v1.ParticipantService.GetParticipantsByClassID:output_type -> services.participant.v1.GetParticipantsByClassIDResponse
+	10, // [10:14] is the sub-list for method output_type
+	6,  // [6:10] is the sub-list for method input_type
+	6,  // [6:6] is the sub-list for extension type_name
+	6,  // [6:6] is the sub-list for extension extendee
+	0,  // [0:6] is the sub-list for field type_name
 }
 
 func init() { file_proto_services_participant_v1_participant_proto_init() }
@@ -171,13 +565,14 @@ func file_proto_services_participant_v1_participant_proto_init() {
 	if File_proto_services_participant_v1_participant_proto != nil {
 		return
 	}
+	file_proto_services_participant_v1_team_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_services_participant_v1_participant_proto_rawDesc), len(file_proto_services_participant_v1_participant_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   9,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

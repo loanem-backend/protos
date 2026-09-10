@@ -476,7 +476,7 @@ const file_proto_services_inventory_v1_instrument_proto_rawDesc = "" +
 	"\rAddInstrument\x12+.services.inventory.v1.AddInstrumentRequest\x1a,.services.inventory.v1.AddInstrumentResponse\x12v\n" +
 	"\x11GetAllInstruments\x12/.services.inventory.v1.GetAllInstrumentsRequest\x1a0.services.inventory.v1.GetAllInstrumentsResponse\x12\x7f\n" +
 	"\x14SetInstrumentPicture\x122.services.inventory.v1.SetInstrumentPictureRequest\x1a3.services.inventory.v1.SetInstrumentPictureResponse\x12\x8e\x01\n" +
-	"\x19GetInstrumentsByToolkitID\x127.services.inventory.v1.GetInstrumentsByToolkitIDRequest\x1a8.services.inventory.v1.GetInstrumentsByToolkitIDResponseBGZEgithub.com/loanem-backend/protos/pb/services/inventory/v1;inventoryv1b\x06proto3"
+	"\x19GetInstrumentsByToolkitID\x127.services.inventory.v1.GetInstrumentsByToolkitIDRequest\x1a8.services.inventory.v1.GetInstrumentsByToolkitIDResponseBMZKgithub.com/loanem-backend/protos/pb/proto/services/inventory/v1;inventoryv1b\x06proto3"
 
 var (
 	file_proto_services_inventory_v1_instrument_proto_rawDescOnce sync.Once

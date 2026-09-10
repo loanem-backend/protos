@@ -461,7 +461,7 @@ const file_proto_services_auth_v1_auth_proto_rawDesc = "" +
 	"\x05Login\x12\x1e.services.auth.v1.LoginRequest\x1a\x1f.services.auth.v1.LoginResponse\x12`\n" +
 	"\rValidateToken\x12&.services.auth.v1.ValidateTokenRequest\x1a'.services.auth.v1.ValidateTokenResponse\x12]\n" +
 	"\fRefreshToken\x12%.services.auth.v1.RefreshTokenRequest\x1a&.services.auth.v1.RefreshTokenResponse\x12K\n" +
-	"\x06Logout\x12\x1f.services.auth.v1.LogoutRequest\x1a .services.auth.v1.LogoutResponseB=Z;github.com/loanem-backend/protos/pb/services/auth/v1;authv1b\x06proto3"
+	"\x06Logout\x12\x1f.services.auth.v1.LogoutRequest\x1a .services.auth.v1.LogoutResponseBCZAgithub.com/loanem-backend/protos/pb/proto/services/auth/v1;authv1b\x06proto3"
 
 var (
 	file_proto_services_auth_v1_auth_proto_rawDescOnce sync.Once
