@@ -13,6 +13,7 @@ service TeamService {
 
     rpc AddTeams(AddTeamsRequest) returns (AddTeamsResponse);
     rpc GetTeamsByClassID(GetTeamsByClassIDRequest) returns (GetTeamsByClassIDResponse);
+    rpc GetTeamByParticipantID(GetTeamByParticipantIDRequest) returns (GetTeamByParticipantIDResponse);
 }
 
 message AddClassesRequest {
@@ -59,4 +60,12 @@ message GetTeamsByClassIDRequest {
 
 message GetTeamsByClassIDResponse {
     repeated Team teams = 1;
+}
+
+message GetTeamByParticipantIDRequest {
+    string participant_id = 1; 
+}
+
+message GetTeamByParticipantIDResponse {
+    Team team = 1;
 }

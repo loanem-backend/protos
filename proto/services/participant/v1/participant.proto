@@ -2,12 +2,17 @@ syntax = "proto3";
 
 package services.participant.v1;
 
+import "google/protobuf/timestamp.proto";
+import "proto/services/participant/v1/team.proto";
+
 option go_package = "github.com/loanem-backend/protos/pb/proto/services/participant/v1;participantv1";
 
 service ParticipantService {
     rpc AddParticipant(AddParticipantRequest) returns (AddParticipantResponse);
 
+    rpc GetParticipantByNim(GetParticipantByNimRequest) returns (GetParticipantByNimResponse);
     rpc GetParticipantsByTeamID(GetParticipantsByTeamIDRequest) returns (GetParticipantsByTeamIDResponse);
+    rpc GetParticipantsByClassID(GetParticipantsByClassIDRequest) returns (GetParticipantsByClassIDResponse);
 }
 
 message AddParticipantRequest {
@@ -25,9 +30,29 @@ message GetParticipantsByTeamIDRequest {
 
 message Participant {
     string id = 1;
-    // 
+    Class class = 2;
+    string nim = 3;
+    string name = 4;
+    google.protobuf.Timestamp created_at = 5;
+    google.protobuf.Timestamp updated_at = 6;
 }
 
 message GetParticipantsByTeamIDResponse {
     repeated Participant participants = 1;
+}
+
+message GetParticipantsByClassIDRequest {
+    int32 class_id = 1;
+}
+
+message GetParticipantsByClassIDResponse {
+    repeated Participant participants = 1;
+}
+
+message GetParticipantByNimRequest {
+    string nim = 1;
+}
+
+message GetParticipantByNimResponse {
+    Participant participant = 1;
 }
