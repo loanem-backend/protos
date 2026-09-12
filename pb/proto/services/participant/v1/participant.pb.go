@@ -27,7 +27,7 @@ type AddParticipantRequest struct {
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	Nim           string                 `protobuf:"bytes,3,opt,name=nim,proto3" json:"nim,omitempty"`
-	TeamId        string                 `protobuf:"bytes,4,opt,name=team_id,json=teamId,proto3" json:"team_id,omitempty"`
+	ClassId       int32                  `protobuf:"varint,4,opt,name=class_id,json=classId,proto3" json:"class_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -83,11 +83,11 @@ func (x *AddParticipantRequest) GetNim() string {
 	return ""
 }
 
-func (x *AddParticipantRequest) GetTeamId() string {
+func (x *AddParticipantRequest) GetClassId() int32 {
 	if x != nil {
-		return x.TeamId
+		return x.ClassId
 	}
-	return ""
+	return 0
 }
 
 type AddParticipantResponse struct {
@@ -478,12 +478,12 @@ var File_proto_services_participant_v1_participant_proto protoreflect.FileDescri
 
 const file_proto_services_participant_v1_participant_proto_rawDesc = "" +
 	"\n" +
-	"/proto/services/participant/v1/participant.proto\x12\x17services.participant.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a(proto/services/participant/v1/team.proto\"f\n" +
+	"/proto/services/participant/v1/participant.proto\x12\x17services.participant.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a(proto/services/participant/v1/team.proto\"h\n" +
 	"\x15AddParticipantRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x10\n" +
-	"\x03nim\x18\x03 \x01(\tR\x03nim\x12\x17\n" +
-	"\ateam_id\x18\x04 \x01(\tR\x06teamId\"\x18\n" +
+	"\x03nim\x18\x03 \x01(\tR\x03nim\x12\x19\n" +
+	"\bclass_id\x18\x04 \x01(\x05R\aclassId\"\x18\n" +
 	"\x16AddParticipantResponse\"9\n" +
 	"\x1eGetParticipantsByTeamIDRequest\x12\x17\n" +
 	"\ateam_id\x18\x01 \x01(\tR\x06teamId\"\xef\x01\n" +

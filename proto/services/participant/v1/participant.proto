@@ -19,7 +19,7 @@ message AddParticipantRequest {
     string id = 1;
     string name = 2;
     string nim = 3;
-    string team_id = 4;
+    int32 class_id = 4;
 }
 
 message AddParticipantResponse {}
