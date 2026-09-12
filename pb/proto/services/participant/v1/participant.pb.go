@@ -92,6 +92,7 @@ func (x *AddParticipantRequest) GetClassId() int32 {
 
 type AddParticipantResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -124,6 +125,13 @@ func (x *AddParticipantResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use AddParticipantResponse.ProtoReflect.Descriptor instead.
 func (*AddParticipantResponse) Descriptor() ([]byte, []int) {
 	return file_proto_services_participant_v1_participant_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *AddParticipantResponse) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
 }
 
 type GetParticipantsByTeamIDRequest struct {
@@ -483,8 +491,9 @@ const file_proto_services_participant_v1_participant_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x10\n" +
 	"\x03nim\x18\x03 \x01(\tR\x03nim\x12\x19\n" +
-	"\bclass_id\x18\x04 \x01(\x05R\aclassId\"\x18\n" +
-	"\x16AddParticipantResponse\"9\n" +
+	"\bclass_id\x18\x04 \x01(\x05R\aclassId\"(\n" +
+	"\x16AddParticipantResponse\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"9\n" +
 	"\x1eGetParticipantsByTeamIDRequest\x12\x17\n" +
 	"\ateam_id\x18\x01 \x01(\tR\x06teamId\"\xef\x01\n" +
 	"\vParticipant\x12\x0e\n" +
