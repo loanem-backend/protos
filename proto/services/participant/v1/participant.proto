@@ -22,7 +22,9 @@ message AddParticipantRequest {
     int32 class_id = 4;
 }
 
-message AddParticipantResponse {}
+message AddParticipantResponse {
+    string id = 1;
+}
 
 message GetParticipantsByTeamIDRequest {
     string team_id = 1;
