@@ -16,10 +16,9 @@ service ParticipantService {
 }
 
 message AddParticipantRequest {
-    string id = 1;
-    string name = 2;
-    string nim = 3;
-    int32 class_id = 4;
+    int32 class_id = 1;
+    string nim = 2;
+    string name = 3;
 }
 
 message AddParticipantResponse {
@@ -45,6 +44,7 @@ message GetParticipantsByTeamIDResponse {
 
 message GetParticipantsByClassIDRequest {
     int32 class_id = 1;
+    string sort_param = 2;
 }
 
 message GetParticipantsByClassIDResponse {

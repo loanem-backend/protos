@@ -24,10 +24,9 @@ const (
 
 type AddParticipantRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Nim           string                 `protobuf:"bytes,3,opt,name=nim,proto3" json:"nim,omitempty"`
-	ClassId       int32                  `protobuf:"varint,4,opt,name=class_id,json=classId,proto3" json:"class_id,omitempty"`
+	ClassId       int32                  `protobuf:"varint,1,opt,name=class_id,json=classId,proto3" json:"class_id,omitempty"`
+	Nim           string                 `protobuf:"bytes,2,opt,name=nim,proto3" json:"nim,omitempty"`
+	Name          string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -62,18 +61,11 @@ func (*AddParticipantRequest) Descriptor() ([]byte, []int) {
 	return file_proto_services_participant_v1_participant_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *AddParticipantRequest) GetId() string {
+func (x *AddParticipantRequest) GetClassId() int32 {
 	if x != nil {
-		return x.Id
+		return x.ClassId
 	}
-	return ""
-}
-
-func (x *AddParticipantRequest) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
+	return 0
 }
 
 func (x *AddParticipantRequest) GetNim() string {
@@ -83,11 +75,11 @@ func (x *AddParticipantRequest) GetNim() string {
 	return ""
 }
 
-func (x *AddParticipantRequest) GetClassId() int32 {
+func (x *AddParticipantRequest) GetName() string {
 	if x != nil {
-		return x.ClassId
+		return x.Name
 	}
-	return 0
+	return ""
 }
 
 type AddParticipantResponse struct {
@@ -309,6 +301,7 @@ func (x *GetParticipantsByTeamIDResponse) GetParticipants() []*Participant {
 type GetParticipantsByClassIDRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ClassId       int32                  `protobuf:"varint,1,opt,name=class_id,json=classId,proto3" json:"class_id,omitempty"`
+	SortParam     string                 `protobuf:"bytes,2,opt,name=sort_param,json=sortParam,proto3" json:"sort_param,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -348,6 +341,13 @@ func (x *GetParticipantsByClassIDRequest) GetClassId() int32 {
 		return x.ClassId
 	}
 	return 0
+}
+
+func (x *GetParticipantsByClassIDRequest) GetSortParam() string {
+	if x != nil {
+		return x.SortParam
+	}
+	return ""
 }
 
 type GetParticipantsByClassIDResponse struct {
@@ -486,12 +486,11 @@ var File_proto_services_participant_v1_participant_proto protoreflect.FileDescri
 
 const file_proto_services_participant_v1_participant_proto_rawDesc = "" +
 	"\n" +
-	"/proto/services/participant/v1/participant.proto\x12\x17services.participant.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a(proto/services/participant/v1/team.proto\"h\n" +
-	"\x15AddParticipantRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12\x10\n" +
-	"\x03nim\x18\x03 \x01(\tR\x03nim\x12\x19\n" +
-	"\bclass_id\x18\x04 \x01(\x05R\aclassId\"(\n" +
+	"/proto/services/participant/v1/participant.proto\x12\x17services.participant.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a(proto/services/participant/v1/team.proto\"X\n" +
+	"\x15AddParticipantRequest\x12\x19\n" +
+	"\bclass_id\x18\x01 \x01(\x05R\aclassId\x12\x10\n" +
+	"\x03nim\x18\x02 \x01(\tR\x03nim\x12\x12\n" +
+	"\x04name\x18\x03 \x01(\tR\x04name\"(\n" +
 	"\x16AddParticipantResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\"9\n" +
 	"\x1eGetParticipantsByTeamIDRequest\x12\x17\n" +
@@ -506,9 +505,11 @@ const file_proto_services_participant_v1_participant_proto_rawDesc = "" +
 	"\n" +
 	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"k\n" +
 	"\x1fGetParticipantsByTeamIDResponse\x12H\n" +
-	"\fparticipants\x18\x01 \x03(\v2$.services.participant.v1.ParticipantR\fparticipants\"<\n" +
+	"\fparticipants\x18\x01 \x03(\v2$.services.participant.v1.ParticipantR\fparticipants\"[\n" +
 	"\x1fGetParticipantsByClassIDRequest\x12\x19\n" +
-	"\bclass_id\x18\x01 \x01(\x05R\aclassId\"l\n" +
+	"\bclass_id\x18\x01 \x01(\x05R\aclassId\x12\x1d\n" +
+	"\n" +
+	"sort_param\x18\x02 \x01(\tR\tsortParam\"l\n" +
 	" GetParticipantsByClassIDResponse\x12H\n" +
 	"\fparticipants\x18\x01 \x03(\v2$.services.participant.v1.ParticipantR\fparticipants\".\n" +
 	"\x1aGetParticipantByNimRequest\x12\x10\n" +
