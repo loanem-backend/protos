@@ -615,6 +615,182 @@ func (x *GetTeamByParticipantIDResponse) GetTeam() *Team {
 	return nil
 }
 
+type AddTeamParticipantsRequest struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	TeamId         string                 `protobuf:"bytes,1,opt,name=team_id,json=teamId,proto3" json:"team_id,omitempty"`
+	ParticipantIds []string               `protobuf:"bytes,2,rep,name=participant_ids,json=participantIds,proto3" json:"participant_ids,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *AddTeamParticipantsRequest) Reset() {
+	*x = AddTeamParticipantsRequest{}
+	mi := &file_proto_services_participant_v1_team_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddTeamParticipantsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddTeamParticipantsRequest) ProtoMessage() {}
+
+func (x *AddTeamParticipantsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_services_participant_v1_team_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddTeamParticipantsRequest.ProtoReflect.Descriptor instead.
+func (*AddTeamParticipantsRequest) Descriptor() ([]byte, []int) {
+	return file_proto_services_participant_v1_team_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *AddTeamParticipantsRequest) GetTeamId() string {
+	if x != nil {
+		return x.TeamId
+	}
+	return ""
+}
+
+func (x *AddTeamParticipantsRequest) GetParticipantIds() []string {
+	if x != nil {
+		return x.ParticipantIds
+	}
+	return nil
+}
+
+type AddTeamParticipantsResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AddTeamParticipantsResponse) Reset() {
+	*x = AddTeamParticipantsResponse{}
+	mi := &file_proto_services_participant_v1_team_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddTeamParticipantsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddTeamParticipantsResponse) ProtoMessage() {}
+
+func (x *AddTeamParticipantsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_services_participant_v1_team_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddTeamParticipantsResponse.ProtoReflect.Descriptor instead.
+func (*AddTeamParticipantsResponse) Descriptor() ([]byte, []int) {
+	return file_proto_services_participant_v1_team_proto_rawDescGZIP(), []int{13}
+}
+
+type RemoveTeamParticipantsRequest struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	TeamId         string                 `protobuf:"bytes,1,opt,name=team_id,json=teamId,proto3" json:"team_id,omitempty"`
+	ParticipantIds []string               `protobuf:"bytes,2,rep,name=participant_ids,json=participantIds,proto3" json:"participant_ids,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *RemoveTeamParticipantsRequest) Reset() {
+	*x = RemoveTeamParticipantsRequest{}
+	mi := &file_proto_services_participant_v1_team_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RemoveTeamParticipantsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RemoveTeamParticipantsRequest) ProtoMessage() {}
+
+func (x *RemoveTeamParticipantsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_services_participant_v1_team_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RemoveTeamParticipantsRequest.ProtoReflect.Descriptor instead.
+func (*RemoveTeamParticipantsRequest) Descriptor() ([]byte, []int) {
+	return file_proto_services_participant_v1_team_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *RemoveTeamParticipantsRequest) GetTeamId() string {
+	if x != nil {
+		return x.TeamId
+	}
+	return ""
+}
+
+func (x *RemoveTeamParticipantsRequest) GetParticipantIds() []string {
+	if x != nil {
+		return x.ParticipantIds
+	}
+	return nil
+}
+
+type RemoveTeamParticipantsResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RemoveTeamParticipantsResponse) Reset() {
+	*x = RemoveTeamParticipantsResponse{}
+	mi := &file_proto_services_participant_v1_team_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RemoveTeamParticipantsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RemoveTeamParticipantsResponse) ProtoMessage() {}
+
+func (x *RemoveTeamParticipantsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_services_participant_v1_team_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RemoveTeamParticipantsResponse.ProtoReflect.Descriptor instead.
+func (*RemoveTeamParticipantsResponse) Descriptor() ([]byte, []int) {
+	return file_proto_services_participant_v1_team_proto_rawDescGZIP(), []int{15}
+}
+
 var File_proto_services_participant_v1_team_proto protoreflect.FileDescriptor
 
 const file_proto_services_participant_v1_team_proto_rawDesc = "" +
@@ -655,14 +831,24 @@ const file_proto_services_participant_v1_team_proto_rawDesc = "" +
 	"\x1dGetTeamByParticipantIDRequest\x12%\n" +
 	"\x0eparticipant_id\x18\x01 \x01(\tR\rparticipantId\"S\n" +
 	"\x1eGetTeamByParticipantIDResponse\x121\n" +
-	"\x04team\x18\x01 \x01(\v2\x1d.services.participant.v1.TeamR\x04team2\xe3\x04\n" +
+	"\x04team\x18\x01 \x01(\v2\x1d.services.participant.v1.TeamR\x04team\"^\n" +
+	"\x1aAddTeamParticipantsRequest\x12\x17\n" +
+	"\ateam_id\x18\x01 \x01(\tR\x06teamId\x12'\n" +
+	"\x0fparticipant_ids\x18\x02 \x03(\tR\x0eparticipantIds\"\x1d\n" +
+	"\x1bAddTeamParticipantsResponse\"a\n" +
+	"\x1dRemoveTeamParticipantsRequest\x12\x17\n" +
+	"\ateam_id\x18\x01 \x01(\tR\x06teamId\x12'\n" +
+	"\x0fparticipant_ids\x18\x02 \x03(\tR\x0eparticipantIds\" \n" +
+	"\x1eRemoveTeamParticipantsResponse2\xf2\x06\n" +
 	"\vTeamService\x12e\n" +
 	"\n" +
 	"AddClasses\x12*.services.participant.v1.AddClassesRequest\x1a+.services.participant.v1.AddClassesResponse\x12\x83\x01\n" +
 	"\x14GetClassesByCourseID\x124.services.participant.v1.GetClassesByCourseIDRequest\x1a5.services.participant.v1.GetClassesByCourseIDResponse\x12_\n" +
 	"\bAddTeams\x12(.services.participant.v1.AddTeamsRequest\x1a).services.participant.v1.AddTeamsResponse\x12z\n" +
 	"\x11GetTeamsByClassID\x121.services.participant.v1.GetTeamsByClassIDRequest\x1a2.services.participant.v1.GetTeamsByClassIDResponse\x12\x89\x01\n" +
-	"\x16GetTeamByParticipantID\x126.services.participant.v1.GetTeamByParticipantIDRequest\x1a7.services.participant.v1.GetTeamByParticipantIDResponseBQZOgithub.com/loanem-backend/protos/pb/proto/services/participant/v1;participantv1b\x06proto3"
+	"\x16GetTeamByParticipantID\x126.services.participant.v1.GetTeamByParticipantIDRequest\x1a7.services.participant.v1.GetTeamByParticipantIDResponse\x12\x80\x01\n" +
+	"\x13AddTeamParticipants\x123.services.participant.v1.AddTeamParticipantsRequest\x1a4.services.participant.v1.AddTeamParticipantsResponse\x12\x89\x01\n" +
+	"\x16RemoveTeamParticipants\x126.services.participant.v1.RemoveTeamParticipantsRequest\x1a7.services.participant.v1.RemoveTeamParticipantsResponseBQZOgithub.com/loanem-backend/protos/pb/proto/services/participant/v1;participantv1b\x06proto3"
 
 var (
 	file_proto_services_participant_v1_team_proto_rawDescOnce sync.Once
@@ -676,7 +862,7 @@ func file_proto_services_participant_v1_team_proto_rawDescGZIP() []byte {
 	return file_proto_services_participant_v1_team_proto_rawDescData
 }
 
-var file_proto_services_participant_v1_team_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
+var file_proto_services_participant_v1_team_proto_msgTypes = make([]protoimpl.MessageInfo, 16)
 var file_proto_services_participant_v1_team_proto_goTypes = []any{
 	(*AddClassesRequest)(nil),              // 0: services.participant.v1.AddClassesRequest
 	(*AddClassesResponse)(nil),             // 1: services.participant.v1.AddClassesResponse
@@ -690,17 +876,21 @@ var file_proto_services_participant_v1_team_proto_goTypes = []any{
 	(*GetTeamsByClassIDResponse)(nil),      // 9: services.participant.v1.GetTeamsByClassIDResponse
 	(*GetTeamByParticipantIDRequest)(nil),  // 10: services.participant.v1.GetTeamByParticipantIDRequest
 	(*GetTeamByParticipantIDResponse)(nil), // 11: services.participant.v1.GetTeamByParticipantIDResponse
-	(*v1.Course)(nil),                      // 12: services.course.v1.Course
-	(*timestamppb.Timestamp)(nil),          // 13: google.protobuf.Timestamp
+	(*AddTeamParticipantsRequest)(nil),     // 12: services.participant.v1.AddTeamParticipantsRequest
+	(*AddTeamParticipantsResponse)(nil),    // 13: services.participant.v1.AddTeamParticipantsResponse
+	(*RemoveTeamParticipantsRequest)(nil),  // 14: services.participant.v1.RemoveTeamParticipantsRequest
+	(*RemoveTeamParticipantsResponse)(nil), // 15: services.participant.v1.RemoveTeamParticipantsResponse
+	(*v1.Course)(nil),                      // 16: services.course.v1.Course
+	(*timestamppb.Timestamp)(nil),          // 17: google.protobuf.Timestamp
 }
 var file_proto_services_participant_v1_team_proto_depIdxs = []int32{
-	12, // 0: services.participant.v1.Class.course:type_name -> services.course.v1.Course
-	13, // 1: services.participant.v1.Class.created_at:type_name -> google.protobuf.Timestamp
-	13, // 2: services.participant.v1.Class.updated_at:type_name -> google.protobuf.Timestamp
+	16, // 0: services.participant.v1.Class.course:type_name -> services.course.v1.Course
+	17, // 1: services.participant.v1.Class.created_at:type_name -> google.protobuf.Timestamp
+	17, // 2: services.participant.v1.Class.updated_at:type_name -> google.protobuf.Timestamp
 	2,  // 3: services.participant.v1.GetClassesByCourseIDResponse.classes:type_name -> services.participant.v1.Class
 	2,  // 4: services.participant.v1.Team.class:type_name -> services.participant.v1.Class
-	13, // 5: services.participant.v1.Team.created_at:type_name -> google.protobuf.Timestamp
-	13, // 6: services.participant.v1.Team.updated_at:type_name -> google.protobuf.Timestamp
+	17, // 5: services.participant.v1.Team.created_at:type_name -> google.protobuf.Timestamp
+	17, // 6: services.participant.v1.Team.updated_at:type_name -> google.protobuf.Timestamp
 	7,  // 7: services.participant.v1.GetTeamsByClassIDResponse.teams:type_name -> services.participant.v1.Team
 	7,  // 8: services.participant.v1.GetTeamByParticipantIDResponse.team:type_name -> services.participant.v1.Team
 	0,  // 9: services.participant.v1.TeamService.AddClasses:input_type -> services.participant.v1.AddClassesRequest
@@ -708,13 +898,17 @@ var file_proto_services_participant_v1_team_proto_depIdxs = []int32{
 	5,  // 11: services.participant.v1.TeamService.AddTeams:input_type -> services.participant.v1.AddTeamsRequest
 	8,  // 12: services.participant.v1.TeamService.GetTeamsByClassID:input_type -> services.participant.v1.GetTeamsByClassIDRequest
 	10, // 13: services.participant.v1.TeamService.GetTeamByParticipantID:input_type -> services.participant.v1.GetTeamByParticipantIDRequest
-	1,  // 14: services.participant.v1.TeamService.AddClasses:output_type -> services.participant.v1.AddClassesResponse
-	4,  // 15: services.participant.v1.TeamService.GetClassesByCourseID:output_type -> services.participant.v1.GetClassesByCourseIDResponse
-	6,  // 16: services.participant.v1.TeamService.AddTeams:output_type -> services.participant.v1.AddTeamsResponse
-	9,  // 17: services.participant.v1.TeamService.GetTeamsByClassID:output_type -> services.participant.v1.GetTeamsByClassIDResponse
-	11, // 18: services.participant.v1.TeamService.GetTeamByParticipantID:output_type -> services.participant.v1.GetTeamByParticipantIDResponse
-	14, // [14:19] is the sub-list for method output_type
-	9,  // [9:14] is the sub-list for method input_type
+	12, // 14: services.participant.v1.TeamService.AddTeamParticipants:input_type -> services.participant.v1.AddTeamParticipantsRequest
+	14, // 15: services.participant.v1.TeamService.RemoveTeamParticipants:input_type -> services.participant.v1.RemoveTeamParticipantsRequest
+	1,  // 16: services.participant.v1.TeamService.AddClasses:output_type -> services.participant.v1.AddClassesResponse
+	4,  // 17: services.participant.v1.TeamService.GetClassesByCourseID:output_type -> services.participant.v1.GetClassesByCourseIDResponse
+	6,  // 18: services.participant.v1.TeamService.AddTeams:output_type -> services.participant.v1.AddTeamsResponse
+	9,  // 19: services.participant.v1.TeamService.GetTeamsByClassID:output_type -> services.participant.v1.GetTeamsByClassIDResponse
+	11, // 20: services.participant.v1.TeamService.GetTeamByParticipantID:output_type -> services.participant.v1.GetTeamByParticipantIDResponse
+	13, // 21: services.participant.v1.TeamService.AddTeamParticipants:output_type -> services.participant.v1.AddTeamParticipantsResponse
+	15, // 22: services.participant.v1.TeamService.RemoveTeamParticipants:output_type -> services.participant.v1.RemoveTeamParticipantsResponse
+	16, // [16:23] is the sub-list for method output_type
+	9,  // [9:16] is the sub-list for method input_type
 	9,  // [9:9] is the sub-list for extension type_name
 	9,  // [9:9] is the sub-list for extension extendee
 	0,  // [0:9] is the sub-list for field type_name
@@ -731,7 +925,7 @@ func file_proto_services_participant_v1_team_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_services_participant_v1_team_proto_rawDesc), len(file_proto_services_participant_v1_team_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   12,
+			NumMessages:   16,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
