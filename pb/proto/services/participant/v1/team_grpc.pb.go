@@ -24,6 +24,8 @@ const (
 	TeamService_AddTeams_FullMethodName               = "/services.participant.v1.TeamService/AddTeams"
 	TeamService_GetTeamsByClassID_FullMethodName      = "/services.participant.v1.TeamService/GetTeamsByClassID"
 	TeamService_GetTeamByParticipantID_FullMethodName = "/services.participant.v1.TeamService/GetTeamByParticipantID"
+	TeamService_AddTeamParticipants_FullMethodName    = "/services.participant.v1.TeamService/AddTeamParticipants"
+	TeamService_RemoveTeamParticipants_FullMethodName = "/services.participant.v1.TeamService/RemoveTeamParticipants"
 )
 
 // TeamServiceClient is the client API for TeamService service.
@@ -35,6 +37,8 @@ type TeamServiceClient interface {
 	AddTeams(ctx context.Context, in *AddTeamsRequest, opts ...grpc.CallOption) (*AddTeamsResponse, error)
 	GetTeamsByClassID(ctx context.Context, in *GetTeamsByClassIDRequest, opts ...grpc.CallOption) (*GetTeamsByClassIDResponse, error)
 	GetTeamByParticipantID(ctx context.Context, in *GetTeamByParticipantIDRequest, opts ...grpc.CallOption) (*GetTeamByParticipantIDResponse, error)
+	AddTeamParticipants(ctx context.Context, in *AddTeamParticipantsRequest, opts ...grpc.CallOption) (*AddTeamParticipantsResponse, error)
+	RemoveTeamParticipants(ctx context.Context, in *RemoveTeamParticipantsRequest, opts ...grpc.CallOption) (*RemoveTeamParticipantsResponse, error)
 }
 
 type teamServiceClient struct {
@@ -95,6 +99,26 @@ func (c *teamServiceClient) GetTeamByParticipantID(ctx context.Context, in *GetT
 	return out, nil
 }
 
+func (c *teamServiceClient) AddTeamParticipants(ctx context.Context, in *AddTeamParticipantsRequest, opts ...grpc.CallOption) (*AddTeamParticipantsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(AddTeamParticipantsResponse)
+	err := c.cc.Invoke(ctx, TeamService_AddTeamParticipants_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *teamServiceClient) RemoveTeamParticipants(ctx context.Context, in *RemoveTeamParticipantsRequest, opts ...grpc.CallOption) (*RemoveTeamParticipantsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RemoveTeamParticipantsResponse)
+	err := c.cc.Invoke(ctx, TeamService_RemoveTeamParticipants_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // TeamServiceServer is the server API for TeamService service.
 // All implementations must embed UnimplementedTeamServiceServer
 // for forward compatibility.
@@ -104,6 +128,8 @@ type TeamServiceServer interface {
 	AddTeams(context.Context, *AddTeamsRequest) (*AddTeamsResponse, error)
 	GetTeamsByClassID(context.Context, *GetTeamsByClassIDRequest) (*GetTeamsByClassIDResponse, error)
 	GetTeamByParticipantID(context.Context, *GetTeamByParticipantIDRequest) (*GetTeamByParticipantIDResponse, error)
+	AddTeamParticipants(context.Context, *AddTeamParticipantsRequest) (*AddTeamParticipantsResponse, error)
+	RemoveTeamParticipants(context.Context, *RemoveTeamParticipantsRequest) (*RemoveTeamParticipantsResponse, error)
 	mustEmbedUnimplementedTeamServiceServer()
 }
 
@@ -128,6 +154,12 @@ func (UnimplementedTeamServiceServer) GetTeamsByClassID(context.Context, *GetTea
 }
 func (UnimplementedTeamServiceServer) GetTeamByParticipantID(context.Context, *GetTeamByParticipantIDRequest) (*GetTeamByParticipantIDResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetTeamByParticipantID not implemented")
+}
+func (UnimplementedTeamServiceServer) AddTeamParticipants(context.Context, *AddTeamParticipantsRequest) (*AddTeamParticipantsResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method AddTeamParticipants not implemented")
+}
+func (UnimplementedTeamServiceServer) RemoveTeamParticipants(context.Context, *RemoveTeamParticipantsRequest) (*RemoveTeamParticipantsResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method RemoveTeamParticipants not implemented")
 }
 func (UnimplementedTeamServiceServer) mustEmbedUnimplementedTeamServiceServer() {}
 func (UnimplementedTeamServiceServer) testEmbeddedByValue()                     {}
@@ -240,6 +272,42 @@ func _TeamService_GetTeamByParticipantID_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _TeamService_AddTeamParticipants_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddTeamParticipantsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TeamServiceServer).AddTeamParticipants(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TeamService_AddTeamParticipants_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TeamServiceServer).AddTeamParticipants(ctx, req.(*AddTeamParticipantsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _TeamService_RemoveTeamParticipants_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RemoveTeamParticipantsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TeamServiceServer).RemoveTeamParticipants(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TeamService_RemoveTeamParticipants_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TeamServiceServer).RemoveTeamParticipants(ctx, req.(*RemoveTeamParticipantsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // TeamService_ServiceDesc is the grpc.ServiceDesc for TeamService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -266,6 +334,14 @@ var TeamService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetTeamByParticipantID",
 			Handler:    _TeamService_GetTeamByParticipantID_Handler,
+		},
+		{
+			MethodName: "AddTeamParticipants",
+			Handler:    _TeamService_AddTeamParticipants_Handler,
+		},
+		{
+			MethodName: "RemoveTeamParticipants",
+			Handler:    _TeamService_RemoveTeamParticipants_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
